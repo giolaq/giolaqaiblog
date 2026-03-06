@@ -26,15 +26,6 @@ const talks = [
     type: "Podcast",
   },
   {
-    title: "The Bigger Picture: React Native Lessons from TV That Scale",
-    event: "Callstack Event",
-    date: "2025",
-    description:
-      "Performance, architecture, and cross-platform code strategies — lessons learned from building performant TV apps that apply beyond mobile, across devices and form factors.",
-    link: "https://www.callstack.com/events/the-bigger-picture",
-    type: "Talk",
-  },
-  {
     title: "React Native for TV Workshop",
     event: "Workshop",
     date: "2024-11",
