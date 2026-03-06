@@ -8,6 +8,33 @@ export const metadata: Metadata = {
 
 const talks = [
   {
+    title: "Deep Dive: Building React Native App for Vega OS",
+    event: "Callstack Live Stream",
+    date: "2025-12",
+    description:
+      "Live coding session building a TicTacToe app on Amazon's brand-new Vega OS — exploring React 19.2 updates, new experimental APIs, and the first deep dive into building for Vega OS powered by React Native.",
+    link: "https://www.callstack.com/events/deep-dive-building-react-native-app-for-vega-os",
+    type: "Webinar",
+  },
+  {
+    title: "Amazon's Vega OS: A New OS With React Native Built-In",
+    event: "React Universe On Air (Callstack Podcast)",
+    date: "2025-11",
+    description:
+      "Introducing Vega OS — Amazon's new lightweight Linux-based operating system with React Native built-in, designed for high-performance on low-end media devices like Fire TV, Echo Show, and Echo Hub.",
+    link: "https://www.callstack.com/podcasts/amazons-vega-os-a-new-os-with-react-native-built-in",
+    type: "Podcast",
+  },
+  {
+    title: "The Bigger Picture: React Native Lessons from TV That Scale",
+    event: "Callstack Event",
+    date: "2025",
+    description:
+      "Performance, architecture, and cross-platform code strategies — lessons learned from building performant TV apps that apply beyond mobile, across devices and form factors.",
+    link: "https://www.callstack.com/events/the-bigger-picture",
+    type: "Talk",
+  },
+  {
     title: "React Native for TV Workshop",
     event: "Workshop",
     date: "2024-11",
