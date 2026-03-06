@@ -16,13 +16,15 @@ export default function AboutPage() {
       <div className="mt-10 space-y-6 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
         <p>
           Hi! I&apos;m <strong className="text-zinc-900 dark:text-zinc-100">Giovanni Laquidara</strong>,
-          a Developer Advocate, Technologist, and Software Engineer based in London, England.
+          a Senior Developer Advocate at Amazon, based in London, England. I&apos;m focused on
+          devices, mobile apps, and developer communities.
         </p>
 
         <p>
-          I&apos;m passionate about working with cutting-edge technologies and people.
-          Currently focused on devices, mobile apps, and developer communities, I help developers
-          build amazing experiences across multiple platforms.
+          I&apos;m passionate about working with cutting-edge technologies and people. I studied at
+          Universit&agrave; di Roma Tor Vergata and have been building software across mobile, VR/AR,
+          real-time defence systems, and IoT. For fun, I enjoy low-level programming, IoT hacking,
+          and command-line apps.
         </p>
 
         <h2 className="!mt-12 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
@@ -88,6 +90,14 @@ export default function AboutPage() {
             className="inline-flex items-center gap-2 rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition-all hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-zinc-900"
           >
             X (Twitter)
+          </a>
+          <a
+            href={SITE_CONFIG.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition-all hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-zinc-900"
+          >
+            LinkedIn
           </a>
           <a
             href={SITE_CONFIG.social.medium}

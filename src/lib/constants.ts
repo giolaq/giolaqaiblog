@@ -7,12 +7,13 @@ export const SITE_CONFIG = {
   author: {
     name: "Giovanni Laquidara",
     role: "Developer Advocate & Software Engineer",
-    bio: "Developer Advocate, Technologist, and Software Engineer based in London. Passionate about mobile development, TV apps, React Native, Kotlin, and cutting-edge technologies. Previously worked on VR, AR, and real-time software.",
+    bio: "Senior Developer Advocate at Amazon, focused on devices, mobile apps, and developer communities. Based in London, I build mobile apps, real-time systems, and VR/AR experiences. For fun, I enjoy low-level programming, IoT hacking, and command-line apps.",
     avatar: "/avatar.jpg",
   },
   social: {
     github: "https://github.com/giolaq",
     twitter: "https://x.com/giolaq",
+    linkedin: "https://www.linkedin.com/in/glaquidara/",
     medium: "https://medium.com/@giolaq",
     hashnode: "https://hashnode.com/@giolaq",
   },

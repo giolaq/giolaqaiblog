@@ -8,6 +8,15 @@ export const metadata: Metadata = {
 
 const talks = [
   {
+    title: "React Native for TV Workshop",
+    event: "Workshop",
+    date: "2024-11",
+    description:
+      "A hands-on workshop guiding developers through building TV apps with React Native for Apple TV, Android TV, and Fire TV. Available at rntv.giolaq.dev.",
+    link: "https://rntv.giolaq.dev",
+    type: "Workshop",
+  },
+  {
     title: "React Native TV Apps with Giovanni Laquidara",
     event: "Rocket Ship Podcast - Episode 046",
     date: "2024-07",
@@ -15,6 +24,38 @@ const talks = [
       "Discussion about TV app development with React Native, covering the unique challenges of 10-foot UI, seamless navigation, and remote control interaction.",
     link: "https://giolaq.dev/developing-react-native-tv-apps-with-giovanni-laquidara-rocket-ship-046",
     type: "Podcast",
+  },
+  {
+    title: "Building TV Apps with React Native",
+    event: "App.js 2024",
+    date: "2024-05",
+    description:
+      "Talk at App.js conference about building cross-platform TV applications with React Native.",
+    type: "Talk",
+  },
+  {
+    title: "Creating Engaging Android TV and Fire TV Apps",
+    event: "AppDevCon 2024",
+    date: "2024-05",
+    description:
+      "Expert tips for creating engaging TV applications on Android TV and Fire TV using native and cross-device development tools.",
+    type: "Talk",
+  },
+  {
+    title: "TV Apps in React Native",
+    event: "React Native London",
+    date: "2024-03",
+    description:
+      "Building TV apps with React Native — a lesser-known but increasingly mature use case reaching a new stage of popularity.",
+    type: "Talk",
+  },
+  {
+    title: "Developer Experience Updates for Amazon Appstore",
+    event: "devDay 2023",
+    date: "2024-02",
+    description:
+      "Overview of new tools and features to simplify testing, submitting apps, and engaging with millions of Amazon Appstore customers.",
+    type: "Talk",
   },
   {
     title: "Game Development for Smart TVs",
@@ -31,15 +72,6 @@ const talks = [
     description:
       "How Amazon Appstore reaches millions of customers worldwide on Fire TV, Fire tablets, mobile platforms, and Windows 11 devices.",
     type: "Talk",
-  },
-  {
-    title: "React Native for TV Workshop",
-    event: "Workshop",
-    date: "2024",
-    description:
-      "A hands-on workshop guiding developers through building TV apps with React Native. Available at rntv.giolaq.dev.",
-    link: "https://rntv.giolaq.dev",
-    type: "Workshop",
   },
 ];
 
