@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -13,7 +14,18 @@ export default function AboutPage() {
         About Me
       </h1>
 
-      <div className="mt-10 space-y-6 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+      <div className="mt-10 flex justify-center sm:justify-start">
+        <Image
+          src={SITE_CONFIG.author.avatar}
+          alt={SITE_CONFIG.author.name}
+          width={160}
+          height={160}
+          className="rounded-full border-2 border-zinc-200 shadow-lg dark:border-zinc-700"
+          priority
+        />
+      </div>
+
+      <div className="mt-8 space-y-6 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
         <p>
           Hi! I&apos;m <strong className="text-zinc-900 dark:text-zinc-100">Giovanni Laquidara</strong>,
           a Senior Developer Advocate at Amazon, based in London, England. I&apos;m focused on

@@ -17,6 +17,24 @@ const talks = [
     type: "Workshop",
   },
   {
+    title: "Smart TV Apps with React Native",
+    event: "CityJS Medellín 2024",
+    date: "2024-10",
+    description:
+      "Workshop on developing smart TV applications using React Native, demonstrating how JavaScript can bridge web development with the world of smart TV apps.",
+    link: "https://medellin.cityjsconf.org/workshop/3ew37izvyudurggluzokmc/",
+    type: "Workshop",
+  },
+  {
+    title: "Mastering the Big Screen: React Native for TV",
+    event: "Callstack Webinar",
+    date: "2024-10",
+    description:
+      "Webinar with Callstack covering best practices for TV app development in React Native — flexible designs, playback, content discovery, deep linking, and performance optimization.",
+    link: "https://www.callstack.com/events/mastering-the-big-screen-react-native",
+    type: "Webinar",
+  },
+  {
     title: "React Native TV Apps with Giovanni Laquidara",
     event: "Rocket Ship Podcast - Episode 046",
     date: "2024-07",
@@ -102,6 +120,42 @@ const talks = [
     date: "2022-07",
     description:
       "How Amazon Appstore reaches millions of customers on Fire TV, Fire tablets, mobile, and Windows 11.",
+    type: "Talk",
+  },
+  {
+    title: "Hello ARCore",
+    event: "Codemotion Milan 2017",
+    date: "2017-11",
+    description:
+      "Developing brand new experiences that blend digital and physical worlds with Android using Google's ARCore SDK — motion tracking, environmental understanding, and light estimation.",
+    link: "https://www.slideshare.net/Codemotion/giovanni-laquidara-hello-arcore-codemotion-milan-2017",
+    type: "Talk",
+  },
+  {
+    title: "Drive Together Not the Same",
+    event: "Droidcon Italy 2017",
+    date: "2017-04",
+    description:
+      "Talk at Droidcon Italy on collaborative Android development patterns and building connected experiences.",
+    link: "https://it.droidcon.com/2017/speakers/giovanni-laquidara/index.html",
+    type: "Talk",
+  },
+  {
+    title: "Join the Dart Side of Web Development",
+    event: "Codemotion Rome 2015",
+    date: "2015-03",
+    description:
+      "Exploring Dart language features — classes, constructors, asynchronous programming, and the Polymer library for building modern web apps.",
+    link: "https://www.slideshare.net/slideshow/join-thedartsideofwebdevelopment2/46530600",
+    type: "Talk",
+  },
+  {
+    title: "Virtual Reality: A New World is Coming",
+    event: "Todi Appy Days",
+    date: "2015",
+    description:
+      "The resurgence of VR — how Oculus Rift and Google Cardboard are making virtual reality accessible to everyone, with new business opportunities emerging.",
+    link: "https://www.appydays.it/speakers/giovanni-laquidara/",
     type: "Talk",
   },
 ];
