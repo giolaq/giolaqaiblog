@@ -171,30 +171,30 @@ const highlights = [
 export default function ResumePage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
-      <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">
-        Resume
+      <h1 className="text-2xl font-bold text-foreground">
+        <span className="text-accent">$</span> cat resume.json
       </h1>
-      <p className="mt-3 text-lg text-zinc-600 dark:text-zinc-400">
+      <p className="mt-2 text-sm text-muted">
         Senior Developer Advocate based in London — building bridges between
         developers and technology across mobile, TV, and XR platforms.
       </p>
 
       {/* Skills */}
-      <section className="mt-14">
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-          Skills
+      <section className="mt-12">
+        <h2 className="text-base font-semibold text-accent">
+          ## Skills
         </h2>
-        <div className="mt-6 space-y-4">
+        <div className="mt-4 space-y-4">
           {Object.entries(skills).map(([category, items]) => (
             <div key={category}>
-              <h3 className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+              <h3 className="text-xs font-medium text-muted">
                 {category}
               </h3>
-              <div className="mt-2 flex flex-wrap gap-2">
+              <div className="mt-2 flex flex-wrap gap-1.5">
                 {items.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
+                    className="rounded-md bg-surface px-2.5 py-1 text-[11px] text-foreground"
                   >
                     {skill}
                   </span>
@@ -206,23 +206,23 @@ export default function ResumePage() {
       </section>
 
       {/* Highlights */}
-      <section className="mt-14">
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-          Highlights
+      <section className="mt-12">
+        <h2 className="text-base font-semibold text-accent">
+          ## Highlights
         </h2>
-        <ul className="mt-6 space-y-3">
+        <ul className="mt-4 space-y-2">
           {highlights.map((item, i) => (
             <li
               key={i}
-              className="flex items-start gap-2 text-sm text-zinc-600 dark:text-zinc-400"
+              className="flex items-start gap-2 text-xs text-muted"
             >
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-500" />
+              <span className="mt-0.5 text-accent">-</span>
               {item.link ? (
                 <a
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors hover:text-indigo-600 dark:hover:text-indigo-400"
+                  className="transition-colors hover:text-accent"
                 >
                   {item.text}
                 </a>
@@ -235,35 +235,32 @@ export default function ResumePage() {
       </section>
 
       {/* Experience */}
-      <section className="mt-14">
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-          Experience
+      <section className="mt-12">
+        <h2 className="text-base font-semibold text-accent">
+          ## Experience
         </h2>
-        <div className="mt-6 space-y-10">
+        <div className="mt-4 space-y-6">
           {experience.map((job, i) => (
-            <div key={i} className="relative pl-6 border-l-2 border-zinc-200 dark:border-zinc-800">
-              <div className="absolute -left-[7px] top-1 h-3 w-3 rounded-full border-2 border-indigo-500 bg-white dark:bg-zinc-950" />
+            <div key={i} className="terminal-box p-5">
               <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+                <h3 className="text-sm font-semibold text-foreground">
                   {job.role}
                 </h3>
-                <span className="text-xs text-zinc-500 dark:text-zinc-400">
+                <span className="text-[11px] text-muted">
                   {job.period}
                 </span>
               </div>
-              <p className="mt-0.5 text-sm font-medium text-indigo-600 dark:text-indigo-400">
-                {job.company}
-                <span className="text-zinc-400 dark:text-zinc-500">
-                  {" "}· {job.location}
-                </span>
+              <p className="mt-0.5 text-xs">
+                <span className="text-accent">{job.company}</span>
+                <span className="text-muted"> · {job.location}</span>
               </p>
-              <ul className="mt-3 space-y-2">
+              <ul className="mt-3 space-y-1.5">
                 {job.highlights.map((h, j) => (
                   <li
                     key={j}
-                    className="flex items-start gap-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400"
+                    className="flex items-start gap-2 text-xs leading-relaxed text-muted"
                   >
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-300 dark:bg-zinc-700" />
+                    <span className="mt-0.5 text-border">-</span>
                     {h}
                   </li>
                 ))}
@@ -274,19 +271,18 @@ export default function ResumePage() {
       </section>
 
       {/* Education */}
-      <section className="mt-14">
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-          Education
+      <section className="mt-12">
+        <h2 className="text-base font-semibold text-accent">
+          ## Education
         </h2>
-        <div className="mt-6 space-y-6">
+        <div className="mt-4 space-y-3">
           {education.map((edu, i) => (
-            <div key={i} className="relative pl-6 border-l-2 border-zinc-200 dark:border-zinc-800">
-              <div className="absolute -left-[7px] top-1 h-3 w-3 rounded-full border-2 border-indigo-500 bg-white dark:bg-zinc-950" />
-              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+            <div key={i} className="terminal-box p-4">
+              <h3 className="text-sm font-semibold text-foreground">
                 {edu.title}
               </h3>
-              <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">
-                {edu.institution} · {edu.year}
+              <p className="mt-0.5 text-xs text-muted">
+                <span className="text-accent">{edu.institution}</span> · {edu.year}
               </p>
             </div>
           ))}

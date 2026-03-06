@@ -160,38 +160,45 @@ const talks = [
   },
 ];
 
+const typeColors: Record<string, string> = {
+  Talk: "text-term-green",
+  Workshop: "text-term-yellow",
+  Podcast: "text-accent",
+  Webinar: "text-[#bb9af7]",
+};
+
 export default function TalksPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
-      <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">
-        Talks & Presentations
+      <h1 className="text-2xl font-bold text-foreground">
+        <span className="text-accent">$</span> ls talks/
       </h1>
-      <p className="mt-3 text-lg text-zinc-600 dark:text-zinc-400">
+      <p className="mt-2 text-sm text-muted">
         Conference talks, podcasts, and workshops I&apos;ve been part of.
       </p>
 
-      <div className="mt-12 space-y-8">
+      <div className="mt-10 space-y-4">
         {talks.map((talk, index) => (
           <div
             key={index}
-            className="group rounded-2xl border border-zinc-200 p-6 transition-all hover:border-zinc-300 hover:shadow-lg hover:shadow-zinc-100 dark:border-zinc-800 dark:hover:border-zinc-700 dark:hover:shadow-zinc-900/50"
+            className="terminal-box p-5 transition-all hover:border-accent"
           >
             <div className="flex items-center gap-3">
-              <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300">
-                {talk.type}
+              <span className={`text-xs font-medium ${typeColors[talk.type] || "text-muted"}`}>
+                [{talk.type}]
               </span>
-              <span className="text-sm text-zinc-500 dark:text-zinc-400">
+              <span className="text-xs text-muted">
                 {talk.date}
               </span>
             </div>
 
-            <h2 className="mt-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+            <h2 className="mt-2 text-sm font-semibold text-foreground">
               {talk.link ? (
                 <a
                   href={talk.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors hover:text-indigo-600 dark:hover:text-indigo-400"
+                  className="transition-colors hover:text-accent"
                 >
                   {talk.title}
                 </a>
@@ -200,11 +207,11 @@ export default function TalksPage() {
               )}
             </h2>
 
-            <p className="mt-1 text-sm font-medium text-zinc-500 dark:text-zinc-400">
+            <p className="mt-0.5 text-xs text-accent">
               {talk.event}
             </p>
 
-            <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <p className="mt-2 text-xs leading-relaxed text-muted">
               {talk.description}
             </p>
           </div>

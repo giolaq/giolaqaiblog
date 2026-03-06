@@ -13,25 +13,25 @@ export default function Home() {
 
       <section className="pb-20">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          <h2 className="text-lg font-bold text-accent">
             Latest Posts
           </h2>
           <Link
             href="/blog"
-            className="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
+            className="text-xs text-muted transition-colors hover:text-accent"
           >
             View all &rarr;
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
           {recentPosts.map((post) => (
             <PostCard key={post.slug} post={post} />
           ))}
         </div>
 
         {posts.length === 0 && (
-          <p className="mt-8 text-zinc-500 dark:text-zinc-400">
+          <p className="mt-8 text-sm text-muted">
             No posts yet. Check back soon!
           </p>
         )}

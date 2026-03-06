@@ -16,23 +16,29 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-200 bg-white/80 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/80">
+    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <Link
-          href="/"
-          className="text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100"
-        >
-          {SITE_CONFIG.name.split(" ")[0]}
-          <span className="text-indigo-600 dark:text-indigo-400">.</span>
-        </Link>
+        {/* Terminal dots + brand */}
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1.5">
+            <span className="h-3 w-3 rounded-full bg-term-red" />
+            <span className="h-3 w-3 rounded-full bg-term-yellow" />
+            <span className="h-3 w-3 rounded-full bg-term-green" />
+          </div>
+          <Link href="/" className="text-sm font-bold text-foreground">
+            {SITE_CONFIG.name.split(" ")[0].toLowerCase()}
+            <span className="text-accent">.</span>
+            <span className="text-muted">dev</span>
+          </Link>
+        </div>
 
         {/* Desktop nav */}
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                className="rounded-md px-3 py-1.5 text-xs text-muted transition-colors hover:bg-surface hover:text-accent"
               >
                 {link.label}
               </Link>
@@ -42,12 +48,12 @@ export default function Header() {
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden text-zinc-600 dark:text-zinc-400"
+          className="text-muted md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
           <svg
-            className="h-6 w-6"
+            className="h-5 w-5"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -71,18 +77,23 @@ export default function Header() {
         </button>
       </nav>
 
+      {/* Dashed separator */}
+      <div className="mx-auto max-w-5xl px-6">
+        <div className="border-t border-dashed border-border" />
+      </div>
+
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="border-t border-zinc-200 bg-white px-6 py-4 dark:border-zinc-800 dark:bg-zinc-950 md:hidden">
-          <ul className="flex flex-col gap-4">
+        <div className="border-t border-dashed border-border bg-background px-6 py-4 md:hidden">
+          <ul className="flex flex-col gap-2">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  className="block rounded-md px-3 py-2 text-xs text-muted transition-colors hover:bg-surface hover:text-accent"
                   onClick={() => setMobileOpen(false)}
                 >
-                  {link.label}
+                  <span className="text-accent">$</span> {link.label.toLowerCase()}
                 </Link>
               </li>
             ))}

@@ -10,115 +10,115 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
-      <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">
-        About Me
+      <h1 className="text-2xl font-bold text-foreground">
+        <span className="text-accent">$</span> cat about.md
       </h1>
 
-      <div className="mt-10 flex justify-center sm:justify-start">
-        <Image
-          src={SITE_CONFIG.author.avatar}
-          alt={SITE_CONFIG.author.name}
-          width={160}
-          height={160}
-          className="rounded-full border-2 border-zinc-200 shadow-lg dark:border-zinc-700"
-          priority
-        />
-      </div>
+      <div className="mt-8 terminal-box overflow-hidden">
+        <div className="flex items-center gap-2 border-b border-dashed border-border px-4 py-3">
+          <span className="text-xs text-muted">about.md</span>
+        </div>
 
-      <div className="mt-8 space-y-6 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-        <p>
-          Hi! I&apos;m <strong className="text-zinc-900 dark:text-zinc-100">Giovanni Laquidara</strong>,
-          a Senior Developer Advocate at Amazon, based in London, England. I&apos;m focused on
-          devices, mobile apps, and developer communities.
-        </p>
+        <div className="p-6">
+          <div className="flex justify-center sm:justify-start">
+            <Image
+              src={SITE_CONFIG.author.avatar}
+              alt={SITE_CONFIG.author.name}
+              width={140}
+              height={140}
+              className="rounded-lg border border-dashed border-border"
+              priority
+            />
+          </div>
 
-        <p>
-          I&apos;m passionate about working with cutting-edge technologies and people. I studied at
-          Universit&agrave; di Roma Tor Vergata and have been building software across mobile, VR/AR,
-          real-time defence systems, and IoT. For fun, I enjoy low-level programming, IoT hacking,
-          and command-line apps.
-        </p>
+          <div className="mt-6 space-y-5 text-sm leading-relaxed text-muted">
+            <p>
+              Hi! I&apos;m <strong className="text-foreground">Giovanni Laquidara</strong>,
+              a Senior Developer Advocate at Amazon, based in London, England. I&apos;m focused on
+              devices, mobile apps, and developer communities.
+            </p>
 
-        <h2 className="!mt-12 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-          What I Do
-        </h2>
+            <p>
+              I&apos;m passionate about working with cutting-edge technologies and people. I studied at
+              Universit&agrave; di Roma Tor Vergata and have been building software across mobile, VR/AR,
+              real-time defence systems, and IoT. For fun, I enjoy low-level programming, IoT hacking,
+              and command-line apps.
+            </p>
 
-        <ul className="list-disc space-y-3 pl-5">
-          <li>
-            <strong className="text-zinc-900 dark:text-zinc-100">Developer Advocacy</strong> —
-            Creating content, giving talks, and building tools to help developers succeed. I focus
-            on mobile development, TV apps, and cross-platform solutions.
-          </li>
-          <li>
-            <strong className="text-zinc-900 dark:text-zinc-100">Software Engineering</strong> —
-            Building applications with modern technologies including React Native, Kotlin,
-            TypeScript, and more. I have experience across mobile, VR/AR, and real-time systems.
-          </li>
-          <li>
-            <strong className="text-zinc-900 dark:text-zinc-100">Technical Writing</strong> —
-            Writing articles and tutorials about software development, covering topics from
-            functional programming to hardware hacking.
-          </li>
-        </ul>
+            <h2 className="!mt-10 text-base font-semibold text-accent">
+              ## What I Do
+            </h2>
 
-        <h2 className="!mt-12 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-          Background
-        </h2>
+            <ul className="space-y-3 pl-4">
+              <li className="flex items-start gap-2">
+                <span className="mt-1 text-accent">-</span>
+                <span>
+                  <strong className="text-foreground">Developer Advocacy</strong> —
+                  Creating content, giving talks, and building tools to help developers succeed. I focus
+                  on mobile development, TV apps, and cross-platform solutions.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="mt-1 text-accent">-</span>
+                <span>
+                  <strong className="text-foreground">Software Engineering</strong> —
+                  Building applications with modern technologies including React Native, Kotlin,
+                  TypeScript, and more. I have experience across mobile, VR/AR, and real-time systems.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="mt-1 text-accent">-</span>
+                <span>
+                  <strong className="text-foreground">Technical Writing</strong> —
+                  Writing articles and tutorials about software development, covering topics from
+                  functional programming to hardware hacking.
+                </span>
+              </li>
+            </ul>
 
-        <p>
-          Over the years, I&apos;ve worn many hats: software engineer, VR and mobile developer,
-          real-time software architect, and developer advocate. This diverse background gives me
-          a unique perspective on building technology that truly serves developers and users.
-        </p>
+            <h2 className="!mt-10 text-base font-semibold text-accent">
+              ## Background
+            </h2>
 
-        <p>
-          I write about Kotlin, React Native, TV app development, hardware hacking (like
-          Flipper Zero), and whatever new technology catches my eye. You can find my writing
-          on this blog and across platforms like Medium and Hashnode.
-        </p>
+            <p>
+              Over the years, I&apos;ve worn many hats: software engineer, VR and mobile developer,
+              real-time software architect, and developer advocate. This diverse background gives me
+              a unique perspective on building technology that truly serves developers and users.
+            </p>
 
-        <h2 className="!mt-12 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-          Get in Touch
-        </h2>
+            <p>
+              I write about Kotlin, React Native, TV app development, hardware hacking (like
+              Flipper Zero), and whatever new technology catches my eye. You can find my writing
+              on this blog and across platforms like Medium and Hashnode.
+            </p>
 
-        <p>
-          I&apos;m always happy to connect with fellow developers and tech enthusiasts. You can
-          find me on:
-        </p>
+            <h2 className="!mt-10 text-base font-semibold text-accent">
+              ## Get in Touch
+            </h2>
 
-        <div className="flex flex-wrap gap-4">
-          <a
-            href={SITE_CONFIG.social.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition-all hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-zinc-900"
-          >
-            GitHub
-          </a>
-          <a
-            href={SITE_CONFIG.social.twitter}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition-all hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-zinc-900"
-          >
-            X (Twitter)
-          </a>
-          <a
-            href={SITE_CONFIG.social.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition-all hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-zinc-900"
-          >
-            LinkedIn
-          </a>
-          <a
-            href={SITE_CONFIG.social.medium}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition-all hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-zinc-900"
-          >
-            Medium
-          </a>
+            <p>
+              I&apos;m always happy to connect with fellow developers and tech enthusiasts.
+            </p>
+
+            <div className="flex flex-wrap gap-2">
+              {[
+                { href: SITE_CONFIG.social.github, label: "GitHub" },
+                { href: SITE_CONFIG.social.twitter, label: "X (Twitter)" },
+                { href: SITE_CONFIG.social.linkedin, label: "LinkedIn" },
+                { href: SITE_CONFIG.social.medium, label: "Medium" },
+              ].map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-md border border-dashed border-border px-3 py-1.5 text-xs text-muted transition-colors hover:border-accent hover:text-accent"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

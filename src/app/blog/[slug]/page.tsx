@@ -52,44 +52,31 @@ export default async function PostPage({ params }: PageProps) {
     <div className="mx-auto max-w-3xl px-6 py-16">
       <Link
         href="/blog"
-        className="inline-flex items-center gap-1 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300"
+        className="inline-flex items-center gap-1 text-xs text-muted transition-colors hover:text-accent"
       >
-        <svg
-          className="h-4 w-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
-        Back to blog
+        <span className="text-accent">&larr;</span> cd ../blog
       </Link>
 
       <article className="mt-8">
-        <header className="mb-10">
-          <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400">
+        <header className="terminal-box mb-10 p-5">
+          <div className="flex items-center gap-3 text-xs text-muted">
             <time dateTime={post.date}>
               {format(new Date(post.date), "MMMM d, yyyy")}
             </time>
-            <span className="text-zinc-300 dark:text-zinc-700">&middot;</span>
+            <span className="text-border">&middot;</span>
             <span>{post.readingTime}</span>
           </div>
 
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">
+          <h1 className="mt-3 text-xl font-bold text-foreground sm:text-2xl">
             {post.title}
           </h1>
 
           {post.tags.length > 0 && (
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div className="mt-3 flex flex-wrap gap-1.5">
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300"
+                  className="rounded-md bg-surface px-2 py-0.5 text-[10px] text-accent"
                 >
                   {tag}
                 </span>

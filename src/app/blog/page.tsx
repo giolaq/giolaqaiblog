@@ -13,24 +13,24 @@ export default function BlogPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-16">
-      <div className="mb-12">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">
-          Blog
+      <div className="mb-10">
+        <h1 className="text-2xl font-bold text-foreground">
+          <span className="text-accent">$</span> cat blog/*
         </h1>
-        <p className="mt-3 text-lg text-zinc-600 dark:text-zinc-400">
+        <p className="mt-2 text-sm text-muted">
           Thoughts on software development, mobile apps, TV development, and
           more.
         </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-2">
         {posts.map((post) => (
           <PostCard key={post.slug} post={post} />
         ))}
       </div>
 
       {posts.length === 0 && (
-        <p className="text-zinc-500 dark:text-zinc-400">
+        <p className="text-sm text-muted">
           No posts yet. Check back soon!
         </p>
       )}
