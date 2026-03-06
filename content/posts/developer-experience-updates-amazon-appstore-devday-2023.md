@@ -43,4 +43,8 @@ Enhanced analytics dashboards give developers better insight into how their apps
 
 If you're interested in publishing your apps on the Amazon Appstore, check out the [developer portal](https://developer.amazon.com/apps-and-games) for the latest documentation and tools.
 
+## Watch the Talk
+
+[Watch on YouTube](https://www.youtube.com/watch?v=0LRFwH_rTY0)
+
 Feel free to reach out on [Twitter](https://x.com/giolaq) if you have questions!

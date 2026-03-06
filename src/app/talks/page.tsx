@@ -12,7 +12,7 @@ const talks = [
     event: "Workshop",
     date: "2024-11",
     description:
-      "A hands-on workshop guiding developers through building TV apps with React Native for Apple TV, Android TV, and Fire TV. Available at rntv.giolaq.dev.",
+      "A hands-on workshop guiding developers through building TV apps with React Native for Apple TV, Android TV, and Fire TV.",
     link: "https://rntv.giolaq.dev",
     type: "Workshop",
   },
@@ -22,15 +22,16 @@ const talks = [
     date: "2024-07",
     description:
       "Discussion about TV app development with React Native, covering the unique challenges of 10-foot UI, seamless navigation, and remote control interaction.",
-    link: "https://giolaq.dev/developing-react-native-tv-apps-with-giovanni-laquidara-rocket-ship-046",
+    link: "https://www.youtube.com/watch?v=FAaLGRlhK7M",
     type: "Podcast",
   },
   {
-    title: "Building TV Apps with React Native",
+    title: "Extending React Native Apps to the Big Screen",
     event: "App.js 2024",
     date: "2024-05",
     description:
-      "Talk at App.js conference about building cross-platform TV applications with React Native.",
+      "Talk at App.js conference about extending React Native apps to TV platforms.",
+    link: "https://www.youtube.com/live/s0wn7qpBoB8?si=ThvFopW8pS5Ka6O-&t=12039",
     type: "Talk",
   },
   {
@@ -38,7 +39,8 @@ const talks = [
     event: "AppDevCon 2024",
     date: "2024-05",
     description:
-      "Expert tips for creating engaging TV applications on Android TV and Fire TV using native and cross-device development tools.",
+      "Guide to creating great 10-foot UIs with Kotlin, Jetpack Compose for TV, React Native, or Flutter.",
+    link: "https://appdevcon.nl/session/creating-engaging-android-tv-and-fire-tv-apps-with-native-and-cross-platform-tools/",
     type: "Talk",
   },
   {
@@ -46,7 +48,8 @@ const talks = [
     event: "React Native London",
     date: "2024-03",
     description:
-      "Building TV apps with React Native — a lesser-known but increasingly mature use case reaching a new stage of popularity.",
+      "Building TV apps with React Native — guidelines for designing layouts and components on the big screen.",
+    link: "https://www.youtube.com/watch?v=CBZTX39n2yc",
     type: "Talk",
   },
   {
@@ -54,15 +57,43 @@ const talks = [
     event: "devDay 2023",
     date: "2024-02",
     description:
-      "Overview of new tools and features to simplify testing, submitting apps, and engaging with millions of Amazon Appstore customers.",
+      "New tools and features to simplify testing, submitting apps, and engaging with millions of Appstore customers.",
+    link: "https://www.youtube.com/watch?v=0LRFwH_rTY0",
     type: "Talk",
   },
   {
-    title: "Game Development for Smart TVs",
+    title: "Smart TV Game Development: Challenges and Opportunities",
     event: "Conference Talk",
     date: "2023",
     description:
-      "A look at game development for Smart TVs — the challenges and opportunities of building engaging experiences for the big screen.",
+      "Game development for Smart TVs — technical limits, tools, and working with Amazon Fire TV.",
+    link: "https://www.youtube.com/watch?v=RtZIiNA2SRg",
+    type: "Talk",
+  },
+  {
+    title: "Creating Engaging Android TV and Fire TV Apps",
+    event: "Conference Talk",
+    date: "2023",
+    description:
+      "Introduction to guidelines and tools for Fire TV and Android TV development.",
+    link: "https://www.youtube.com/watch?v=Zhlr1bsRewg",
+    type: "Talk",
+  },
+  {
+    title: "High Performance Code Sharing Between Android, iOS and Web",
+    event: "Conference Talk",
+    date: "2022",
+    description:
+      "Advantages of C++, Rust, and Kotlin for building high-performance shared libraries across platforms.",
+    link: "https://www.youtube.com/watch?v=Jh9KaWir3gM",
+    type: "Talk",
+  },
+  {
+    title: "What's New with Amazon Appstore for Developers",
+    event: "Droidcon London 2022",
+    date: "2022-11",
+    description:
+      "Lightning talk on the latest Amazon Appstore updates for developers.",
     type: "Talk",
   },
   {
@@ -70,7 +101,7 @@ const talks = [
     event: "Droidcon Berlin 2022",
     date: "2022-07",
     description:
-      "How Amazon Appstore reaches millions of customers worldwide on Fire TV, Fire tablets, mobile platforms, and Windows 11 devices.",
+      "How Amazon Appstore reaches millions of customers on Fire TV, Fire tablets, mobile, and Windows 11.",
     type: "Talk",
   },
 ];

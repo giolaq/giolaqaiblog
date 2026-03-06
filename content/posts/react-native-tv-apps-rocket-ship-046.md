@@ -8,6 +8,10 @@ coverImage: ""
 
 I had a great time chatting with **Simon Grimm** on the **Rocket Ship Podcast** (Episode 046) about one of my favorite topics: building TV apps with React Native.
 
+## Watch the Episode
+
+[Watch on YouTube](https://www.youtube.com/watch?v=FAaLGRlhK7M)
+
 ## About the Episode
 
 In this episode, we explored the world of TV app development with React Native, diving into the unique challenges and opportunities that come with building for the big screen.

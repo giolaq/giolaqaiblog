@@ -58,4 +58,9 @@ The React Native TV ecosystem includes libraries and tools specifically designed
 
 The convergence of mobile and TV development through React Native is an exciting trend. As the ecosystem matures, we'll see even more developers bringing their mobile expertise to the big screen.
 
+## Watch the Talk
+
+- [Part 1 on YouTube](https://www.youtube.com/watch?v=CBZTX39n2yc)
+- [Part 2 on YouTube](https://www.youtube.com/watch?v=Sx9Cd1hmJns)
+
 If you're interested in getting started, check out my [React Native for TV Workshop](https://rntv.giolaq.dev)!

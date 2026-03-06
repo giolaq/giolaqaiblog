@@ -59,4 +59,8 @@ Regardless of your development approach, these principles apply:
 
 The TV app market continues to grow, and developers have more tools than ever to create engaging experiences. Whether you choose native development or cross-device tools, the key is understanding the unique requirements of the TV platform.
 
+## Watch the Talk
+
+[Watch on YouTube](https://appdevcon.nl/session/creating-engaging-android-tv-and-fire-tv-apps-with-native-and-cross-platform-tools/)
+
 Feel free to reach out on [Twitter](https://x.com/giolaq) if you have questions about TV app development!
