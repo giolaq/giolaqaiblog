@@ -1,6 +1,7 @@
 import Link from "next/link";
 import HeroSection from "@/components/HeroSection";
 import PostCard from "@/components/PostCard";
+import FadeIn from "@/components/FadeIn";
 import { getAllPosts } from "@/lib/posts";
 
 export default function Home() {
@@ -12,21 +13,25 @@ export default function Home() {
       <HeroSection />
 
       <section className="pb-20">
-        <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold text-accent">
-            Latest Posts
-          </h2>
-          <Link
-            href="/blog"
-            className="text-xs text-muted transition-colors hover:text-accent"
-          >
-            View all &rarr;
-          </Link>
-        </div>
+        <FadeIn>
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-bold text-accent">
+              Latest Posts
+            </h2>
+            <Link
+              href="/blog"
+              className="text-xs text-muted transition-colors hover:text-accent"
+            >
+              View all &rarr;
+            </Link>
+          </div>
+        </FadeIn>
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {recentPosts.map((post) => (
-            <PostCard key={post.slug} post={post} />
+          {recentPosts.map((post, i) => (
+            <FadeIn key={post.slug} delay={i * 100}>
+              <PostCard post={post} />
+            </FadeIn>
           ))}
         </div>
 
