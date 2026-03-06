@@ -42,4 +42,8 @@ To ensure your app works well on WSA:
 
 The best way to test resizing behavior is directly on a Windows 11 machine with WSA installed. You can also use Android emulators in freeform mode to simulate similar behavior.
 
+## Source Code
+
+[giolaq/android-wsa-demo](https://github.com/giolaq/android-wsa-demo) — Sample Android app showcasing best practices when optimizing for Windows Subsystem for Android.
+
 *Originally published on [dev.to/amazonappdev](https://dev.to/amazonappdev/resizing-apps-in-windows-subsystem-for-android-wsa-jj3)*

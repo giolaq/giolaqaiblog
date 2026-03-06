@@ -16,33 +16,21 @@ Push notifications are essential for keeping users engaged with your app. They e
 - **Real-time communication** — Notify users of important events
 - **Personalized experiences** — Deliver targeted content to specific user segments
 
-## Integration Options
+## The Challenge
 
-For Amazon Appstore apps, you have several options for push notifications:
+Fire OS lacks Google Play Services, so **Firebase Cloud Messaging (FCM)** needs a replacement or augmentation. Fire OS uses **Amazon Device Messaging (ADM)** instead.
 
-### Amazon Device Messaging (ADM)
+## The Solution: A3L
 
-Amazon Device Messaging is the native push notification service for Fire devices:
+The **Amazon Appstore Abstraction Library (A3L)** provides a single SDK to support both FCM and ADM, reducing porting time significantly. A3L methods are comparable to FCM methods, so minimal code changes are needed.
 
-- Works on **Fire TV**, **Fire Tablets**, and other Amazon devices
-- Integrated directly with the Amazon ecosystem
-- Free to use for Amazon Appstore developers
+## Integration Steps
 
-### Firebase Cloud Messaging (FCM) with Fallback
-
-If your app already uses FCM, you can implement a fallback strategy:
-
-1. Check if ADM is available on the device
-2. Use ADM on Amazon devices
-3. Fall back to FCM on other Android devices
-
-## Implementation Steps
-
-1. **Register your app** with ADM in the Amazon Developer Console
-2. **Add the ADM SDK** to your project
-3. **Implement the message handler** to receive and process notifications
+1. **Add `A3LMessaging` as a dependency** to your project
+2. **Configure ADM credentials** (similar to FCM's `google-services.json`)
+3. **Implement the message handler** using A3L's API
 4. **Handle registration** and token management
-5. **Send test notifications** using the console or API
+5. **Test** on both Fire devices (ADM) and regular Android (FCM)
 
 ## Best Practices
 
@@ -50,5 +38,11 @@ If your app already uses FCM, you can implement a fallback strategy:
 - Provide value in every notification
 - Respect user preferences and quiet hours
 - Test on actual Amazon devices
+
+## Source Code
+
+[giolaq/android-amazon-notifications-porting](https://github.com/giolaq/android-amazon-notifications-porting) — Example of porting push notifications to the Amazon Appstore via A3L.
+
+For more details, see the [A3L Messaging documentation](https://developer.amazon.com/docs/a3l-messaging/).
 
 *Originally published on [dev.to/amazonappdev](https://dev.to/amazonappdev/how-to-integrate-push-notifications-for-amazon-appstore-39j5)*

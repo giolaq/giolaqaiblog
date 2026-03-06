@@ -39,4 +39,10 @@ The splash screen component renders the Lottie animation centered on the TV scre
 - Keep the animation under 3 seconds
 - Test on actual Fire TV hardware for accurate timing
 
+**Important:** Fire OS is based on AOSP version 11, so Android 12's new SplashScreen APIs should NOT be used for Fire TV apps.
+
+## Source Code
+
+[giolaq/splash-screen-tv-app-react-native](https://github.com/giolaq/splash-screen-tv-app-react-native) — A sample TV app in React Native showcasing how to use Lottie animations in splash screens.
+
 *Originally published on [dev.to/amazonappdev](https://dev.to/amazonappdev/how-to-animate-fire-tv-splash-screens-with-react-native-lottie-32ca)*

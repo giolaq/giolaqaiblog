@@ -17,15 +17,17 @@ Lottie renders After Effects animations in real-time, allowing designers and dev
 - **Easy to implement** with the Lottie Android library
 - **Designer-friendly workflow** — export directly from After Effects
 
+Since Fire OS is based on AOSP, Lottie (originally created by Airbnb) works natively. We'll use the "Cat TV Loading Animation" by Eva Schicker from [LottieFiles](https://lottiefiles.com/) as our splash animation.
+
 ## Building the Animated Splash Screen
 
 The implementation involves:
 
-1. **Creating or sourcing a Lottie animation** (JSON format)
-2. **Adding the Lottie dependency** to your Android project
-3. **Configuring the splash screen activity** with the animation view
-4. **Handling the animation lifecycle** — transitioning to the main activity once the animation completes
-5. **Optimizing for Fire TV** — ensuring smooth playback on TV hardware
+1. **Add the Lottie dependency**: `implementation "com.airbnb.android:lottie:6.1.0"` to your `build.gradle`
+2. **Add a `LottieAnimationView`** in `splashscreen_activity.xml`
+3. **Source a Lottie animation** (JSON format) and place it in your assets
+4. **Modify `SplashScreenActivity`** to use the Lottie animation completion callback to launch `MainActivity`
+5. **Optimize for Fire TV** — ensuring smooth playback on TV hardware
 
 ## Key Tips
 

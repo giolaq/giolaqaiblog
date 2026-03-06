@@ -21,23 +21,30 @@ We're witnessing an unprecedented shift in how software is built, deployed, and 
 - **Understanding the fundamentals** matters more than ever
 - **The human element** — communication, empathy, advocacy — becomes more valuable
 
+## Key Takeaways
+
+### Stay Current with Tooling
+
+Being one generation behind means working twice as hard for half the output. Set aside weekly time to experiment with new AI tools and models. The bottleneck is no longer typing code — it's knowing **what to build** and **how to architect it**.
+
+### Business Context Matters
+
+Understanding the "why" makes you more valuable. Engineers who shape product move fastest — those who talk to users and develop empathy are the fastest movers (Andrew Ng).
+
+### The Bifurcation of AI
+
+Lawrence Moroney predicts a split: **Big AI** driving toward AGI with ever-larger models, versus **self-hostable models** exploding onto the landscape. Understanding both tracks is crucial.
+
+### Watch Out for Technical Debt
+
+"Vibe coding" can accumulate technical debt fast. Treat technical debt like financial debt — it compounds if you don't pay it down regularly.
+
 ## Practical Advice
 
-### Keep Learning
-
-The pace of change in AI is staggering. Dedicate regular time to:
-
-- Experimenting with new models and tools
-- Understanding the underlying principles
-- Building practical projects that solve real problems
-
-### Build on Your Strengths
-
-If you're already skilled in mobile development, TV apps, or cross-platform tools, you have a unique perspective to bring to AI applications. The intersection of AI with specific domains is where the most interesting opportunities lie.
-
-### Stay Connected
-
-The developer community is your greatest resource. Attend conferences, contribute to open source, and share what you learn. The connections you make and the knowledge you share will define your career trajectory.
+- **Avoid hype, focus on fundamentals** — Build real solutions, understand the business side
+- **Diversify your skills** — Cross-platform, mobile, and TV expertise gives you unique AI angles
+- **Stay connected** — Attend conferences, contribute to open source, share what you learn
+- **Build on your strengths** — The intersection of AI with specific domains is where opportunities lie
 
 ## Looking Forward
 
