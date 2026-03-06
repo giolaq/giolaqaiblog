@@ -99,8 +99,8 @@ const talks = [
   },
   {
     title: "High Performance Code Sharing Between Android, iOS and Web",
-    event: "Conference Talk",
-    date: "2022",
+    event: "Android Worldwide 2023",
+    date: "2023-01",
     description:
       "Advantages of C++, Rust, and Kotlin for building high-performance shared libraries across platforms.",
     link: "https://www.youtube.com/watch?v=Jh9KaWir3gM",
@@ -115,11 +115,55 @@ const talks = [
     type: "Talk",
   },
   {
+    title: "Expand Your Android App Beyond the Phone with Amazon Appstore",
+    event: "Droidcon Berlin 2022",
+    date: "2022-09",
+    description:
+      "How to use Windows Subsystem for Android and Amazon Appstore to optimise Android apps for large screens — bringing apps to desktop with responsive UIs.",
+    link: "https://www.droidcon.com/2022/09/29/expand-your-android-app-beyond-the-phone-with-amazon-appstore/",
+    type: "Talk",
+  },
+  {
     title: "Amazon Appstore: Reaching Millions of Customers",
     event: "Droidcon Berlin 2022",
     date: "2022-07",
     description:
       "How Amazon Appstore reaches millions of customers on Fire TV, Fire tablets, mobile, and Windows 11.",
+    type: "Talk",
+  },
+  {
+    title: "Develop a Video Editing App in 5 Simple Steps",
+    event: "Conf42 Mobile 2022",
+    date: "2022",
+    description:
+      "Building an Android video editing app using Huawei HMS Core Video Editor Kit — custom UI, stickers, AI filters, and more in just five steps.",
+    link: "https://www.conf42.com/Mobile_2022_Giovanni_Laquidara_develop_video_editing_app_in_5_steps",
+    type: "Talk",
+  },
+  {
+    title: "The Job of Partner Engineering",
+    event: "DevRelCon 2021",
+    date: "2021",
+    description:
+      "Exploring the role of partner engineering — mixing psychology, tech stacks, and soft skills to help partners succeed with your platform.",
+    link: "https://developerrelations.com/event/devrelcon-2021",
+    type: "Talk",
+  },
+  {
+    title: "Adapt Your Android App for the HMS New World",
+    event: "DevFest Italia 2020",
+    date: "2020",
+    description:
+      "How to port Android apps into the Huawei Mobile Services ecosystem (AppGallery/HMS) and adapt to the new HMS world.",
+    type: "Talk",
+  },
+  {
+    title: "AR + AI: Size My Luggage — A Practical Use Case",
+    event: "Droidcon Berlin 2019",
+    date: "2019-07",
+    description:
+      "Combining ARCore with ML Kit to build an AR feature that measures luggage size in the Tui Android app. Also presented at Droidcon Vienna, Droidcon UK, and GDG DevFest London 2019.",
+    link: "https://www.droidcon.com/2019/07/03/a-real-use-case-of-practical-ar-ai-couple-size-my-luggage/?video=353345607",
     type: "Talk",
   },
   {
@@ -147,6 +191,15 @@ const talks = [
     description:
       "Exploring Dart language features — classes, constructors, asynchronous programming, and the Polymer library for building modern web apps.",
     link: "https://www.slideshare.net/slideshow/join-thedartsideofwebdevelopment2/46530600",
+    type: "Talk",
+  },
+  {
+    title: "Drive Together Not the Same",
+    event: "Droidcon Italy 2016",
+    date: "2016-04",
+    description:
+      "Talk on building natural user interfaces and connected Android experiences using the sensors stack.",
+    link: "https://it.droidcon.com/2016/speakers/giovanni-laquidara/index.html",
     type: "Talk",
   },
   {
