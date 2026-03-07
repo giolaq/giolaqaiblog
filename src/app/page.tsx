@@ -3,13 +3,38 @@ import HeroSection from "@/components/HeroSection";
 import PostCard from "@/components/PostCard";
 import FadeIn from "@/components/FadeIn";
 import { getAllPosts } from "@/lib/posts";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export default function Home() {
   const posts = getAllPosts();
   const recentPosts = posts.slice(0, 4);
 
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: SITE_CONFIG.author.name,
+    url: SITE_CONFIG.url,
+    jobTitle: "Senior Developer Advocate",
+    worksFor: {
+      "@type": "Organization",
+      name: "Amazon",
+    },
+    image: `${SITE_CONFIG.url}${SITE_CONFIG.author.avatar}`,
+    sameAs: [
+      SITE_CONFIG.social.github,
+      SITE_CONFIG.social.twitter,
+      SITE_CONFIG.social.linkedin,
+      SITE_CONFIG.social.medium,
+      SITE_CONFIG.social.hashnode,
+    ],
+  };
+
   return (
     <div className="mx-auto max-w-5xl px-6 overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
       <HeroSection />
 
       <section className="pb-20">

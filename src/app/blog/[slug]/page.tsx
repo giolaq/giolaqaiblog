@@ -48,8 +48,27 @@ export default async function PostPage({ params }: PageProps) {
     notFound();
   }
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: SITE_CONFIG.author.name,
+      url: SITE_CONFIG.url,
+    },
+    keywords: post.tags,
+    url: `${SITE_CONFIG.url}/blog/${slug}`,
+  };
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <Link
         href="/blog"
         className="inline-flex items-center gap-1 text-xs text-muted transition-colors hover:text-accent"

@@ -39,6 +39,23 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className="antialiased bg-background text-foreground">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: SITE_CONFIG.name,
+              url: SITE_CONFIG.url,
+              description: SITE_CONFIG.description,
+              author: {
+                "@type": "Person",
+                name: SITE_CONFIG.author.name,
+                url: SITE_CONFIG.url,
+              },
+            }),
+          }}
+        />
         <div className="flex min-h-screen flex-col">
           <Header />
           <main className="flex-1">{children}</main>

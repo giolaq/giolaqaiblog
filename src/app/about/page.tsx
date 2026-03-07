@@ -8,8 +8,32 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: SITE_CONFIG.author.name,
+    url: SITE_CONFIG.url,
+    jobTitle: "Senior Developer Advocate",
+    worksFor: {
+      "@type": "Organization",
+      name: "Amazon",
+    },
+    image: `${SITE_CONFIG.url}${SITE_CONFIG.author.avatar}`,
+    sameAs: [
+      SITE_CONFIG.social.github,
+      SITE_CONFIG.social.twitter,
+      SITE_CONFIG.social.linkedin,
+      SITE_CONFIG.social.medium,
+      SITE_CONFIG.social.hashnode,
+    ],
+  };
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
       <h1 className="text-2xl font-bold text-foreground">
         <span className="text-accent">$</span> cat about.md
       </h1>
