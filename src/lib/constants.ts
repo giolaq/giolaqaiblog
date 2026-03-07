@@ -8,7 +8,7 @@ export const SITE_CONFIG = {
     name: "Giovanni Laquidara",
     role: "Developer Advocate & Builder",
     bio: "Senior Developer Advocate at Amazon and builder at heart. I believe the title \"software engineer\" is giving way to \"builder\" — generalists who cross disciplines, connect dots across domains, and ship with agentic AI as a force multiplier. Based in London, I work across mobile, TV, agentic AI, and whatever new tech catches my eye.",
-    avatar: "/avatar.jpg",
+    avatar: "/avatar.png",
   },
   social: {
     github: "https://github.com/giolaq",
