@@ -16,7 +16,7 @@ export default function BlogPage() {
     <div className="mx-auto max-w-5xl px-6 py-16">
       <div className="mb-10 boot-flicker">
         <h1 className="text-2xl font-bold text-foreground">
-          <span className="text-accent">$</span> cat blog/*
+          <span className="text-accent" aria-hidden="true">$</span> <span aria-label="Blog">cat blog/*</span>
         </h1>
         <p className="mt-2 text-sm text-muted">
           Thoughts on software development, mobile apps, TV development, and

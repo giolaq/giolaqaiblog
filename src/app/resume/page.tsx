@@ -172,7 +172,7 @@ export default function ResumePage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
       <h1 className="text-2xl font-bold text-foreground">
-        <span className="text-accent">$</span> cat resume.json
+        <span className="text-accent" aria-hidden="true">$</span> <span aria-label="Resume">cat resume.json</span>
       </h1>
       <p className="mt-2 text-sm text-muted">
         Senior Developer Advocate based in London — building bridges between
@@ -180,9 +180,9 @@ export default function ResumePage() {
       </p>
 
       {/* Skills */}
-      <section className="mt-12">
-        <h2 className="text-base font-semibold text-accent">
-          ## Skills
+      <section className="mt-12" aria-labelledby="skills-heading">
+        <h2 id="skills-heading" className="text-base font-semibold text-accent">
+          <span aria-hidden="true">## </span>Skills
         </h2>
         <div className="mt-4 space-y-4">
           {Object.entries(skills).map(([category, items]) => (
@@ -190,33 +190,33 @@ export default function ResumePage() {
               <h3 className="text-xs font-medium text-muted">
                 {category}
               </h3>
-              <div className="mt-2 flex flex-wrap gap-1.5">
+              <ul className="mt-2 flex flex-wrap gap-1.5" role="list" aria-label={`${category} skills`}>
                 {items.map((skill) => (
-                  <span
+                  <li
                     key={skill}
                     className="rounded-md bg-surface px-2.5 py-1 text-[11px] text-foreground"
                   >
                     {skill}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
         </div>
       </section>
 
       {/* Highlights */}
-      <section className="mt-12">
-        <h2 className="text-base font-semibold text-accent">
-          ## Highlights
+      <section className="mt-12" aria-labelledby="highlights-heading">
+        <h2 id="highlights-heading" className="text-base font-semibold text-accent">
+          <span aria-hidden="true">## </span>Highlights
         </h2>
-        <ul className="mt-4 space-y-2">
+        <ul className="mt-4 space-y-2" role="list">
           {highlights.map((item, i) => (
             <li
               key={i}
               className="flex items-start gap-2 text-xs text-muted"
             >
-              <span className="mt-0.5 text-accent">-</span>
+              <span className="mt-0.5 text-accent" aria-hidden="true">-</span>
               {item.link ? (
                 <a
                   href={item.link}
@@ -225,6 +225,7 @@ export default function ResumePage() {
                   className="transition-colors hover:text-accent"
                 >
                   {item.text}
+                  <span className="sr-only"> (opens in new tab)</span>
                 </a>
               ) : (
                 <span>{item.text}</span>
@@ -235,13 +236,13 @@ export default function ResumePage() {
       </section>
 
       {/* Experience */}
-      <section className="mt-12">
-        <h2 className="text-base font-semibold text-accent">
-          ## Experience
+      <section className="mt-12" aria-labelledby="experience-heading">
+        <h2 id="experience-heading" className="text-base font-semibold text-accent">
+          <span aria-hidden="true">## </span>Experience
         </h2>
         <div className="mt-4 space-y-6">
           {experience.map((job, i) => (
-            <div key={i} className="terminal-box p-5">
+            <article key={i} className="terminal-box p-5">
               <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                 <h3 className="text-sm font-semibold text-foreground">
                   {job.role}
@@ -254,37 +255,37 @@ export default function ResumePage() {
                 <span className="text-accent">{job.company}</span>
                 <span className="text-muted"> · {job.location}</span>
               </p>
-              <ul className="mt-3 space-y-1.5">
+              <ul className="mt-3 space-y-1.5" role="list">
                 {job.highlights.map((h, j) => (
                   <li
                     key={j}
                     className="flex items-start gap-2 text-xs leading-relaxed text-muted"
                   >
-                    <span className="mt-0.5 text-border">-</span>
+                    <span className="mt-0.5 text-border" aria-hidden="true">-</span>
                     {h}
                   </li>
                 ))}
               </ul>
-            </div>
+            </article>
           ))}
         </div>
       </section>
 
       {/* Education */}
-      <section className="mt-12">
-        <h2 className="text-base font-semibold text-accent">
-          ## Education
+      <section className="mt-12" aria-labelledby="education-heading">
+        <h2 id="education-heading" className="text-base font-semibold text-accent">
+          <span aria-hidden="true">## </span>Education
         </h2>
         <div className="mt-4 space-y-3">
           {education.map((edu, i) => (
-            <div key={i} className="terminal-box p-4">
+            <article key={i} className="terminal-box p-4">
               <h3 className="text-sm font-semibold text-foreground">
                 {edu.title}
               </h3>
               <p className="mt-0.5 text-xs text-muted">
                 <span className="text-accent">{edu.institution}</span> · {edu.year}
               </p>
-            </div>
+            </article>
           ))}
         </div>
       </section>

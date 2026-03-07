@@ -10,10 +10,10 @@ export default function HeroSection() {
   const [cmdDone, setCmdDone] = useState(false);
 
   return (
-    <section className="pb-16 pt-20">
+    <section className="pb-16 pt-20" aria-label="About Giovanni Laquidara">
       <div className="terminal-box scanlines relative overflow-hidden">
-        {/* Terminal title bar */}
-        <div className="flex items-center gap-2 border-b border-dashed border-border px-4 py-3">
+        {/* Terminal title bar (decorative) */}
+        <div className="flex items-center gap-2 border-b border-dashed border-border px-4 py-3" aria-hidden="true">
           <span className="text-xs text-muted">~/giolaq</span>
           <span className="text-xs text-accent">$</span>
           <span className="text-xs text-foreground">
@@ -33,7 +33,7 @@ export default function HeroSection() {
           <div className="shrink-0 flex flex-col items-center gap-3 sm:items-start">
             <Image
               src={SITE_CONFIG.author.avatar}
-              alt={SITE_CONFIG.author.name}
+              alt={`Photo of ${SITE_CONFIG.author.name}`}
               width={120}
               height={120}
               className="rounded-full object-cover border border-dashed border-border boot-flicker"
@@ -45,7 +45,7 @@ export default function HeroSection() {
           {/* Content */}
           <div className="flex flex-col gap-5 min-w-0">
             <div className="flex items-center gap-2 animate-fade-in-up stagger-1">
-              <span className="h-2 w-2 rounded-full bg-term-green pulse-glow" />
+              <span className="h-2 w-2 rounded-full bg-term-green pulse-glow" aria-hidden="true" />
               <span className="text-xs text-term-green">
                 Available for speaking &amp; collaborations
               </span>
@@ -65,24 +65,28 @@ export default function HeroSection() {
               {SITE_CONFIG.author.bio}
             </p>
 
-            <div className="flex flex-wrap gap-2 animate-fade-in-up stagger-4">
-              {[
-                { href: SITE_CONFIG.social.github, label: "GitHub" },
-                { href: SITE_CONFIG.social.twitter, label: "Twitter" },
-                { href: SITE_CONFIG.social.linkedin, label: "LinkedIn" },
-                { href: SITE_CONFIG.social.medium, label: "Medium" },
-              ].map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-md border border-dashed border-border px-3 py-1.5 text-xs text-muted transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_10px_-3px_var(--accent)]"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
+            <nav aria-label="Social media links" className="animate-fade-in-up stagger-4">
+              <ul className="flex flex-wrap gap-2" role="list">
+                {[
+                  { href: SITE_CONFIG.social.github, label: "GitHub" },
+                  { href: SITE_CONFIG.social.twitter, label: "Twitter" },
+                  { href: SITE_CONFIG.social.linkedin, label: "LinkedIn" },
+                  { href: SITE_CONFIG.social.medium, label: "Medium" },
+                ].map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block rounded-md border border-dashed border-border px-3 py-1.5 text-xs text-muted transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_10px_-3px_var(--accent)]"
+                    >
+                      {link.label}
+                      <span className="sr-only"> (opens in new tab)</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
         </div>
       </div>

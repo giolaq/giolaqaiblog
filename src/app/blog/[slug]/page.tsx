@@ -50,12 +50,15 @@ export default async function PostPage({ params }: PageProps) {
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
-      <Link
-        href="/blog"
-        className="inline-flex items-center gap-1 text-xs text-muted transition-colors hover:text-accent"
-      >
-        <span className="text-accent">&larr;</span> cd ../blog
-      </Link>
+      <nav aria-label="Breadcrumb">
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-1 text-xs text-muted transition-colors hover:text-accent"
+          aria-label="Back to blog"
+        >
+          <span className="text-accent" aria-hidden="true">&larr;</span> cd ../blog
+        </Link>
+      </nav>
 
       <article className="mt-8">
         <header className="terminal-box mb-10 p-5">
@@ -63,7 +66,7 @@ export default async function PostPage({ params }: PageProps) {
             <time dateTime={post.date}>
               {format(new Date(post.date), "MMMM d, yyyy")}
             </time>
-            <span className="text-border">&middot;</span>
+            <span className="text-border" aria-hidden="true">&middot;</span>
             <span>{post.readingTime}</span>
           </div>
 
@@ -72,16 +75,16 @@ export default async function PostPage({ params }: PageProps) {
           </h1>
 
           {post.tags.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-1.5">
+            <ul className="mt-3 flex flex-wrap gap-1.5" role="list" aria-label="Post tags">
               {post.tags.map((tag) => (
-                <span
+                <li
                   key={tag}
                   className="rounded-md bg-surface px-2 py-0.5 text-[10px] text-accent"
                 >
                   {tag}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
         </header>
 

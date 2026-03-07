@@ -12,15 +12,16 @@ export default function Home() {
     <div className="mx-auto max-w-5xl px-6 overflow-hidden">
       <HeroSection />
 
-      <section className="pb-20">
+      <section className="pb-20" aria-labelledby="latest-posts-heading">
         <FadeIn>
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-bold text-accent">
+            <h2 id="latest-posts-heading" className="text-lg font-bold text-accent">
               Latest Posts
             </h2>
             <Link
               href="/blog"
               className="text-xs text-muted transition-colors hover:text-accent"
+              aria-label="View all blog posts"
             >
               View all &rarr;
             </Link>
@@ -42,10 +43,10 @@ export default function Home() {
         )}
       </section>
 
-      <section className="pb-20">
+      <section className="pb-20" aria-labelledby="featured-projects-heading">
         <FadeIn>
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-bold text-accent">
+            <h2 id="featured-projects-heading" className="text-lg font-bold text-accent">
               Featured Projects
             </h2>
             <a
@@ -53,6 +54,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs text-muted transition-colors hover:text-accent"
+              aria-label="View all repositories on GitHub (opens in new tab)"
             >
               All repos &rarr;
             </a>
@@ -62,7 +64,7 @@ export default function Home() {
           </p>
         </FadeIn>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-2 min-w-0">
+        <ul className="mt-6 grid gap-4 md:grid-cols-2 min-w-0" role="list">
           {[
             {
               name: "ad-genius-system",
@@ -102,32 +104,35 @@ export default function Home() {
             },
           ].map((project, i) => (
             <FadeIn key={project.name} delay={i * 80} className="min-w-0">
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block terminal-box p-5 overflow-hidden min-w-0 transition-all duration-300 hover:border-accent hover:shadow-[0_0_20px_-5px_var(--accent)]"
-              >
-                <div className="flex items-center gap-2 text-xs text-muted">
-                  <span className="text-accent">$</span>
-                  <span className="text-term-green">git clone</span>
-                  <span className="truncate">{project.name}</span>
-                </div>
-                <h3 className="mt-2 text-sm font-semibold text-foreground transition-colors duration-300 group-hover:text-accent">
-                  {project.name}
-                </h3>
-                <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-muted">
-                  {project.description}
-                </p>
-                <div className="mt-3">
-                  <span className="rounded-md bg-surface px-2 py-0.5 text-[10px] text-muted transition-colors duration-300 group-hover:text-accent">
-                    {project.language}
-                  </span>
-                </div>
-              </a>
+              <li>
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block terminal-box p-5 overflow-hidden min-w-0 transition-all duration-300 hover:border-accent hover:shadow-[0_0_20px_-5px_var(--accent)]"
+                  aria-label={`${project.name} - ${project.description} (opens in new tab)`}
+                >
+                  <div className="flex items-center gap-2 text-xs text-muted" aria-hidden="true">
+                    <span className="text-accent">$</span>
+                    <span className="text-term-green">git clone</span>
+                    <span className="truncate">{project.name}</span>
+                  </div>
+                  <h3 className="mt-2 text-sm font-semibold text-foreground transition-colors duration-300 group-hover:text-accent">
+                    {project.name}
+                  </h3>
+                  <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-muted">
+                    {project.description}
+                  </p>
+                  <div className="mt-3">
+                    <span className="rounded-md bg-surface px-2 py-0.5 text-[10px] text-muted transition-colors duration-300 group-hover:text-accent">
+                      {project.language}
+                    </span>
+                  </div>
+                </a>
+              </li>
             </FadeIn>
           ))}
-        </div>
+        </ul>
       </section>
     </div>
   );
