@@ -44,10 +44,10 @@ export default function HeroSection() {
 
           {/* Content */}
           <div className="flex flex-col gap-5 min-w-0">
-            <div className="flex items-center gap-2 animate-fade-in-up stagger-1">
-              <span className="h-2 w-2 rounded-full bg-term-green pulse-glow" />
-              <span className="text-xs text-term-green">
-                Available for speaking &amp; collaborations
+            <div className="flex items-center gap-2 animate-fade-in-up stagger-1 slow-blink">
+              <span className="h-2 w-2 rounded-full bg-yellow-400" />
+              <span className="text-xs text-yellow-400">
+                Shipping code for Amazon by day, available for speaking &amp; collabs by night
               </span>
             </div>
 
