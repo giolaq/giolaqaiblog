@@ -4,7 +4,7 @@ import type { PostMeta } from "@/lib/posts";
 
 export default function PostCard({ post }: { post: PostMeta }) {
   return (
-    <article className="group relative terminal-box p-5 transition-all duration-300 hover:border-accent hover:shadow-[0_0_20px_-5px_var(--accent)]">
+    <article className="group relative terminal-box p-5 overflow-hidden min-w-0 transition-all duration-300 hover:border-accent hover:shadow-[0_0_20px_-5px_var(--accent)]">
       <Link href={`/blog/${post.slug}`} className="absolute inset-0 z-10">
         <span className="sr-only">Read {post.title}</span>
       </Link>
