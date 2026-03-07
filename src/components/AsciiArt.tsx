@@ -170,20 +170,12 @@ export default function AsciiArt() {
   }, []);
 
   useEffect(() => {
-    // Skip animation loop if user prefers reduced motion
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mq.matches) return;
-
     const cleanup = runLoop();
     return cleanup;
   }, [runLoop]);
 
   return (
-    <pre
-      className="text-[9px] leading-[1.1] text-accent sm:text-[11px] select-none"
-      aria-hidden="true"
-      role="img"
-    >
+    <pre className="text-[9px] leading-[1.1] text-accent sm:text-[11px] select-none">
       {currentFrame}
     </pre>
   );

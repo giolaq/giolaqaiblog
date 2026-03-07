@@ -6,10 +6,6 @@ export default function MatrixRain() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // Skip animation entirely if user prefers reduced motion
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mq.matches) return;
-
     const canvas = canvasRef.current;
     if (!canvas) return;
 

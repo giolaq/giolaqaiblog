@@ -11,11 +11,11 @@ export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
       <h1 className="text-2xl font-bold text-foreground">
-        <span className="text-accent" aria-hidden="true">$</span> <span aria-label="About">cat about.md</span>
+        <span className="text-accent">$</span> cat about.md
       </h1>
 
       <div className="mt-8 terminal-box overflow-hidden">
-        <div className="flex items-center gap-2 border-b border-dashed border-border px-4 py-3" aria-hidden="true">
+        <div className="flex items-center gap-2 border-b border-dashed border-border px-4 py-3">
           <span className="text-xs text-muted">about.md</span>
         </div>
 
@@ -23,7 +23,7 @@ export default function AboutPage() {
           <div className="flex justify-center sm:justify-start">
             <Image
               src={SITE_CONFIG.author.avatar}
-              alt={`Photo of ${SITE_CONFIG.author.name}`}
+              alt={SITE_CONFIG.author.name}
               width={140}
               height={140}
               className="rounded-lg border border-dashed border-border"
@@ -54,12 +54,12 @@ export default function AboutPage() {
             </p>
 
             <h2 className="!mt-10 text-base font-semibold text-accent">
-              <span aria-hidden="true">## </span>What I Do
+              ## What I Do
             </h2>
 
-            <ul className="space-y-3 pl-4" role="list">
+            <ul className="space-y-3 pl-4">
               <li className="flex items-start gap-2">
-                <span className="mt-1 text-accent" aria-hidden="true">-</span>
+                <span className="mt-1 text-accent">-</span>
                 <span>
                   <strong className="text-foreground">Developer Advocacy</strong> —
                   Creating content, giving talks, and building tools to help developers succeed. I focus
@@ -67,7 +67,7 @@ export default function AboutPage() {
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="mt-1 text-accent" aria-hidden="true">-</span>
+                <span className="mt-1 text-accent">-</span>
                 <span>
                   <strong className="text-foreground">Building with Agentic AI</strong> —
                   Leveraging AI agents as a force multiplier to ship faster across disciplines.
@@ -76,7 +76,7 @@ export default function AboutPage() {
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="mt-1 text-accent" aria-hidden="true">-</span>
+                <span className="mt-1 text-accent">-</span>
                 <span>
                   <strong className="text-foreground">Technical Writing</strong> —
                   Writing articles and tutorials about software development, covering topics from
@@ -86,7 +86,7 @@ export default function AboutPage() {
             </ul>
 
             <h2 className="!mt-10 text-base font-semibold text-accent">
-              <span aria-hidden="true">## </span>Background
+              ## Background
             </h2>
 
             <p>
@@ -103,35 +103,31 @@ export default function AboutPage() {
             </p>
 
             <h2 className="!mt-10 text-base font-semibold text-accent">
-              <span aria-hidden="true">## </span>Get in Touch
+              ## Get in Touch
             </h2>
 
             <p>
               I&apos;m always happy to connect with fellow developers and tech enthusiasts.
             </p>
 
-            <nav aria-label="Social media links">
-              <ul className="flex flex-wrap gap-2" role="list">
-                {[
-                  { href: SITE_CONFIG.social.github, label: "GitHub" },
-                  { href: SITE_CONFIG.social.twitter, label: "X (Twitter)" },
-                  { href: SITE_CONFIG.social.linkedin, label: "LinkedIn" },
-                  { href: SITE_CONFIG.social.medium, label: "Medium" },
-                ].map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block rounded-md border border-dashed border-border px-3 py-1.5 text-xs text-muted transition-colors hover:border-accent hover:text-accent"
-                    >
-                      {link.label}
-                      <span className="sr-only"> (opens in new tab)</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { href: SITE_CONFIG.social.github, label: "GitHub" },
+                { href: SITE_CONFIG.social.twitter, label: "X (Twitter)" },
+                { href: SITE_CONFIG.social.linkedin, label: "LinkedIn" },
+                { href: SITE_CONFIG.social.medium, label: "Medium" },
+              ].map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-md border border-dashed border-border px-3 py-1.5 text-xs text-muted transition-colors hover:border-accent hover:text-accent"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@
   --border: #414868;
   --accent: #e8845c;
   --accent-dim: #c06a3f;
-  --muted: #7982a9;
+  --muted: #565f89;
   --green: #9ece6a;
   --red: #f7768e;
   --yellow: #e0af68;
@@ -34,20 +34,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-mono), monospace;
-}
-
-/* ─── Focus Styles ─── */
-
-/* Visible focus ring for keyboard navigation */
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-
-/* Remove default focus for mouse users */
-:focus:not(:focus-visible) {
-  outline: none;
 }
 
 /* Dashed border utility */
@@ -105,11 +91,6 @@ body {
 
 .prose a:hover {
   color: var(--yellow);
-}
-
-.prose a:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
 }
 
 .prose strong {
@@ -381,38 +362,8 @@ body {
 
 /* Command line typing cursor after element */
 .cmd-cursor::after {
-  content: "\2588";
+  content: "█";
   color: var(--accent);
   animation: blink 1s step-end infinite;
   margin-left: 2px;
-}
-
-/* ─── Reduced Motion ─── */
-/* Respect user's motion preferences (WCAG 2.1 SC 2.3.3) */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  .cursor-blink,
-  .glitch-text,
-  .pulse-glow,
-  .boot-flicker,
-  .animate-fade-in-up {
-    animation: none !important;
-    opacity: 1 !important;
-  }
-
-  .cmd-cursor::after {
-    animation: none !important;
-  }
-
-  .scanlines::after {
-    display: none;
-  }
 }

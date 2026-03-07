@@ -242,7 +242,7 @@ export default function TalksPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
       <h1 className="text-2xl font-bold text-foreground">
-        <span className="text-accent" aria-hidden="true">$</span> <span aria-label="Talks">ls talks/</span>
+        <span className="text-accent">$</span> ls talks/
       </h1>
       <p className="mt-2 text-sm text-muted">
         Conference talks, podcasts, and workshops I&apos;ve been part of.
@@ -250,7 +250,7 @@ export default function TalksPage() {
 
       <div className="mt-10 space-y-4">
         {talks.map((talk, index) => (
-          <article
+          <div
             key={index}
             className="terminal-box p-5 transition-all hover:border-accent"
           >
@@ -258,9 +258,9 @@ export default function TalksPage() {
               <span className={`text-xs font-medium ${typeColors[talk.type] || "text-muted"}`}>
                 [{talk.type}]
               </span>
-              <time className="text-xs text-muted" dateTime={talk.date}>
+              <span className="text-xs text-muted">
                 {talk.date}
-              </time>
+              </span>
             </div>
 
             <h2 className="mt-2 text-sm font-semibold text-foreground">
@@ -272,7 +272,6 @@ export default function TalksPage() {
                   className="transition-colors hover:text-accent"
                 >
                   {talk.title}
-                  <span className="sr-only"> (opens in new tab)</span>
                 </a>
               ) : (
                 talk.title
@@ -286,7 +285,7 @@ export default function TalksPage() {
             <p className="mt-2 text-xs leading-relaxed text-muted">
               {talk.description}
             </p>
-          </article>
+          </div>
         ))}
       </div>
     </div>

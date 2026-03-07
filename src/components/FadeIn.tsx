@@ -11,23 +11,8 @@ interface FadeInProps {
 export default function FadeIn({ children, delay = 0, className = "" }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
-
-    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      setVisible(true);
-      return;
-    }
-
     const el = ref.current;
     if (!el) return;
 
@@ -43,21 +28,17 @@ export default function FadeIn({ children, delay = 0, className = "" }: FadeInPr
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [prefersReducedMotion]);
+  }, []);
 
   return (
     <div
       ref={ref}
       className={className}
-      style={
-        prefersReducedMotion
-          ? undefined
-          : {
-              opacity: visible ? 1 : 0,
-              transform: visible ? "translateY(0)" : "translateY(16px)",
-              transition: `opacity 0.5s ease-out ${delay}ms, transform 0.5s ease-out ${delay}ms`,
-            }
-      }
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(16px)",
+        transition: `opacity 0.5s ease-out ${delay}ms, transform 0.5s ease-out ${delay}ms`,
+      }}
     >
       {children}
     </div>

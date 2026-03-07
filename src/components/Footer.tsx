@@ -28,38 +28,33 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="mt-8" role="contentinfo">
+    <footer className="mt-8">
       <div className="mx-auto max-w-5xl px-6">
-        <div className="border-t border-dashed border-border" aria-hidden="true" />
+        <div className="border-t border-dashed border-border" />
         <div className="flex flex-col items-center justify-between gap-4 py-8 sm:flex-row">
           <div className="flex items-center gap-4 text-xs text-muted">
             <span>
-              <span className="text-accent" aria-hidden="true">&copy;</span>
-              <span className="sr-only">Copyright</span>{" "}
+              <span className="text-accent">&copy;</span>{" "}
               {new Date().getFullYear()} {SITE_CONFIG.name}
             </span>
-            <span className="text-border" aria-hidden="true">|</span>
-            <span aria-label={`Session uptime: ${formatUptime(uptime)}`}>
-              uptime: <span className="text-term-green" aria-hidden="true">{formatUptime(uptime)}</span>
+            <span className="text-border">|</span>
+            <span>
+              uptime: <span className="text-term-green">{formatUptime(uptime)}</span>
             </span>
           </div>
-          <nav aria-label="Social media links">
-            <ul className="flex items-center gap-4" role="list">
-              {links.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-muted transition-all duration-200 hover:text-accent hover:drop-shadow-[0_0_4px_var(--accent)]"
-                  >
-                    {link.label}
-                    <span className="sr-only"> (opens in new tab)</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className="flex items-center gap-4">
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-muted transition-all duration-200 hover:text-accent hover:drop-shadow-[0_0_4px_var(--accent)]"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
