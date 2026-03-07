@@ -14,7 +14,7 @@ export default function HeroSection() {
       <div className="terminal-box scanlines relative overflow-hidden">
         {/* Terminal title bar */}
         <div className="flex items-center gap-2 border-b border-dashed border-border px-4 py-3">
-          <span className="text-xs text-muted">~/{SITE_CONFIG.name.split(" ")[0].toLowerCase()}</span>
+          <span className="text-xs text-muted">~/giolaq</span>
           <span className="text-xs text-accent">$</span>
           <span className="text-xs text-foreground">
             <TypingText text="whoami" speed={80} onDone={() => setCmdDone(true)} cursor={!cmdDone} />

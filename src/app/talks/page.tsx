@@ -8,6 +8,15 @@ export const metadata: Metadata = {
 
 const talks = [
   {
+    title: "React Native, Amplified",
+    event: "React Conf 2025",
+    date: "2025-10",
+    description:
+      "How to use React and React Native to build for Amazon's new Vega OS — a lightweight Linux-based operating system with React Native built-in, designed for high-performance on devices like Fire TV, Echo Show, and Echo Hub.",
+    link: "https://youtu.be/NKLwWf2G1-8?si=BoxZDW3E-LFb9OjA",
+    type: "Talk",
+  },
+  {
     title: "Deep Dive: Building React Native App for Vega OS",
     event: "Callstack Live Stream",
     date: "2025-12",

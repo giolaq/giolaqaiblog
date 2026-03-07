@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { SITE_CONFIG } from "@/lib/constants";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -28,7 +27,7 @@ export default function Header() {
             <span className="h-3 w-3 rounded-full bg-term-green transition-shadow hover:shadow-[0_0_8px_var(--green)]" />
           </div>
           <Link href="/" className="text-sm font-bold text-foreground">
-            {SITE_CONFIG.name.split(" ")[0].toLowerCase()}
+            giolaq
             <span className="text-accent">.</span>
             <span className="text-muted">dev</span>
             <span className="cursor-blink text-accent ml-0.5 text-xs">█</span>
