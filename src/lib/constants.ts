@@ -1,13 +1,13 @@
 export const SITE_CONFIG = {
   name: "Giovanni Laquidara",
-  title: "Giovanni Laquidara - Developer Advocate & Software Engineer",
+  title: "Giovanni Laquidara - Developer Advocate & Builder",
   description:
-    "Personal website of Giovanni Laquidara — Developer Advocate, Technologist, and Software Engineer. Writing about mobile development, TV apps, Kotlin, React Native, and emerging technologies.",
+    "Personal website of Giovanni Laquidara — Developer Advocate, Builder, and Generalist. Writing about agentic AI, mobile development, TV apps, React Native, and emerging technologies.",
   url: "https://giolaq.dev",
   author: {
     name: "Giovanni Laquidara",
-    role: "Developer Advocate & Software Engineer",
-    bio: "Senior Developer Advocate at Amazon, focused on devices, mobile apps, and developer communities. Based in London, I build mobile apps, real-time systems, and VR/AR experiences. For fun, I enjoy low-level programming, IoT hacking, and command-line apps.",
+    role: "Developer Advocate & Builder",
+    bio: "Senior Developer Advocate at Amazon and builder at heart. I believe the title \"software engineer\" is giving way to \"builder\" — generalists who cross disciplines, connect dots across domains, and ship with agentic AI as a force multiplier. Based in London, I work across mobile, TV, agentic AI, and whatever new tech catches my eye.",
     avatar: "/avatar.jpg",
   },
   social: {

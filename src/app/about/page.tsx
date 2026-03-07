@@ -4,7 +4,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `About ${SITE_CONFIG.author.name} — Developer Advocate, Technologist, and Software Engineer.`,
+  description: `About ${SITE_CONFIG.author.name} — Developer Advocate, Builder, and Generalist.`,
 };
 
 export default function AboutPage() {
@@ -34,15 +34,23 @@ export default function AboutPage() {
           <div className="mt-6 space-y-5 text-sm leading-relaxed text-muted">
             <p>
               Hi! I&apos;m <strong className="text-foreground">Giovanni Laquidara</strong>,
-              a Senior Developer Advocate at Amazon, based in London, England. I&apos;m focused on
-              devices, mobile apps, and developer communities.
+              a Senior Developer Advocate at Amazon, based in London, England. I&apos;m a builder
+              and generalist who crosses disciplines — connecting dots across mobile, TV, agentic AI,
+              and developer communities.
             </p>
 
             <p>
-              I&apos;m passionate about working with cutting-edge technologies and people. I studied at
-              Universit&agrave; di Roma Tor Vergata and have been building software across mobile, VR/AR,
-              real-time defence systems, and IoT. For fun, I enjoy low-level programming, IoT hacking,
-              and command-line apps.
+              I believe the title &quot;software engineer&quot; is giving way to
+              &quot;builder.&quot; With agentic AI as a force multiplier, everyone codes now — the PM,
+              the designer, the data scientist. The strongest people are generalists who overlap across
+              traditional roles and connect ideas from completely unrelated domains. That&apos;s the
+              kind of work I love doing.
+            </p>
+
+            <p>
+              I studied at Universit&agrave; di Roma Tor Vergata and have been building across mobile,
+              VR/AR, real-time defence systems, and IoT. For fun, I enjoy low-level programming, IoT
+              hacking, and command-line apps.
             </p>
 
             <h2 className="!mt-10 text-base font-semibold text-accent">
@@ -61,9 +69,10 @@ export default function AboutPage() {
               <li className="flex items-start gap-2">
                 <span className="mt-1 text-accent">-</span>
                 <span>
-                  <strong className="text-foreground">Software Engineering</strong> —
-                  Building applications with modern technologies including React Native, Kotlin,
-                  TypeScript, and more. I have experience across mobile, VR/AR, and real-time systems.
+                  <strong className="text-foreground">Building with Agentic AI</strong> —
+                  Leveraging AI agents as a force multiplier to ship faster across disciplines.
+                  From React Native to Kotlin to TypeScript — I build across mobile, TV, VR/AR,
+                  and real-time systems.
                 </span>
               </li>
               <li className="flex items-start gap-2">
@@ -82,12 +91,13 @@ export default function AboutPage() {
 
             <p>
               Over the years, I&apos;ve worn many hats: software engineer, VR and mobile developer,
-              real-time software architect, and developer advocate. This diverse background gives me
-              a unique perspective on building technology that truly serves developers and users.
+              real-time software architect, and developer advocate. There&apos;s a 50% overlap across
+              all of these roles — and that&apos;s the point. The best ideas come from connecting dots
+              across completely unrelated domains. No narrow specialist does that.
             </p>
 
             <p>
-              I write about Kotlin, React Native, TV app development, hardware hacking (like
+              I write about agentic AI, React Native, TV app development, hardware hacking (like
               Flipper Zero), and whatever new technology catches my eye. You can find my writing
               on this blog and across platforms like Medium and Hashnode.
             </p>
