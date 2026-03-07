@@ -24,9 +24,9 @@ export default function BlogPage() {
         </p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-2 min-w-0">
         {posts.map((post, i) => (
-          <FadeIn key={post.slug} delay={Math.min(i * 60, 500)}>
+          <FadeIn key={post.slug} delay={Math.min(i * 60, 500)} className="min-w-0">
             <PostCard post={post} />
           </FadeIn>
         ))}

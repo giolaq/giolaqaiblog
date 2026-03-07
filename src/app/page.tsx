@@ -9,7 +9,7 @@ export default function Home() {
   const recentPosts = posts.slice(0, 4);
 
   return (
-    <div className="mx-auto max-w-5xl px-6">
+    <div className="mx-auto max-w-5xl px-6 overflow-hidden">
       <HeroSection />
 
       <section className="pb-20">
@@ -27,9 +27,9 @@ export default function Home() {
           </div>
         </FadeIn>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
+        <div className="mt-6 grid gap-4 md:grid-cols-2 min-w-0">
           {recentPosts.map((post, i) => (
-            <FadeIn key={post.slug} delay={i * 100}>
+            <FadeIn key={post.slug} delay={i * 100} className="min-w-0">
               <PostCard post={post} />
             </FadeIn>
           ))}

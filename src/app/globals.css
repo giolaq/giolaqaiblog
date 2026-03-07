@@ -40,6 +40,8 @@ body {
 .terminal-box {
   border: 1px dashed var(--border);
   border-radius: 0.75rem;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Prose styling for blog posts */
