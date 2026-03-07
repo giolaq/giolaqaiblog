@@ -36,7 +36,7 @@ export default function HeroSection() {
               alt={SITE_CONFIG.author.name}
               width={120}
               height={120}
-              className="rounded-lg border border-dashed border-border boot-flicker"
+              className="rounded-full object-cover border border-dashed border-border boot-flicker"
               priority
             />
             <AsciiArt />
