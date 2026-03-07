@@ -83,6 +83,18 @@ export default function Home() {
               url: "https://github.com/giolaq/devtoagent",
             },
             {
+              name: "vibepope",
+              description: "A vibe-coded experience — built entirely through creative prompting and agentic AI.",
+              language: "HTML",
+              url: "https://github.com/giolaq/vibepope",
+            },
+            {
+              name: "react-native-multi-tv-app-sample",
+              description: "React Native TV app sample for Android TV, Fire TV, tvOS, and web — one codebase, every screen.",
+              language: "TypeScript",
+              url: "https://github.com/giolaq/react-native-multi-tv-app-sample",
+            },
+            {
               name: "gio-comic",
               description: "An AI-powered comic generator — turn ideas into visual stories automatically.",
               language: "Python",
