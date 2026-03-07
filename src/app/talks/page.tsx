@@ -17,15 +17,6 @@ const talks = [
     type: "Talk",
   },
   {
-    title: "Deep Dive: Building React Native App for Vega OS",
-    event: "Callstack Live Stream",
-    date: "2025-12",
-    description:
-      "Live coding session building a TicTacToe app on Amazon's brand-new Vega OS — exploring React 19.2 updates, new experimental APIs, and the first deep dive into building for Vega OS powered by React Native.",
-    link: "https://www.callstack.com/events/deep-dive-building-react-native-app-for-vega-os",
-    type: "Webinar",
-  },
-  {
     title: "Amazon's Vega OS: A New OS With React Native Built-In",
     event: "React Universe On Air (Callstack Podcast)",
     date: "2025-11",
