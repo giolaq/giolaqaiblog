@@ -77,34 +77,10 @@ export default function Home() {
               url: "https://github.com/giolaq/tv-mcp-app",
             },
             {
-              name: "Agentic_Design_Patterns",
-              description: "A hands-on guide to building intelligent systems with agentic design patterns.",
-              language: "Jupyter Notebook",
-              url: "https://github.com/giolaq/Agentic_Design_Patterns",
-            },
-            {
-              name: "agent-device",
-              description: "CLI to control iOS and Android devices for AI agents — bridging agentic AI with mobile testing.",
-              language: "TypeScript",
-              url: "https://github.com/giolaq/agent-device",
-            },
-            {
               name: "devtoagent",
               description: "A Dev.to article generator agent built with Strands — from idea to published post via AI.",
               language: "Python",
               url: "https://github.com/giolaq/devtoagent",
-            },
-            {
-              name: "arscontexta",
-              description: "Claude Code plugin that generates individualized knowledge systems from conversation.",
-              language: "Shell",
-              url: "https://github.com/giolaq/arscontexta",
-            },
-            {
-              name: "sample-ai-powered-sdlc-patterns-with-aws",
-              description: "AI-integrated software development lifecycle patterns with AWS services.",
-              language: "Python",
-              url: "https://github.com/giolaq/sample-ai-powered-sdlc-patterns-with-aws",
             },
             {
               name: "gio-comic",
