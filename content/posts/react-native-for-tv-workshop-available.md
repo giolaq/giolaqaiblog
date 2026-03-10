@@ -6,7 +6,7 @@ tags: ["React Native", "TV Development", "Workshop"]
 coverImage: ""
 ---
 
-I'm thrilled to announce that my **React Native for TV Workshop** is now live and available at [rntv.giolaq.dev](https://rntv.giolaq.dev)!
+I'm thrilled to announce that my **React Native for TV Workshop** is now live and available at [https://github.com/giolaq/rntvws](https://github.com/giolaq/rntvws)!
 
 ## What is This Workshop?
 
