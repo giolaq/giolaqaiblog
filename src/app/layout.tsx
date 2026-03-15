@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BootSequence from "@/components/BootSequence";
 import { SITE_CONFIG } from "@/lib/constants";
 import "./globals.css";
 
@@ -56,11 +57,13 @@ export default function RootLayout({
             }),
           }}
         />
-        <div className="flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        <BootSequence>
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </BootSequence>
       </body>
     </html>
   );
