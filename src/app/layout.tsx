@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BootSequence from "@/components/BootSequence";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE_CONFIG } from "@/lib/constants";
 import "./globals.css";
 
@@ -39,6 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <GoogleAnalytics gaId="G-SGTFTP5C6W" />
       <body className="antialiased bg-background text-foreground">
         <script
           type="application/ld+json"
