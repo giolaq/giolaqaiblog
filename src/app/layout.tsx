@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BootSequence from "@/components/BootSequence";
+import WebMCP from "@/components/WebMCP";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE_CONFIG } from "@/lib/constants";
+import { getAllPosts, getAllTags } from "@/lib/posts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -38,10 +40,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const posts = getAllPosts();
+  const tags = getAllTags();
+
   return (
     <html lang="en" className="dark">
       <GoogleAnalytics gaId="G-SGTFTP5C6W" />
       <body className="antialiased bg-background text-foreground">
+        <WebMCP posts={posts} tags={tags} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
