@@ -3,7 +3,7 @@ title: "MWC 2026: What Every Developer Building AI Features Should Know"
 date: "2026-03-10"
 description: "Three days at MWC Barcelona revealed a pivotal shift: AI assistants are the default now. Here's what developers building AI features need to know about multi-assistant strategies and open standards."
 tags: ["AI", "MWC", "Agents"]
-coverImage: ""
+coverImage: "https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jaqy8tyfo86lpk02oqfz.png"
 ---
 
 ## The Browser Analogy

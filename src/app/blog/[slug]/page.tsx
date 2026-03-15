@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
@@ -103,6 +104,19 @@ export default async function PostPage({ params }: PageProps) {
             </div>
           )}
         </header>
+
+        {post.coverImage && (
+          <div className="mb-10 overflow-hidden rounded-lg border border-dashed border-border">
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              width={768}
+              height={400}
+              className="w-full object-cover"
+              priority
+            />
+          </div>
+        )}
 
         <div
           className="prose"
