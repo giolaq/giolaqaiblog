@@ -5,12 +5,14 @@ import Image from "next/image";
 import { SITE_CONFIG } from "@/lib/constants";
 import TypingText from "./TypingText";
 import AsciiArt from "./AsciiArt";
+import AsciiParticleHero from "./AsciiParticleHero";
 
 export default function HeroSection() {
   const [cmdDone, setCmdDone] = useState(false);
 
   return (
     <section className="pb-16 pt-20">
+      <AsciiParticleHero />
       <div className="terminal-box scanlines relative overflow-hidden">
         {/* Terminal title bar */}
         <div className="flex items-center gap-2 border-b border-dashed border-border px-4 py-3">
