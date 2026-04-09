@@ -4,24 +4,21 @@ const TOKEN_URL = "https://oauth.ring.com/oauth/token";
 const CLIENT_ID = "Homie_KA4r6pAEeTinK9gu1Anit";
 const CLIENT_SECRET = "lf0iTuRVPr7E4GjHvqays1nr1Kh766h4C9kB_OBgOG2FVv89e6hbkpN42-l-";
 
-// In-memory store (persists for the life of the serverless function)
-let lastResult: Record<string, unknown> | null = null;
-let lastRawRequest: string | null = null;
-
 export async function POST(req: NextRequest) {
   const body = await req.text();
-  lastRawRequest = `${req.method} ${req.url}\nHeaders: ${JSON.stringify(Object.fromEntries(req.headers))}\nBody: ${body}`;
-  console.log("Ring token exchange POST:", lastRawRequest);
+  const url = req.url;
+  const headers = Object.fromEntries(req.headers);
+  const log = { timestamp: new Date().toISOString(), method: "POST", url, headers, body };
 
-  // Try to extract auth code from JSON, form-encoded, or query
+  // Try to extract auth code
   let code: string | null = null;
   try { code = JSON.parse(body).code; } catch {}
   if (!code) code = new URLSearchParams(body).get("code");
   if (!code) code = req.nextUrl.searchParams.get("code");
 
   if (!code) {
-    lastResult = { error: "no_code_found", raw_body: body, timestamp: new Date().toISOString() };
-    return NextResponse.json(lastResult, { status: 200 });
+    // Return 200 so Ring doesn't retry, and include everything we received for debugging
+    return NextResponse.json({ received: log, error: "no_code_found" });
   }
 
   // Exchange for tokens
@@ -39,19 +36,18 @@ export async function POST(req: NextRequest) {
   });
 
   const tokenData = await tokenRes.json();
-  lastResult = { ...tokenData, timestamp: new Date().toISOString(), status_code: tokenRes.status };
-
-  return NextResponse.json(lastResult);
+  return NextResponse.json({ tokens: tokenData, status_code: tokenRes.status });
 }
 
-export async function GET() {
-  const html = `<html><body style="font-family:monospace;padding:2em">
-<h1>Ring Token Exchange</h1>
-<h2>Last Result</h2>
-<pre>${lastResult ? JSON.stringify(lastResult, null, 2) : "No requests received yet. Remove staging user and re-authorize."}</pre>
-<h2>Last Raw Request</h2>
-<pre>${lastRawRequest || "None"}</pre>
-<p>Refresh this page after authorizing in the Ring Developer Portal.</p>
-</body></html>`;
-  return new NextResponse(html, { headers: { "Content-Type": "text/html" } });
+// Accept ANY method so we can see what Ring sends
+export async function GET(req: NextRequest) {
+  return NextResponse.json({ status: "waiting", message: "POST your Ring auth code here", ts: new Date().toISOString() });
+}
+
+export async function PUT(req: NextRequest) {
+  return POST(req);
+}
+
+export async function PATCH(req: NextRequest) {
+  return POST(req);
 }
