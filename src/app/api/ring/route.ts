@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 const TOKEN_URL = "https://oauth.ring.com/oauth/token";
 
-let lastTokens: unknown = null;
-
 export async function POST(req: NextRequest) {
   const body = await req.text();
 
@@ -30,19 +28,11 @@ export async function POST(req: NextRequest) {
   });
 
   const tokenData = await tokenRes.json();
-  lastTokens = { tokens: tokenData, ok: tokenRes.ok, ts: new Date().toISOString() };
-
-  return NextResponse.json({ received: true, ok: tokenRes.ok });
+  return NextResponse.json({ tokens: tokenData, ok: tokenRes.ok, ts: new Date().toISOString() });
 }
 
-export async function GET(req: NextRequest) {
-  const key = req.nextUrl.searchParams.get("key");
-  if (key === process.env.RING_FETCH_SECRET && lastTokens) {
-    const result = lastTokens;
-    lastTokens = null;
-    return NextResponse.json(result);
-  }
-  return NextResponse.json({ status: "waiting", ts: new Date().toISOString() });
+export async function GET() {
+  return NextResponse.json({ status: "ready", ts: new Date().toISOString() });
 }
 
 export async function PUT(req: NextRequest) { return POST(req); }
