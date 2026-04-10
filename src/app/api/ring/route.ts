@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
   });
 
   const tokenData = await tokenRes.json();
+  console.log("RING_TOKENS", JSON.stringify(tokenData));
   return NextResponse.json({ tokens: tokenData, ok: tokenRes.ok, ts: new Date().toISOString() });
 }
 
