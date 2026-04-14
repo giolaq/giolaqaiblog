@@ -1,15 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createHmac, timingSafeEqual } from "crypto";
 
 const API_BASE = "https://api.amazonvision.com";
 const TOKEN_URL = "https://oauth.ring.com/oauth/token";
-const VALIDATION_WINDOW_MS = 600_000; // 10 minutes
-
-function computeNonce(time: string, accountId: string, hmacKey: string): string {
-  const payload = `${time}:${accountId}`;
-  const mac = createHmac("sha256", hmacKey).update(payload).digest();
-  return mac.toString("base64url"); // URL-safe, no padding
-}
 
 export async function GET(req: NextRequest) {
   const nonce = req.nextUrl.searchParams.get("nonce");
@@ -21,67 +13,59 @@ export async function GET(req: NextRequest) {
 
   // Freshness check
   const delta = Date.now() - parseInt(time);
-  if (delta > VALIDATION_WINDOW_MS || delta < 0) {
-    return NextResponse.json({ error: "link expired or invalid timestamp" }, { status: 400 });
+  if (delta > 600_000 || delta < 0) {
+    return NextResponse.json({ error: "link expired" }, { status: 400 });
   }
 
-  const hmacKey = process.env.RING_HMAC_KEY || "";
   const clientId = process.env.RING_CLIENT_ID || "";
   const clientSecret = process.env.RING_CLIENT_SECRET || "";
+  const refreshToken = process.env.RING_REFRESH_TOKEN || "";
 
-  // Get a fresh access token
+  // Get fresh access token
   const tokenRes = await fetch(TOKEN_URL, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
       grant_type: "refresh_token",
-      refresh_token: process.env.RING_REFRESH_TOKEN || "",
+      refresh_token: refreshToken,
       client_id: clientId,
       client_secret: clientSecret,
     }),
   });
 
   if (!tokenRes.ok) {
-    const err = await tokenRes.text();
-    console.log("TOKEN_ERROR", err);
+    console.log("TOKEN_ERROR", await tokenRes.text());
     return NextResponse.json({ error: "token refresh failed" }, { status: 500 });
   }
 
   const { access_token, refresh_token: newRefresh } = await tokenRes.json();
   console.log("NEW_REFRESH_TOKEN", newRefresh);
 
-  // Get account ID
+  // Get user profile for account_identifier
   const userRes = await fetch(`${API_BASE}/v1/users/me`, {
     headers: { Authorization: `Bearer ${access_token}` },
   });
   const userData = await userRes.json();
-  const accountId = userData?.data?.id;
+  const email = userData?.data?.attributes?.email || "";
+  // Mask email for privacy
+  const masked = email.replace(/^(.).*(@.*)$/, "$1***$2");
 
-  if (!accountId) {
-    return NextResponse.json({ error: "could not get account ID" }, { status: 500 });
-  }
+  console.log("ACCOUNT_LINK", { nonce, time, masked });
 
-  // Verify nonce
-  const computed = computeNonce(time, accountId, hmacKey);
-  const valid = computed.length === nonce.length &&
-    timingSafeEqual(Buffer.from(computed), Buffer.from(nonce));
-
-  if (!valid) {
-    console.log("NONCE_MISMATCH", { computed, received: nonce });
-    return NextResponse.json({ error: "nonce mismatch" }, { status: 403 });
-  }
-
-  // POST - confirm account link
+  // POST - confirm account link with nonce
   const postRes = await fetch(`${API_BASE}/v1/accounts/me/app-integrations`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${access_token}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ nonce }),
+    body: JSON.stringify({
+      account_identifier: masked,
+      nonce,
+    }),
   });
   const postData = await postRes.json().catch(() => ({}));
-  console.log("POST_INTEGRATION", postRes.status, JSON.stringify(postData));
+  console.log("POST_RESULT", postRes.status, JSON.stringify(postData));
 
   if (!postRes.ok) {
     return NextResponse.json({ error: "POST integration failed", detail: postData }, { status: postRes.status });
@@ -97,11 +81,10 @@ export async function GET(req: NextRequest) {
     body: JSON.stringify({ status: "completed" }),
   });
   const patchData = await patchRes.json().catch(() => ({}));
-  console.log("PATCH_INTEGRATION", patchRes.status, JSON.stringify(patchData));
+  console.log("PATCH_RESULT", patchRes.status, JSON.stringify(patchData));
 
   return NextResponse.json({
     success: true,
     message: "Account linked! Your Ring devices are now accessible to Homie.",
-    integration: patchData,
   });
 }
