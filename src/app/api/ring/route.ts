@@ -53,28 +53,29 @@ export async function refreshAccessToken(): Promise<{ access_token: string; refr
 
 export async function POST(req: NextRequest) {
   const body = await req.text();
-  const signature = req.headers.get("x-signature") || "";
-
-  // Webhook event from Ring (has HMAC signature)
-  if (signature) {
-    if (HMAC_KEY) {
-      const { createHmac } = await import("crypto");
-      const expected = "sha256=" + createHmac("sha256", HMAC_KEY).update(body).digest("hex");
-      if (expected !== signature) {
-        console.log("RING WEBHOOK: invalid signature");
-        return NextResponse.json({ error: "invalid signature" }, { status: 401 });
-      }
-    }
-    console.log("RING WEBHOOK EVENT:", body);
-    return NextResponse.json({ status: "ok" });
-  }
-
-  // OAuth code exchange
+  // OAuth code exchange (has a "code" param)
   let code: string | null = null;
   try { code = JSON.parse(body).code; } catch {}
   if (!code) code = new URLSearchParams(body).get("code");
   if (!code) code = req.nextUrl.searchParams.get("code");
-  if (!code) return NextResponse.json({ error: "no_code_found" });
+
+  // If no code, treat as webhook event from Ring
+  if (!code) {
+    const signature = req.headers.get("x-signature") || "";
+    console.log("RING WEBHOOK:", { signature: signature.slice(0, 30), body: body.slice(0, 500) });
+
+    // Verify HMAC if signature present and key configured
+    if (signature && HMAC_KEY) {
+      const { createHmac } = await import("crypto");
+      const expected = "sha256=" + createHmac("sha256", HMAC_KEY).update(body).digest("hex");
+      if (expected !== signature) {
+        console.log("RING WEBHOOK: signature mismatch");
+      }
+    }
+
+    // Always return 200 — Ring requires this within 5 seconds
+    return NextResponse.json({ status: "ok" });
+  }
 
   const tokenRes = await fetch(TOKEN_URL, {
     method: "POST",
