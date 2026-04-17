@@ -1,18 +1,64 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createHmac } from "crypto";
+import { writeFileSync, readFileSync, existsSync } from "fs";
 
 const TOKEN_URL = "https://oauth.ring.com/oauth/token";
 const API_BASE = "https://api.amazonvision.com";
+const TOKEN_FILE = "/tmp/ring-tokens.json";
 const HMAC_KEY = process.env.RING_HMAC_KEY || "";
+
+// Persist tokens to /tmp (survives within same serverless instance)
+// and also update env-based fallback
+function saveTokens(tokens: { access_token: string; refresh_token: string }) {
+  writeFileSync(TOKEN_FILE, JSON.stringify(tokens));
+  console.log("TOKENS_SAVED to /tmp");
+  console.log("NEW_REFRESH_TOKEN", tokens.refresh_token);
+}
+
+export function getStoredRefreshToken(): string {
+  // Try /tmp first (freshest), fall back to env var
+  if (existsSync(TOKEN_FILE)) {
+    try {
+      const data = JSON.parse(readFileSync(TOKEN_FILE, "utf-8"));
+      if (data.refresh_token) return data.refresh_token;
+    } catch {}
+  }
+  return process.env.RING_REFRESH_TOKEN || "";
+}
+
+export async function refreshAccessToken(): Promise<{ access_token: string; refresh_token: string } | null> {
+  const refreshToken = getStoredRefreshToken();
+  if (!refreshToken) return null;
+
+  const res = await fetch(TOKEN_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded", "User-Agent": "Homie/1.0" },
+    body: new URLSearchParams({
+      grant_type: "refresh_token",
+      refresh_token: refreshToken,
+      client_id: process.env.RING_CLIENT_ID || "",
+      client_secret: process.env.RING_CLIENT_SECRET || "",
+    }),
+  });
+
+  if (!res.ok) {
+    console.log("TOKEN_REFRESH_ERROR", res.status, await res.text());
+    return null;
+  }
+
+  const data = await res.json();
+  const tokens = { access_token: data.access_token, refresh_token: data.refresh_token };
+  saveTokens(tokens);
+  return tokens;
+}
 
 export async function POST(req: NextRequest) {
   const body = await req.text();
   const signature = req.headers.get("x-signature") || "";
 
-  // If there's an HMAC signature, this is a webhook event from Ring
+  // Webhook event from Ring (has HMAC signature)
   if (signature) {
-    // Verify signature
     if (HMAC_KEY) {
+      const { createHmac } = await import("crypto");
       const expected = "sha256=" + createHmac("sha256", HMAC_KEY).update(body).digest("hex");
       if (expected !== signature) {
         console.log("RING WEBHOOK: invalid signature");
@@ -20,22 +66,19 @@ export async function POST(req: NextRequest) {
       }
     }
     console.log("RING WEBHOOK EVENT:", body);
-    // Return 200 immediately — Ring requires this within 5 seconds
     return NextResponse.json({ status: "ok" });
   }
 
-  // No signature — this is an OAuth code exchange
+  // OAuth code exchange
   let code: string | null = null;
   try { code = JSON.parse(body).code; } catch {}
   if (!code) code = new URLSearchParams(body).get("code");
   if (!code) code = req.nextUrl.searchParams.get("code");
-
   if (!code) return NextResponse.json({ error: "no_code_found" });
 
-  // Step 1: Exchange auth code for tokens
   const tokenRes = await fetch(TOKEN_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    headers: { "Content-Type": "application/x-www-form-urlencoded", "User-Agent": "Homie/1.0" },
     body: new URLSearchParams({
       grant_type: "authorization_code",
       code,
@@ -46,22 +89,10 @@ export async function POST(req: NextRequest) {
 
   const tokenData = await tokenRes.json();
   console.log("RING_TOKENS", JSON.stringify(tokenData));
-
   if (!tokenRes.ok) return NextResponse.json({ ok: false, error: tokenData });
 
-  const at = tokenData.access_token;
-
-  // Step 2: Get user profile (account ID)
-  const userRes = await fetch(`${API_BASE}/v1/users/me`, {
-    headers: { Authorization: `Bearer ${at}` },
-  });
-  const userData = await userRes.json();
-  const email = userData?.data?.attributes?.email || "";
-  const masked = email.replace(/^(.).*(@.*)$/, "$1***$2");
-  const accountId = userData?.data?.id || "";
-  console.log("USER", accountId, masked);
-
-  console.log("REFRESH_TOKEN_FOR_LOCAL", tokenData.refresh_token);
+  // Save tokens so the link endpoint can use them
+  saveTokens({ access_token: tokenData.access_token, refresh_token: tokenData.refresh_token });
 
   return NextResponse.json({ ok: true });
 }
