@@ -7,11 +7,7 @@ export const metadata: Metadata = {
 };
 
 const experience = [
-  {
-    role: "Senior Developer Advocate",
-    company: "Amazon",
-    location: "London",
-    period: "Apr 2022 — Present",
+  { role: "Senior Developer Advocate", company: "Amazon", location: "London", period: "Apr 2022 — Present",
     highlights: [
       "Advocating for Amazon Appstore and Devices software and ecosystem.",
       "Amazon Open Source champion — managing open source repositories and mentoring about open source.",
@@ -21,70 +17,44 @@ const experience = [
       "Gathering the voice of developers from external developer communities.",
     ],
   },
-  {
-    role: "Senior Developer Advocate",
-    company: "Huawei",
-    location: "London",
-    period: "Apr 2020 — Apr 2022",
+  { role: "Senior Developer Advocate", company: "Huawei", location: "London", period: "Apr 2020 — Apr 2022",
     highlights: [
       "Video content to support the AI-based products of Huawei Mobile Services.",
-      "Supported developers and partner companies to port their mobile apps into the Huawei Ecosystem (AppGallery/HMS) — Top 100 UK/IE apps across AI, Travel, Lifestyle, e-commerce, and VR/AR verticals.",
+      "Supported developers and partner companies to port their mobile apps into the Huawei Ecosystem (AppGallery/HMS).",
       "Led university activities with UK top universities — online events and kick-off live main events.",
       "Defined the annual plan for developer advocacy in the UK for local communities and events.",
       "Mentored/judged at European hackathons (HackZurich 2020/21, AppsUp, HackCambridge 21).",
       "Recruited 2 leaders to create developer communities in Italy and UK.",
     ],
   },
-  {
-    role: "Android Developer",
-    company: "Tui Group",
-    location: "London",
-    period: "Jan 2018 — Apr 2020",
+  { role: "Android Developer", company: "Tui Group", location: "London", period: "Jan 2018 — Apr 2020",
     highlights: [
-      "Led \"configure a holiday package\" feature — design, development, API review, architecture, managing 5 feature team members.",
-      "Developed Tui Digital Assistant Android app features, UI, and main booking handling user journey.",
+      "Led \"configure a holiday package\" feature — design, dev, API, architecture, managing 5 engineers.",
+      "Developed Tui Digital Assistant Android app features, UI, and main booking handling.",
       "Mixed ARCore with ML Kit to develop AR features for luggage sizing — presented at Droidcon Berlin, Vienna, UK, and GDG DevFest London 2019.",
       "Refactored 60% of the codebase to Kotlin applying Clean Architecture, Rx, and Android Architecture Components.",
     ],
   },
-  {
-    role: "Software Engineer — Mobile & XR",
-    company: "Freelance",
-    location: "Rome / Remote",
-    period: "Mar 2016 — Dec 2017",
+  { role: "Software Engineer — Mobile & XR", company: "Freelance", location: "Rome / Remote", period: "Mar 2016 — Dec 2017",
     highlights: [
       "Designed and developed the Android AR app for Weeshapp (Native + Unity) using RxJava2, Dagger2, Retrofit, MVP.",
-      "Developed the VR app and Android Bluetooth module for Eyesync (SyncThink) — RxJava2, RxAndroid, Bluetooth.",
+      "Developed the VR app and Android Bluetooth module for Eyesync (SyncThink).",
       "Teaching Android development. Tech Mentor at Lean Startup Program (Peekaboo).",
       "Created the Facebook Developer Circle Community in Italy.",
     ],
   },
-  {
-    role: "Senior Software Engineer",
-    company: "Snapback",
-    location: "Rome",
-    period: "Apr 2015 — Mar 2016",
-    highlights: [
-      "Developed Android apps and designed technical solutions using the Android sensors stack.",
-    ],
+  { role: "Senior Software Engineer", company: "Snapback", location: "Rome", period: "Apr 2015 — Mar 2016",
+    highlights: ["Developed Android apps and designed technical solutions using the Android sensors stack."],
   },
-  {
-    role: "Startup CTO",
-    company: "EasyDinner",
-    location: "Rome",
-    period: "Jan 2014 — Mar 2015",
+  { role: "Startup CTO", company: "EasyDinner", location: "Rome", period: "Jan 2014 — Mar 2015",
     highlights: [
       "Designed a new backend. Coordinated a development team of 5 with agile processes.",
       "Developed the Android app.",
     ],
   },
-  {
-    role: "Software Engineer",
-    company: "Progesi / Next Spa",
-    location: "Rome",
-    period: "Apr 2003 — Apr 2015",
+  { role: "Software Engineer", company: "Progesi / Next Spa", location: "Rome", period: "Apr 2003 — Apr 2015",
     highlights: [
-      "Managed requirement analysis and software design using UML and SysML with model-based processes for defence systems (MBDA).",
+      "Managed requirement analysis and software design using UML and SysML for defence systems (MBDA).",
       "Developed military software using Java, C++, C, and Ada 95 for MBDA and Selex.",
       "Built an automation tool in Ruby to assist development, decreasing time to development by 50%.",
     ],
@@ -92,110 +62,41 @@ const experience = [
 ];
 
 const education = [
-  {
-    title: "Associate Android Developer Certification",
-    institution: "Google",
-    year: "2018",
-  },
-  {
-    title: "VR Master Program",
-    institution: "Upload VR, Los Angeles",
-    year: "2018",
-  },
-  {
-    title: "VR Developer Nanodegree & Self-Driving Car Nanodegree & Android Developer Nanodegree",
-    institution: "Udacity",
-    year: "2016",
-  },
-  {
-    title: "Bachelor's Degree in Computer Engineering",
-    institution: "Universit\u00e0 di Roma Tor Vergata",
-    year: "1999 — 2003",
-  },
+  { title: "Associate Android Developer Certification", institution: "Google", year: "2018" },
+  { title: "VR Master Program", institution: "Upload VR, Los Angeles", year: "2018" },
+  { title: "VR Developer & Self-Driving Car & Android Developer Nanodegrees", institution: "Udacity", year: "2016" },
+  { title: "Bachelor's Degree in Computer Engineering", institution: "Università di Roma Tor Vergata", year: "1999 — 2003" },
 ];
 
 const skills = {
-  "Languages & Tools": [
-    "Kotlin", "Java", "TypeScript", "JavaScript", "C++", "C#", "Python",
-    "React Native", "Dart", "Ada 95", "HTML5",
-  ],
-  "Frameworks & Platforms": [
-    "Android SDK", "Unity", "Flutter", "A-Frame", "GearVR Framework",
-    "Android Studio", "Gradle",
-  ],
-  "AI & ML": [
-    "Claude Code", "Amazon Q", "MCP", "Stable Diffusion fine-tuning",
-    "Computer Vision neural networks", "LLM APIs",
-  ],
-  "DevOps & Tools": [
-    "Git", "GitHub Actions", "Jenkins", "Subversion",
-  ],
-  "Soft Skills": [
-    "Public speaking", "Technical writing", "Teaching", "Leadership",
-    "Community management", "Startup mentoring", "Video production",
-  ],
+  "Languages & Tools": ["Kotlin","Java","TypeScript","JavaScript","C++","C#","Python","React Native","Dart","Ada 95","HTML5"],
+  "Frameworks & Platforms": ["Android SDK","Unity","Flutter","A-Frame","GearVR Framework","Android Studio","Gradle"],
+  "AI & ML": ["Claude Code","Amazon Q","MCP","Stable Diffusion fine-tuning","Computer Vision neural networks","LLM APIs"],
+  "DevOps & Tools": ["Git","GitHub Actions","Jenkins","Subversion"],
+  "Soft Skills": ["Public speaking","Technical writing","Teaching","Leadership","Community management","Startup mentoring","Video production"],
 };
-
-const highlights = [
-  {
-    text: "Co-author of \"Mastering the Big Screen\" — guide about developing TV apps in React Native.",
-  },
-  {
-    text: "Creator and maintainer of multi-TV React Native app sample.",
-    link: "https://github.com/AmazonAppDev/react-native-multi-tv-app-sample",
-  },
-  {
-    text: "Talk on using LLM assistants for software engineering.",
-    link: "https://bit.ly/49FpYQx",
-  },
-  {
-    text: "Talk at DevRelCon 2021 — \"The Job of Partner Engineering\".",
-    link: "https://developerrelations.com/event/devrelcon-2021",
-  },
-  {
-    text: "ARCore + ML Kit demo for luggage sizing in the Tui Android app — presented at Droidcon Berlin, Vienna, UK, and GDG DevFest London 2019.",
-  },
-  {
-    text: "Codemotion conference program committee member for Mobile.",
-  },
-  {
-    text: "Ecstasis VR — final project at Upload VR (Unity + SteamVR, avatar inverse kinematics, audio-reactive shaders).",
-    link: "https://vimeo.com/234285279",
-  },
-  {
-    text: "Speaker at Droidcon, Codemotion, App.js, CityJS, React Native London, and more.",
-    link: "https://speakerdeck.com/joaobiriba",
-  },
-];
 
 export default function ResumePage() {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
-      <h1 className="text-2xl font-bold text-foreground">
-        <span className="text-accent">$</span> cat resume.json
+    <div className="mx-auto max-w-4xl px-6 md:px-8 py-20">
+      <div className="font-mono-xs">§ Resume</div>
+      <h1 className="mt-2 font-display text-5xl md:text-7xl tracking-tight leading-[0.95] max-w-[16ch]">
+        Fifteen years, <em className="not-italic text-muted italic">one through-line.</em>
       </h1>
-      <p className="mt-2 text-sm text-muted">
+      <p className="mt-6 max-w-[56ch] text-[15px] text-muted">
         Senior Developer Advocate based in London — building bridges between
         developers and technology across mobile, TV, and XR platforms.
       </p>
 
-      {/* Skills */}
-      <section className="mt-12">
-        <h2 className="text-base font-semibold text-accent">
-          ## Skills
-        </h2>
-        <div className="mt-4 space-y-4">
+      <section className="mt-20">
+        <div className="font-mono-xs">§ 01 — Skills</div>
+        <div className="mt-6 space-y-6">
           {Object.entries(skills).map(([category, items]) => (
             <div key={category}>
-              <h3 className="text-xs font-medium text-muted">
-                {category}
-              </h3>
-              <div className="mt-2 flex flex-wrap gap-1.5">
+              <h3 className="text-[11px] uppercase tracking-[0.16em] text-muted">{category}</h3>
+              <div className="mt-3 flex flex-wrap gap-2">
                 {items.map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-md bg-surface px-2.5 py-1 text-[11px] text-foreground"
-                  >
+                  <span key={skill} className="rounded-full border border-[--border] bg-white/[0.02] px-3 py-1 text-[12.5px] text-foreground">
                     {skill}
                   </span>
                 ))}
@@ -205,63 +106,25 @@ export default function ResumePage() {
         </div>
       </section>
 
-      {/* Highlights */}
-      <section className="mt-12">
-        <h2 className="text-base font-semibold text-accent">
-          ## Highlights
-        </h2>
-        <ul className="mt-4 space-y-2">
-          {highlights.map((item, i) => (
-            <li
-              key={i}
-              className="flex items-start gap-2 text-xs text-muted"
-            >
-              <span className="mt-0.5 text-accent">-</span>
-              {item.link ? (
-                <a
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-accent"
-                >
-                  {item.text}
-                </a>
-              ) : (
-                <span>{item.text}</span>
-              )}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* Experience */}
-      <section className="mt-12">
-        <h2 className="text-base font-semibold text-accent">
-          ## Experience
-        </h2>
-        <div className="mt-4 space-y-6">
+      <section className="mt-20">
+        <div className="font-mono-xs">§ 02 — Experience</div>
+        <div className="mt-8 relative border-l border-[--border] pl-8">
           {experience.map((job, i) => (
-            <div key={i} className="terminal-box p-5">
-              <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-                <h3 className="text-sm font-semibold text-foreground">
-                  {job.role}
-                </h3>
-                <span className="text-[11px] text-muted">
-                  {job.period}
-                </span>
+            <div key={i} className="relative mb-12">
+              <span className="absolute -left-[34px] top-2 h-2 w-2 rounded-full bg-[--accent]" style={{ boxShadow: "0 0 8px 1px var(--accent)" }} />
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                <h3 className="font-display text-2xl tracking-tight text-foreground">{job.role}</h3>
+                <span className="font-mono-xs">{job.period}</span>
               </div>
-              <p className="mt-0.5 text-xs">
-                <span className="text-accent">{job.company}</span>
+              <p className="mt-1 text-[13px]">
+                <span className="text-foreground">{job.company}</span>
                 <span className="text-muted"> · {job.location}</span>
               </p>
-              <ul className="mt-3 space-y-1.5">
+              <ul className="mt-4 space-y-2">
                 {job.highlights.map((h, j) => (
-                  <li
-                    key={j}
-                    className="flex items-start gap-2 text-xs leading-relaxed text-muted"
-                  >
-                    <span className="mt-0.5 text-border">-</span>
-                    {h}
+                  <li key={j} className="flex items-start gap-3 text-[14px] leading-relaxed text-muted">
+                    <span className="mt-2 h-1 w-3 shrink-0 bg-[--border-strong]" />
+                    <span>{h}</span>
                   </li>
                 ))}
               </ul>
@@ -270,19 +133,14 @@ export default function ResumePage() {
         </div>
       </section>
 
-      {/* Education */}
-      <section className="mt-12">
-        <h2 className="text-base font-semibold text-accent">
-          ## Education
-        </h2>
-        <div className="mt-4 space-y-3">
+      <section className="mt-20">
+        <div className="font-mono-xs">§ 03 — Education</div>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
           {education.map((edu, i) => (
-            <div key={i} className="terminal-box p-4">
-              <h3 className="text-sm font-semibold text-foreground">
-                {edu.title}
-              </h3>
-              <p className="mt-0.5 text-xs text-muted">
-                <span className="text-accent">{edu.institution}</span> · {edu.year}
+            <div key={i} className="glass-card p-5">
+              <h3 className="font-display text-[22px] leading-tight tracking-tight text-foreground">{edu.title}</h3>
+              <p className="mt-2 text-[13px] text-muted">
+                <span className="text-foreground">{edu.institution}</span> · {edu.year}
               </p>
             </div>
           ))}

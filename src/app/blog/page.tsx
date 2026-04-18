@@ -3,9 +3,8 @@ import BlogList from "@/components/BlogList";
 import { getAllPosts, getAllTags } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Articles about mobile development, TV apps, Kotlin, React Native, and emerging technologies.",
+  title: "Writing",
+  description: "Articles about mobile development, TV apps, Kotlin, React Native, and emerging technologies.",
 };
 
 export default function BlogPage() {
@@ -13,18 +12,19 @@ export default function BlogPage() {
   const tags = getAllTags();
 
   return (
-    <div className="mx-auto max-w-5xl px-6 py-16">
-      <div className="mb-10 boot-flicker">
-        <h1 className="text-2xl font-bold text-foreground">
-          <span className="text-accent">$</span> cat blog/*
-        </h1>
-        <p className="mt-2 text-sm text-muted">
-          Thoughts on software development, mobile apps, TV development, and
-          more.
-        </p>
-      </div>
+    <div className="mx-auto max-w-6xl px-6 md:px-8 py-20">
+      <div className="font-mono-xs">§ Writing</div>
+      <h1 className="mt-2 font-display text-5xl md:text-7xl tracking-tight leading-[0.95] max-w-[14ch]">
+        Field notes from <em className="not-italic text-muted italic">the platforms I live in.</em>
+      </h1>
+      <p className="mt-6 max-w-[56ch] text-[15px] text-muted">
+        Thoughts on software development, mobile apps, TV development, and
+        whatever new technology catches my eye.
+      </p>
 
-      <BlogList posts={posts} tags={tags} />
+      <div className="mt-12">
+        <BlogList posts={posts} tags={tags} />
+      </div>
     </div>
   );
 }

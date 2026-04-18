@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import BootSequence from "@/components/BootSequence";
+import VideoBackdrop from "@/components/VideoBackdrop";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE_CONFIG } from "@/lib/constants";
 import "./globals.css";
@@ -27,19 +27,23 @@ export const metadata: Metadata = {
     description: SITE_CONFIG.description,
     creator: "@giolaq",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        {/* Google Fonts: Instrument Serif (display) + Inter (body) + JetBrains Mono */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <GoogleAnalytics gaId="G-SGTFTP5C6W" />
       <body className="antialiased bg-background text-foreground">
         <script
@@ -59,13 +63,15 @@ export default function RootLayout({
             }),
           }}
         />
-        <BootSequence>
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-        </BootSequence>
+
+        {/* Cinematic background — sits behind everything on every page */}
+        <VideoBackdrop />
+
+        <div className="relative z-10 flex min-h-screen flex-col">
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

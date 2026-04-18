@@ -1,92 +1,92 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { SITE_CONFIG } from "@/lib/constants";
-import TypingText from "./TypingText";
-import AsciiArt from "./AsciiArt";
-import AsciiParticleHero from "./AsciiParticleHero";
 
+/**
+ * Cinematic hero — full-bleed video bg (inherited from layout), glass CTA,
+ * Instrument Serif display headline.
+ */
 export default function HeroSection() {
-  const [cmdDone, setCmdDone] = useState(false);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => setLoaded(true), []);
 
   return (
-    <section className="pb-16 pt-20">
-      <AsciiParticleHero />
-      <div className="terminal-box scanlines relative overflow-hidden">
-        {/* Terminal title bar */}
-        <div className="flex items-center gap-2 border-b border-dashed border-border px-4 py-3">
-          <span className="text-xs text-muted">~/giolaq</span>
-          <span className="text-xs text-accent">$</span>
-          <span className="text-xs text-foreground">
-            <TypingText text="whoami" speed={80} onDone={() => setCmdDone(true)} cursor={!cmdDone} />
-          </span>
+    <section className="relative pt-12 pb-28 md:pt-20 md:pb-40">
+      <div className="mx-auto flex max-w-6xl flex-col items-center px-6 text-center md:px-8">
+        {/* Eyebrow */}
+        <div className="animate-fade-rise d1 mb-8 inline-flex items-center gap-3 rounded-full px-4 py-1.5 font-mono-xs">
+          <span
+            className="h-1.5 w-1.5 rounded-full bg-[--accent] pulse-dot"
+            style={{ boxShadow: "0 0 8px 1px var(--accent)" }}
+          />
+          <span>Developer Advocate · Amazon · London</span>
         </div>
 
-        <div
-          className="flex flex-col gap-8 p-6 sm:flex-row sm:items-start"
-          style={{
-            opacity: cmdDone ? 1 : 0,
-            transform: cmdDone ? "translateY(0)" : "translateY(8px)",
-            transition: "opacity 0.4s ease-out, transform 0.4s ease-out",
-          }}
+        {/* Headline */}
+        <h1
+          ref={headlineRef}
+          className="animate-fade-rise d2 font-display text-[44px] leading-[0.95] tracking-[-0.035em] sm:text-6xl md:text-7xl lg:text-[112px] max-w-[18ch] text-balance"
+          style={{ fontFamily: "'Instrument Serif', serif" }}
         >
-          {/* Avatar + ASCII art */}
-          <div className="shrink-0 flex flex-col items-center gap-3 sm:items-start">
-            <Image
-              src={SITE_CONFIG.author.avatar}
-              alt={SITE_CONFIG.author.name}
-              width={120}
-              height={120}
-              className="rounded-full object-cover border border-dashed border-border boot-flicker"
-              priority
-            />
-            <AsciiArt />
+          Building{" "}
+          <em className="not-italic text-muted italic">bridges</em> between
+          developers{" "}
+          <em className="not-italic text-muted italic">
+            and the platforms they dream in.
+          </em>
+        </h1>
+
+        {/* Sub */}
+        <p className="animate-fade-rise d3 mt-8 max-w-[44ch] text-[15px] leading-relaxed text-muted sm:text-[17px]">
+          {SITE_CONFIG.author.bio}
+        </p>
+
+        {/* CTAs */}
+        <div className="animate-fade-rise d4 mt-12 flex flex-wrap items-center justify-center gap-4">
+          <Link
+            href="/blog"
+            className="liquid-glass hover-lift inline-flex items-center gap-3 rounded-full px-10 py-4 text-[15px]"
+          >
+            <span>Read the writing</span>
+            <span className="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-white/10">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
+          </Link>
+          <Link
+            href="/talks"
+            className="inline-flex items-center gap-2 rounded-full px-6 py-4 text-[14px] text-muted hover:text-foreground transition-colors"
+          >
+            <span>See talks</span>
+            <span aria-hidden>→</span>
+          </Link>
+        </div>
+
+        {/* Meta row */}
+        <div className="animate-fade-rise d5 mt-20 flex flex-wrap justify-center gap-x-14 gap-y-7 font-mono-xs">
+          <div className="flex flex-col items-center gap-1.5">
+            <span className="font-display text-2xl text-foreground tracking-tight normal-case">15+</span>
+            <span>Years shipping</span>
           </div>
-
-          {/* Content */}
-          <div className="flex flex-col gap-5 min-w-0">
-            <div className="flex items-center gap-2 animate-fade-in-up stagger-1 slow-blink">
-              <span className="h-2 w-2 rounded-full bg-yellow-400" />
-              <span className="text-xs text-yellow-400">
-                Shipping code for Amazon by day, available for speaking &amp; collabs by night
-              </span>
-            </div>
-
-            <div className="animate-fade-in-up stagger-2">
-              <h1 className="text-2xl font-bold text-foreground sm:text-3xl">
-                Hi, I&apos;m{" "}
-                <span className="text-accent">Giovanni</span>
-              </h1>
-              <p className="mt-1 text-xs text-muted">
-                {SITE_CONFIG.author.role}
-              </p>
-            </div>
-
-            <p className="text-sm leading-relaxed text-muted animate-fade-in-up stagger-3">
-              {SITE_CONFIG.author.bio}
-            </p>
-
-            <div className="flex flex-wrap gap-2 animate-fade-in-up stagger-4">
-              {[
-                { href: SITE_CONFIG.social.github, label: "GitHub" },
-                { href: SITE_CONFIG.social.twitter, label: "Twitter" },
-                { href: SITE_CONFIG.social.linkedin, label: "LinkedIn" },
-                { href: SITE_CONFIG.social.medium, label: "Medium" },
-              ].map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-md border border-dashed border-border px-3 py-1.5 text-xs text-muted transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_10px_-3px_var(--accent)]"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
+          <div className="flex flex-col items-center gap-1.5">
+            <span className="font-display text-2xl text-foreground tracking-tight normal-case">Android · RN · XR</span>
+            <span>Stack breadth</span>
+          </div>
+          <div className="flex flex-col items-center gap-1.5">
+            <span className="font-display text-2xl text-foreground tracking-tight normal-case">Amazon</span>
+            <span>Currently</span>
+          </div>
+          <div className="flex flex-col items-center gap-1.5">
+            <span className="font-display text-2xl text-foreground tracking-tight normal-case">2026</span>
+            <span>Chapter</span>
           </div>
         </div>
+
+        {loaded ? null : null}
       </div>
     </section>
   );
