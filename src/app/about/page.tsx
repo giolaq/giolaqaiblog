@@ -14,10 +14,7 @@ export default function AboutPage() {
     name: SITE_CONFIG.author.name,
     url: SITE_CONFIG.url,
     jobTitle: "Senior Developer Advocate",
-    worksFor: {
-      "@type": "Organization",
-      name: "Amazon",
-    },
+    worksFor: { "@type": "Organization", name: "Amazon" },
     image: `${SITE_CONFIG.url}${SITE_CONFIG.author.avatar}`,
     sameAs: [
       SITE_CONFIG.social.github,
@@ -29,132 +26,113 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
+    <div className="mx-auto max-w-4xl px-6 md:px-8 py-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
-      <h1 className="text-2xl font-bold text-foreground">
-        <span className="text-accent">$</span> cat about.md
+      <div className="font-mono-xs">§ About</div>
+      <h1 className="mt-2 font-display text-5xl md:text-7xl tracking-tight leading-[0.95] max-w-[14ch]">
+        A <em className="not-italic text-muted italic">builder</em> who refuses
+        to pick one lane.
       </h1>
 
-      <div className="mt-8 terminal-box overflow-hidden">
-        <div className="flex items-center gap-2 border-b border-dashed border-border px-4 py-3">
-          <span className="text-xs text-muted">about.md</span>
+      <div className="mt-14 grid gap-10 md:grid-cols-[180px_1fr]">
+        <div>
+          <Image
+            src={SITE_CONFIG.author.avatar}
+            alt={SITE_CONFIG.author.name}
+            width={160}
+            height={160}
+            className="rounded-2xl object-cover border border-[--border]"
+            priority
+          />
         </div>
 
-        <div className="p-6">
-          <div className="flex justify-center sm:justify-start">
-            <Image
-              src={SITE_CONFIG.author.avatar}
-              alt={SITE_CONFIG.author.name}
-              width={140}
-              height={140}
-              className="rounded-lg border border-dashed border-border"
-              priority
-            />
-          </div>
-
-          <div className="mt-6 space-y-5 text-sm leading-relaxed text-muted">
-            <p>
-              Hi! I&apos;m <strong className="text-foreground">Giovanni Laquidara</strong>,
-              a Senior Developer Advocate at Amazon, based in London, England. I&apos;m a builder
-              and generalist who crosses disciplines — connecting dots across mobile, TV, agentic AI,
-              and developer communities.
-            </p>
-
-            <p>
-              I believe the title &quot;software engineer&quot; is giving way to
-              &quot;builder.&quot; With agentic AI as a force multiplier, everyone codes now — the PM,
-              the designer, the data scientist. The strongest people are generalists who overlap across
-              traditional roles and connect ideas from completely unrelated domains. That&apos;s the
-              kind of work I love doing.
-            </p>
-
-            <p>
-              I studied at Universit&agrave; di Roma Tor Vergata and have been building across mobile,
-              VR/AR, real-time defence systems, and IoT. For fun, I enjoy low-level programming, IoT
-              hacking, and command-line apps.
-            </p>
-
-            <h2 className="!mt-10 text-base font-semibold text-accent">
-              ## What I Do
-            </h2>
-
-            <ul className="space-y-3 pl-4">
-              <li className="flex items-start gap-2">
-                <span className="mt-1 text-accent">-</span>
-                <span>
-                  <strong className="text-foreground">Developer Advocacy</strong> —
-                  Creating content, giving talks, and building tools to help developers succeed. I focus
-                  on mobile development, TV apps, and cross-platform solutions.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="mt-1 text-accent">-</span>
-                <span>
-                  <strong className="text-foreground">Building with Agentic AI</strong> —
-                  Leveraging AI agents as a force multiplier to ship faster across disciplines.
-                  From React Native to Kotlin to TypeScript — I build across mobile, TV, VR/AR,
-                  and real-time systems.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="mt-1 text-accent">-</span>
-                <span>
-                  <strong className="text-foreground">Technical Writing</strong> —
-                  Writing articles and tutorials about software development, covering topics from
-                  functional programming to hardware hacking.
-                </span>
-              </li>
-            </ul>
-
-            <h2 className="!mt-10 text-base font-semibold text-accent">
-              ## Background
-            </h2>
-
-            <p>
-              Over the years, I&apos;ve worn many hats: software engineer, VR and mobile developer,
-              real-time software architect, and developer advocate. There&apos;s a 50% overlap across
-              all of these roles — and that&apos;s the point. The best ideas come from connecting dots
-              across completely unrelated domains. No narrow specialist does that.
-            </p>
-
-            <p>
-              I write about agentic AI, React Native, TV app development, hardware hacking (like
-              Flipper Zero), and whatever new technology catches my eye. You can find my writing
-              on this blog and across platforms like Medium and Hashnode.
-            </p>
-
-            <h2 className="!mt-10 text-base font-semibold text-accent">
-              ## Get in Touch
-            </h2>
-
-            <p>
-              I&apos;m always happy to connect with fellow developers and tech enthusiasts.
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {[
-                { href: SITE_CONFIG.social.github, label: "GitHub" },
-                { href: SITE_CONFIG.social.twitter, label: "X (Twitter)" },
-                { href: SITE_CONFIG.social.linkedin, label: "LinkedIn" },
-                { href: SITE_CONFIG.social.medium, label: "Medium" },
-              ].map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-md border border-dashed border-border px-3 py-1.5 text-xs text-muted transition-colors hover:border-accent hover:text-accent"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
+        <div className="space-y-6 text-[15px] leading-relaxed text-muted max-w-[62ch]">
+          <p>
+            Hi — I&apos;m{" "}
+            <strong className="text-foreground">Giovanni Laquidara</strong>, a
+            Senior Developer Advocate at Amazon based in London. I work across
+            mobile, TV, agentic AI, and developer communities, and I&apos;m
+            happiest when the work sits at the seam between two disciplines.
+          </p>
+          <p>
+            I think the title &quot;software engineer&quot; is giving way to
+            &quot;builder.&quot; With agentic AI as a force multiplier,
+            everyone codes now — the PM, the designer, the data scientist. The
+            strongest people are generalists who overlap across traditional
+            roles and connect ideas from unrelated domains.
+          </p>
+          <p>
+            I studied at Università di Roma Tor Vergata and have been building
+            across mobile, VR/AR, real-time defence systems, and IoT. For fun:
+            low-level programming, IoT hacking, and command-line toys.
+          </p>
         </div>
       </div>
+
+      <section className="mt-24">
+        <div className="font-mono-xs">§ 01 — What I do</div>
+        <h2 className="mt-2 font-display text-4xl tracking-tight">
+          Three modes of work.
+        </h2>
+
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {[
+            {
+              title: "Developer Advocacy",
+              body: "Content, talks, and tools that help developers succeed on mobile, TV, and cross-platform stacks.",
+            },
+            {
+              title: "Building with Agentic AI",
+              body: "Using AI agents as a force multiplier to ship faster across React Native, Kotlin, TS — mobile, TV, XR, real-time.",
+            },
+            {
+              title: "Technical Writing",
+              body: "Articles and tutorials across functional programming, hardware hacking, and whatever catches my eye.",
+            },
+          ].map((item) => (
+            <div key={item.title} className="glass-card p-6">
+              <h3 className="font-display text-2xl tracking-tight text-foreground">
+                {item.title}
+              </h3>
+              <p className="mt-3 text-[14px] leading-relaxed text-muted">
+                {item.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-24">
+        <div className="font-mono-xs">§ 02 — Get in touch</div>
+        <h2 className="mt-2 font-display text-4xl tracking-tight">
+          Say hi.
+        </h2>
+        <p className="mt-4 max-w-[50ch] text-[15px] text-muted">
+          Happy to connect with fellow developers and tech enthusiasts — for
+          talks, collabs, or just a chat about TV apps and agents.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          {[
+            { href: SITE_CONFIG.social.github, label: "GitHub" },
+            { href: SITE_CONFIG.social.twitter, label: "X (Twitter)" },
+            { href: SITE_CONFIG.social.linkedin, label: "LinkedIn" },
+            { href: SITE_CONFIG.social.medium, label: "Medium" },
+          ].map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="liquid-glass hover-lift rounded-full px-5 py-2.5 text-[13px]"
+            >
+              {link.label} →
+            </a>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
