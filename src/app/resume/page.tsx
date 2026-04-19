@@ -81,7 +81,7 @@ export default function ResumePage() {
     <div className="mx-auto max-w-4xl px-6 md:px-8 py-20">
       <div className="font-mono-xs">§ Resume</div>
       <h1 className="mt-2 font-display text-5xl md:text-7xl tracking-tight leading-[0.95] max-w-[16ch]">
-        Fifteen years, <em className="not-italic text-muted italic">one through-line.</em>
+        23 years, <em className="not-italic text-muted italic">one through-line.</em>
       </h1>
       <p className="mt-6 max-w-[56ch] text-[15px] text-muted">
         Senior Developer Advocate based in London — building bridges between
