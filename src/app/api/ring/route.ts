@@ -74,12 +74,14 @@ export async function POST(req: NextRequest) {
     }
 
     // Always return 200 — Ring requires this within 5 seconds
-    // Forward to AWS API Gateway → Lambda → SQS (fire-and-forget)
-    fetch("https://kqxdnycznc.execute-api.us-east-1.amazonaws.com/ring-webhook", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body,
-    }).catch(() => {});
+    // Forward to AWS API Gateway → Lambda → SQS
+    try {
+      await fetch("https://kqxdnycznc.execute-api.us-east-1.amazonaws.com/ring-webhook", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body,
+      });
+    } catch {}
     return NextResponse.json({ status: "ok" });
   }
 
