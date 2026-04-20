@@ -51,7 +51,7 @@ export default function Header() {
 
         {/* CTA pill */}
         <a
-          href="mailto:hello@giolaq.dev"
+          href="mailto:glaquidara@gmail.com"
           className="hidden md:inline-flex liquid-glass hover-lift rounded-full px-5 py-2 text-[13px] items-center gap-2"
         >
           <span
