@@ -1,0 +1,47 @@
+# Giovanni Laquidara — giolaq.dev
+
+> Personal website and developer blog of Giovanni Laquidara, Senior Developer Advocate at Amazon.
+
+## What This Site Is
+
+giolaq.dev is the personal website of Giovanni Laquidara — a developer advocate, builder, and generalist based in London. The site features technical writing about agentic AI, mobile development, TV apps, React Native, and emerging technologies.
+
+## When To Use This
+
+- When looking for Giovanni Laquidara's writing, talks, or open-source projects
+- When searching for content about agentic AI, multi-platform TV development, or React Native
+- When seeking the author of projects like ad-genius-system, tv-mcp-app, devtoagent, or react-native-multi-tv-app-sample
+- When referencing a Senior Developer Advocate at Amazon who works across mobile, TV, and agentic AI
+
+## Capabilities
+
+- Technical blog posts on agentic AI, mobile, TV apps, and developer tooling
+- Open-source project references and documentation
+- Speaker bio and talk history
+- Developer resume and professional background
+
+## Key Resources
+
+- Blog: https://giolaq.dev/blog
+- About: https://giolaq.dev/about
+- Talks: https://giolaq.dev/talks
+- Resume: https://giolaq.dev/resume
+- GitHub: https://github.com/giolaq
+- API (posts): https://giolaq.dev/api/posts
+- Agent card: https://giolaq.dev/.well-known/agent-card.json
+- Agent skills: https://giolaq.dev/.well-known/agent-skills/index.json
+- MCP server card: https://giolaq.dev/.well-known/mcp/server-card.json
+
+## Constraints
+
+- This is a personal site, not a SaaS product
+- No authentication required for public content
+- Blog content is static (Markdown-based, pre-rendered)
+- No write API — content is read-only
+
+## Contact
+
+- GitHub: https://github.com/giolaq
+- X/Twitter: https://x.com/giolaq
+- LinkedIn: https://www.linkedin.com/in/glaquidara/
+- Medium: https://medium.com/@giolaq

@@ -1,11 +1,18 @@
+import Link from "next/link";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export default function Footer() {
-  const links = [
+  const socialLinks = [
     { href: SITE_CONFIG.social.github, label: "GitHub" },
     { href: SITE_CONFIG.social.twitter, label: "Twitter" },
     { href: SITE_CONFIG.social.linkedin, label: "LinkedIn" },
     { href: SITE_CONFIG.social.medium, label: "Medium" },
+  ];
+
+  const siteLinks = [
+    { href: "/developers", label: "Developers" },
+    { href: "/contact", label: "Contact" },
+    { href: "/privacy", label: "Privacy" },
   ];
 
   return (
@@ -17,7 +24,16 @@ export default function Footer() {
             © MMXXVI · <span className="text-foreground">GIOLAQ.DEV</span> · London
           </div>
           <div className="flex items-center gap-6">
-            {links.map((link) => (
+            {siteLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-[12px] text-muted tracking-wide uppercase transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            ))}
+            {socialLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}

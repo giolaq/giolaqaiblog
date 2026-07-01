@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   },
   description: SITE_CONFIG.description,
   metadataBase: new URL(SITE_CONFIG.url),
+  alternates: {
+    canonical: SITE_CONFIG.url,
+  },
   openGraph: {
     title: SITE_CONFIG.title,
     description: SITE_CONFIG.description,
@@ -20,6 +23,7 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
     locale: "en_US",
     type: "website",
+    images: [{ url: `${SITE_CONFIG.url}/avatar.png`, width: 400, height: 400 }],
   },
   twitter: {
     card: "summary_large_image",
@@ -49,18 +53,56 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: SITE_CONFIG.name,
-              url: SITE_CONFIG.url,
-              description: SITE_CONFIG.description,
-              author: {
-                "@type": "Person",
-                name: SITE_CONFIG.author.name,
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: SITE_CONFIG.name,
                 url: SITE_CONFIG.url,
+                description: SITE_CONFIG.description,
+                author: {
+                  "@type": "Person",
+                  name: SITE_CONFIG.author.name,
+                  url: SITE_CONFIG.url,
+                },
+                speakable: {
+                  "@type": "SpeakableSpecification",
+                  cssSelector: ["h1", ".hero-subtitle", "[data-speakable]"],
+                },
               },
-            }),
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "giolaq.dev",
+                url: SITE_CONFIG.url,
+                logo: `${SITE_CONFIG.url}/avatar.png`,
+                contactPoint: {
+                  "@type": "ContactPoint",
+                  contactType: "professional",
+                  url: SITE_CONFIG.social.linkedin,
+                },
+                sameAs: [
+                  SITE_CONFIG.social.github,
+                  SITE_CONFIG.social.twitter,
+                  SITE_CONFIG.social.linkedin,
+                ],
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                name: "giolaq.dev API",
+                applicationCategory: "DeveloperApplication",
+                operatingSystem: "Web",
+                url: `${SITE_CONFIG.url}/api/posts`,
+                description:
+                  "Public read-only API for blog posts and author information on giolaq.dev.",
+                offers: {
+                  "@type": "Offer",
+                  price: "0",
+                  priceCurrency: "USD",
+                },
+              },
+            ]),
           }}
         />
 
