@@ -80,6 +80,12 @@ export default function RootLayout({
                   "@type": "ContactPoint",
                   contactType: "professional",
                   url: SITE_CONFIG.social.linkedin,
+                  email: "glaquidara@gmail.com",
+                },
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "London",
+                  addressCountry: "GB",
                 },
                 sameAs: [
                   SITE_CONFIG.social.github,
@@ -101,6 +107,46 @@ export default function RootLayout({
                   price: "0",
                   priceCurrency: "USD",
                 },
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: SITE_CONFIG.url },
+                  { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_CONFIG.url}/blog` },
+                  { "@type": "ListItem", position: 3, name: "Developers", item: `${SITE_CONFIG.url}/developers` },
+                  { "@type": "ListItem", position: 4, name: "About", item: `${SITE_CONFIG.url}/about` },
+                ],
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: [
+                  {
+                    "@type": "Question",
+                    name: "What is giolaq.dev?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "giolaq.dev is the personal website and technical blog of Giovanni Laquidara, a Senior Developer Advocate at Amazon. It covers agentic AI, mobile development, TV apps, and React Native.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Does giolaq.dev have an API?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Yes. giolaq.dev exposes a free, read-only JSON API at /api/posts and /api/author. No authentication is required. The full OpenAPI spec is at /openapi.json.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "How can AI agents integrate with giolaq.dev?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "AI agents can discover giolaq.dev through /llms.txt, /.well-known/agent-card.json, /.well-known/mcp/server-card.json, or by appending ?mode=agent to the homepage for a structured JSON view.",
+                    },
+                  },
+                ],
               },
             ]),
           }}

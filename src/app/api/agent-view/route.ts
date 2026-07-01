@@ -10,32 +10,51 @@ export async function GET() {
     description: SITE_CONFIG.description,
     url: SITE_CONFIG.url,
     type: "personal-website",
-    capabilities: ["blog", "portfolio", "speaker-info"],
+    capabilities: ["blog", "portfolio", "speaker-info", "api", "mcp"],
     api: {
-      posts: {
-        url: `${SITE_CONFIG.url}/api/posts`,
-        method: "GET",
-        description: "List all blog posts",
-      },
-      post: {
-        url: `${SITE_CONFIG.url}/api/posts/{slug}`,
-        method: "GET",
-        description: "Get a single post by slug",
-      },
-      author: {
-        url: `${SITE_CONFIG.url}/api/author`,
-        method: "GET",
-        description: "Get author information",
+      openapi: `${SITE_CONFIG.url}/openapi.json`,
+      base_url: `${SITE_CONFIG.url}/api`,
+      authentication: "none",
+      rate_limit: "1000 requests/hour",
+      endpoints: {
+        posts: {
+          url: `${SITE_CONFIG.url}/api/posts`,
+          method: "GET",
+          description: "List all blog posts",
+        },
+        post: {
+          url: `${SITE_CONFIG.url}/api/posts/{slug}`,
+          method: "GET",
+          description: "Get a single post by slug",
+        },
+        author: {
+          url: `${SITE_CONFIG.url}/api/author`,
+          method: "GET",
+          description: "Get author information",
+        },
       },
     },
     discovery: {
       llms_txt: `${SITE_CONFIG.url}/llms.txt`,
       agent_card: `${SITE_CONFIG.url}/.well-known/agent-card.json`,
       agent_skills: `${SITE_CONFIG.url}/.well-known/agent-skills/index.json`,
+      mcp_endpoint: `${SITE_CONFIG.url}/.well-known/mcp`,
       mcp_server_card: `${SITE_CONFIG.url}/.well-known/mcp/server-card.json`,
+      api_catalog: `${SITE_CONFIG.url}/.well-known/api-catalog`,
+      openapi: `${SITE_CONFIG.url}/openapi.json`,
+      auth_md: `${SITE_CONFIG.url}/auth.md`,
       markdown: `${SITE_CONFIG.url}/index.md`,
     },
-    authentication: "none",
+    authentication: {
+      required: false,
+      method: "none",
+      docs: `${SITE_CONFIG.url}/auth.md`,
+    },
+    error_format: {
+      content_type: "application/json",
+      fields: ["error", "message", "status"],
+      example: { error: "not_found", message: "Resource not found.", status: 404 },
+    },
     recent_posts: posts.map((p) => ({
       title: p.title,
       slug: p.slug,

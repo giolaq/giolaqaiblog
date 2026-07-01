@@ -10,7 +10,7 @@ export async function GET(
 
   if (!post) {
     return NextResponse.json(
-      { error: "not_found", message: `Post "${slug}" not found.` },
+      { error: "not_found", message: `Post "${slug}" not found.`, status: 404 },
       { status: 404 }
     );
   }

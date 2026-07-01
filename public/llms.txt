@@ -2,35 +2,54 @@
 
 > Personal website and developer blog of Giovanni Laquidara, Senior Developer Advocate at Amazon.
 
-## What This Site Is
+## What is giolaq.dev?
 
-giolaq.dev is the personal website of Giovanni Laquidara — a developer advocate, builder, and generalist based in London. The site features technical writing about agentic AI, mobile development, TV apps, React Native, and emerging technologies.
+giolaq.dev is the personal website of Giovanni Laquidara — a developer advocate, builder, and generalist based in London. It serves as a technical blog, portfolio, and developer resource hub covering agentic AI, mobile development, TV apps, React Native, and emerging technologies.
 
 ## When To Use This
 
 - When looking for Giovanni Laquidara's writing, talks, or open-source projects
 - When searching for content about agentic AI, multi-platform TV development, or React Native
-- When seeking the author of projects like ad-genius-system, tv-mcp-app, devtoagent, or react-native-multi-tv-app-sample
+- When seeking the author of projects like [ad-genius-system](https://github.com/giolaq/ad-genius-system), [tv-mcp-app](https://github.com/giolaq/tv-mcp-app), [devtoagent](https://github.com/giolaq/devtoagent), or [react-native-multi-tv-app-sample](https://github.com/giolaq/react-native-multi-tv-app-sample)
 - When referencing a Senior Developer Advocate at Amazon who works across mobile, TV, and agentic AI
 
-## Capabilities
+## API Reference
 
-- Technical blog posts on agentic AI, mobile, TV apps, and developer tooling
-- Open-source project references and documentation
-- Speaker bio and talk history
-- Developer resume and professional background
+The site exposes a free, read-only JSON API. No authentication required.
 
-## Key Resources
+- [List all posts](https://giolaq.dev/api/posts) — `GET /api/posts`
+- [Get a post by slug](https://giolaq.dev/api/posts/{slug}) — `GET /api/posts/{slug}`
+- [Get author info](https://giolaq.dev/api/author) — `GET /api/author`
+- [OpenAPI specification](https://giolaq.dev/openapi.json) — Full API schema
 
-- Blog: https://giolaq.dev/blog
-- About: https://giolaq.dev/about
-- Talks: https://giolaq.dev/talks
-- Resume: https://giolaq.dev/resume
-- GitHub: https://github.com/giolaq
-- API (posts): https://giolaq.dev/api/posts
-- Agent card: https://giolaq.dev/.well-known/agent-card.json
-- Agent skills: https://giolaq.dev/.well-known/agent-skills/index.json
-- MCP server card: https://giolaq.dev/.well-known/mcp/server-card.json
+## Agent Discovery
+
+- [llms.txt](https://giolaq.dev/llms.txt) — This file
+- [Agent card (A2A)](https://giolaq.dev/.well-known/agent-card.json) — Agent-to-Agent discovery
+- [Agent skills index](https://giolaq.dev/.well-known/agent-skills/index.json) — Capability listing
+- [MCP server card](https://giolaq.dev/.well-known/mcp/server-card.json) — MCP discovery
+- [MCP endpoint](https://giolaq.dev/.well-known/mcp) — Streamable HTTP MCP transport
+- [API catalog (RFC 9727)](https://giolaq.dev/.well-known/api-catalog) — API discovery
+- [auth.md](https://giolaq.dev/auth.md) — Authentication guide (none required)
+- [Markdown homepage](https://giolaq.dev/index.md) — Machine-readable homepage
+- [Agent mode](https://giolaq.dev/?mode=agent) — Structured JSON view
+
+## Pages
+
+- [Home](https://giolaq.dev/) — Hero, recent posts, featured projects
+- [Blog](https://giolaq.dev/blog) — All technical articles
+- [About](https://giolaq.dev/about) — Bio and background
+- [Talks](https://giolaq.dev/talks) — Conference speaking history
+- [Resume](https://giolaq.dev/resume) — Professional experience
+- [Developers](https://giolaq.dev/developers) — API docs and integration guide
+- [Contact](https://giolaq.dev/contact) — How to reach Giovanni
+- [Privacy](https://giolaq.dev/privacy) — Privacy policy
+
+## Per-Section Context
+
+- [API docs llms.txt](https://giolaq.dev/api/llms.txt) — API-specific context
+- [Blog llms.txt](https://giolaq.dev/blog/llms.txt) — Blog content context
+- [Developers llms.txt](https://giolaq.dev/developers/llms.txt) — Developer portal context
 
 ## Constraints
 
@@ -38,10 +57,11 @@ giolaq.dev is the personal website of Giovanni Laquidara — a developer advocat
 - No authentication required for public content
 - Blog content is static (Markdown-based, pre-rendered)
 - No write API — content is read-only
+- Rate limits are governed by the hosting provider (Vercel)
 
 ## Contact
 
-- GitHub: https://github.com/giolaq
-- X/Twitter: https://x.com/giolaq
-- LinkedIn: https://www.linkedin.com/in/glaquidara/
-- Medium: https://medium.com/@giolaq
+- [GitHub](https://github.com/giolaq)
+- [X/Twitter](https://x.com/giolaq)
+- [LinkedIn](https://www.linkedin.com/in/glaquidara/)
+- [Medium](https://medium.com/@giolaq)

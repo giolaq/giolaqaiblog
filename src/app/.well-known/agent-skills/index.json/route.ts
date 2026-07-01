@@ -2,22 +2,26 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   const skills = {
-    version: "1.0",
+    $schema:
+      "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
     skills: [
       {
         name: "get-blog-posts",
+        type: "skill-md",
+        url: "https://giolaq.dev/api/posts",
         description:
           "Retrieve published blog posts about agentic AI, mobile development, TV apps, React Native, and emerging technologies.",
-        endpoint: "https://giolaq.dev/api/posts",
         method: "GET",
         parameters: [],
-        returns: "JSON array of blog posts with title, slug, date, excerpt, and tags.",
+        returns:
+          "JSON array of blog posts with title, slug, date, description, and tags.",
       },
       {
         name: "get-post-by-slug",
+        type: "skill-md",
+        url: "https://giolaq.dev/api/posts/{slug}",
         description:
           "Retrieve a specific blog post by its URL slug, including full HTML content.",
-        endpoint: "https://giolaq.dev/api/posts/{slug}",
         method: "GET",
         parameters: [
           {
@@ -27,16 +31,19 @@ export async function GET() {
             description: "The URL slug of the blog post.",
           },
         ],
-        returns: "JSON object with post title, content (HTML), date, tags, and reading time.",
+        returns:
+          "JSON object with post title, content (HTML), date, tags, and reading time.",
       },
       {
         name: "get-author-info",
+        type: "skill-md",
+        url: "https://giolaq.dev/api/author",
         description:
           "Get information about Giovanni Laquidara — bio, role, social links, and expertise areas.",
-        endpoint: "https://giolaq.dev/api/author",
         method: "GET",
         parameters: [],
-        returns: "JSON object with author name, bio, role, social links, and areas of expertise.",
+        returns:
+          "JSON object with author name, bio, role, social links, and areas of expertise.",
       },
     ],
   };
