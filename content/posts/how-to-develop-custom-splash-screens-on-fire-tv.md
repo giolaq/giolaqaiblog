@@ -6,15 +6,15 @@ tags: ["Fire TV", "Android", "UI/UX", "Tutorial"]
 coverImage: ""
 ---
 
-Custom splash screens can significantly improve the perceived loading time and branding of your Fire TV application. In this article, we'll explore how to develop custom splash screens that create a great first impression.
+Custom splash screens can improve both the perceived loading time and the branding of your Fire TV application. This article walks through how to develop custom splash screens that make a great first impression.
 
 ## Why Custom Splash Screens?
 
-When users launch your app on Fire TV, the splash screen is the first thing they see. A well-designed splash screen:
+When users launch your app on Fire TV, the splash screen is the first thing they see. A well-designed one:
 
-- **Reinforces your brand** identity on the big screen
-- **Improves perceived performance** while the app loads
-- **Creates a professional impression** from the very first second
+- Reinforces your brand identity on the big screen
+- Improves perceived performance while the app loads
+- Creates a professional impression from the very first second
 
 ## Implementation
 

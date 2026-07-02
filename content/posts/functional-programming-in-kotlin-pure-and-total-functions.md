@@ -1,19 +1,16 @@
 ---
 title: "Functional Programming in Kotlin: Pure and Total Functions"
 date: "2023-04-11"
-description: "Understanding pure functions and total functions in Kotlin — writing side-effect-free code and using the Either data type for error handling."
+description: "Understanding pure functions and total functions in Kotlin: writing side-effect-free code and using the Either data type for error handling."
 tags: ["Kotlin", "Functional Programming", "Software Development"]
 coverImage: ""
 ---
 
-In functional programming, **pure functions** and **total functions** are fundamental concepts that help us write predictable, testable, and reliable code.
+In functional programming, **pure functions** and **total functions** are the concepts that help us write predictable, testable code.
 
 ## Pure Functions
 
-A pure function has two key properties:
-
-1. **No side effects** — It doesn't modify any external state, perform I/O, or depend on anything other than its inputs
-2. **Deterministic** — Given the same inputs, it always returns the same output
+A pure function has two key properties. First, it has no side effects: it doesn't modify any external state, perform I/O, or depend on anything other than its inputs. Second, it's deterministic, so given the same inputs it always returns the same output.
 
 ### Example: Pure vs Impure
 
@@ -31,14 +28,14 @@ fun add(a: Int, b: Int): Int = a + b
 
 ### Benefits of Pure Functions
 
-- **Testability** — Easy to test since output depends only on input
-- **Cacheability** — Results can be memoized safely
-- **Parallelism** — Safe to run in parallel since there's no shared state
-- **Reasoning** — Easy to understand and debug
+- They're easy to test, since the output depends only on the input
+- Their results can be memoized safely
+- They're safe to run in parallel, since there's no shared state
+- They're easy to understand and debug
 
 ## Total Functions
 
-A **total function** is a function that returns a valid result for **every possible input** in its domain. In contrast, a **partial function** may throw exceptions or fail for some inputs:
+A **total function** returns a valid result for every possible input in its domain. A **partial function**, by contrast, may throw exceptions or fail for some inputs:
 
 ```kotlin
 // Partial function - throws for empty list
@@ -106,10 +103,10 @@ when (val result = divide(10, 2)) {
 }
 ```
 
-The Either type is a powerful tool for functional programming. It makes error handling explicit and composable, allowing you to chain operations together without worrying about exceptions.
+The Either type makes error handling explicit and composable. You can chain operations together without worrying about exceptions.
 
 ## Conclusion
 
-Pure and total functions are the building blocks of reliable functional code. By avoiding side effects and handling all possible inputs explicitly, you create code that is easier to test, reason about, and maintain.
+Pure and total functions are the building blocks of reliable functional code. Avoiding side effects and handling every input explicitly gives you code that's easier to test, reason about, and maintain.
 
-In the next article, we'll explore **Functors** — a pattern that generalizes the concept of mapping over values in a container.
+The next article covers **Functors**, a pattern that generalizes mapping over values in a container.

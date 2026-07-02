@@ -6,15 +6,15 @@ tags: ["Amazon Appstore", "Push Notifications", "Android", "Tutorial"]
 coverImage: ""
 ---
 
-After attending **Droidcon London** — a well-run conference full of engaging technical talks and great conversations — I was inspired to write about one of the most common questions developers ask: how to integrate **push notifications** for apps on the Amazon Appstore.
+After attending **Droidcon London**, a well-run conference full of engaging technical talks and great conversations, I was inspired to write about one of the most common questions developers ask: how to integrate **push notifications** for apps on the Amazon Appstore.
 
 ## Why Push Notifications Matter
 
-Push notifications are essential for keeping users engaged with your app. They enable:
+Push notifications are essential for keeping users engaged with your app. They let you:
 
-- **Re-engagement** — Bring users back to your app with timely updates
-- **Real-time communication** — Notify users of important events
-- **Personalized experiences** — Deliver targeted content to specific user segments
+- Bring users back with timely, relevant updates
+- Notify users of important events in real time
+- Deliver targeted content to specific user segments
 
 ## The Challenge
 
@@ -26,11 +26,11 @@ The **Amazon Appstore Abstraction Library (A3L)** provides a single SDK to suppo
 
 ## Integration Steps
 
-1. **Add `A3LMessaging` as a dependency** to your project
-2. **Configure ADM credentials** (similar to FCM's `google-services.json`)
-3. **Implement the message handler** using A3L's API
-4. **Handle registration** and token management
-5. **Test** on both Fire devices (ADM) and regular Android (FCM)
+1. Add `A3LMessaging` as a dependency to your project
+2. Configure ADM credentials (similar to FCM's `google-services.json`)
+3. Implement the message handler using A3L's API
+4. Handle registration and token management
+5. Test on both Fire devices (ADM) and regular Android (FCM)
 
 ## Best Practices
 
@@ -41,7 +41,7 @@ The **Amazon Appstore Abstraction Library (A3L)** provides a single SDK to suppo
 
 ## Source Code
 
-[giolaq/android-amazon-notifications-porting](https://github.com/giolaq/android-amazon-notifications-porting) — Example of porting push notifications to the Amazon Appstore via A3L.
+[giolaq/android-amazon-notifications-porting](https://github.com/giolaq/android-amazon-notifications-porting): an example of porting push notifications to the Amazon Appstore via A3L.
 
 For more details, see the [A3L Messaging documentation](https://developer.amazon.com/docs/a3l-messaging/).
 
