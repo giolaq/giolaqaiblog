@@ -1,7 +1,7 @@
 ---
 title: "The React Native for TV Workshop is Available!"
 date: "2024-11-14"
-description: "Announcing the React Native for TV workshop — a hands-on guide to building TV apps with React Native for Apple TV, Android TV, and Fire TV."
+description: "Announcing the React Native for TV workshop, a hands-on guide to building TV apps with React Native for Apple TV, Android TV, and Fire TV."
 tags: ["React Native", "TV Development", "Workshop"]
 coverImage: ""
 ---
@@ -45,13 +45,13 @@ Learn patterns used in production TV apps:
 
 ## Why React Native for TV?
 
-The landscape of TV app development has long been fragmented across multiple platforms, each with its own ecosystem and requirements. React Native, combined with specific TV-oriented libraries, allows you to share a significant portion of your codebase while still accommodating platform-specific requirements.
+TV app development has long been fragmented across platforms, each with its own tools and requirements. React Native, combined with TV-oriented libraries, lets you share a large part of your codebase while still handling what's specific to each platform.
 
-The key challenges this workshop addresses include:
+The workshop tackles a few of the main challenges:
 
-- **Adapting to different input methods** — Various types of remote controls across platforms
-- **Ensuring readability on large screens** — Viewed from a distance
-- **Handling varying hardware capabilities** — Across different TV devices
+- Adapting to different input methods, since remote controls vary across platforms
+- Keeping content readable on large screens viewed from a distance
+- Handling hardware that varies from one TV device to the next
 
 ## Get Started
 

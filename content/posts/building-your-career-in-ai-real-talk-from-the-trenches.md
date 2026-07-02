@@ -6,48 +6,48 @@ tags: ["AI", "Career", "Developer Advocacy"]
 coverImage: ""
 ---
 
-The AI revolution is transforming every aspect of software development, and as someone who has spent years in developer advocacy and cross-platform development, I've been reflecting on what this means for our careers.
+AI is changing a lot about how we build software, and as someone who has spent years in developer advocacy and cross-platform development, I've been thinking about what that means for our careers.
 
 ## Inspired by the Best
 
-This post was inspired by insights from **Andrew Ng** and **Lawrence Moroney's** career advice talk. Their perspectives on navigating the rapidly evolving AI landscape resonated deeply with my own experience.
+This post grew out of a career advice talk by Andrew Ng and Lawrence Moroney. A lot of what they said about working in AI right now matched my own experience.
 
 ## The AI Transformation
 
-We're witnessing an unprecedented shift in how software is built, deployed, and used. From my vantage point in developer advocacy:
+Software is being built, deployed, and used differently than it was a few years ago. A few things I've seen from working in developer advocacy:
 
-- **AI tools are augmenting developers**, not replacing them
-- **Cross-platform skills remain crucial** — AI needs to run on diverse devices
-- **Understanding the fundamentals** matters more than ever
-- **The human element** — communication, empathy, advocacy — becomes more valuable
+- AI tools are augmenting developers rather than replacing them
+- Cross-platform skills still matter, since AI needs to run on all kinds of devices
+- The fundamentals matter more than ever
+- The human side of the work, communication, empathy, and advocacy, becomes more valuable
 
 ## Key Takeaways
 
 ### Stay Current with Tooling
 
-Being one generation behind means working twice as hard for half the output. Set aside weekly time to experiment with new AI tools and models. The bottleneck is no longer typing code — it's knowing **what to build** and **how to architect it**.
+Being one generation behind means working twice as hard for half the output. Set aside weekly time to experiment with new AI tools and models. Typing code isn't the bottleneck anymore. Knowing what to build and how to architect it is.
 
 ### Business Context Matters
 
-Understanding the "why" makes you more valuable. Engineers who shape product move fastest — those who talk to users and develop empathy are the fastest movers (Andrew Ng).
+Understanding the "why" makes you more valuable. As Andrew Ng put it, engineers who shape product move fastest, and the ones who talk to users and develop empathy move fastest of all.
 
 ### The Bifurcation of AI
 
-Lawrence Moroney predicts a split: **Big AI** driving toward AGI with ever-larger models, versus **self-hostable models** exploding onto the landscape. Understanding both tracks is crucial.
+Lawrence Moroney predicts a split: Big AI pushing toward AGI with ever-larger models, and self-hostable models spreading fast on the other side. It's worth following both tracks.
 
 ### Watch Out for Technical Debt
 
-"Vibe coding" can accumulate technical debt fast. Treat technical debt like financial debt — it compounds if you don't pay it down regularly.
+"Vibe coding" can pile up technical debt fast. Treat technical debt like financial debt. It compounds if you don't pay it down regularly.
 
 ## Practical Advice
 
-- **Avoid hype, focus on fundamentals** — Build real solutions, understand the business side
-- **Diversify your skills** — Cross-platform, mobile, and TV expertise gives you unique AI angles
-- **Stay connected** — Attend conferences, contribute to open source, share what you learn
-- **Build on your strengths** — The intersection of AI with specific domains is where opportunities lie
+- Avoid the hype and focus on fundamentals. Build real solutions and understand the business side.
+- Diversify your skills. Cross-platform, mobile, and TV experience give you unique angles on AI.
+- Stay connected. Attend conferences, contribute to open source, and share what you learn.
+- Build on your strengths. The intersection of AI with a specific domain is where the opportunities are.
 
 ## Looking Forward
 
-The future belongs to developers who can bridge the gap between AI capabilities and real-world applications. Whether you're building AI-powered TV apps, intelligent mobile experiences, or developer tools enhanced by machine learning — the opportunities are boundless.
+The developers who do well will be the ones who can connect AI capabilities to real-world problems. There's plenty of room for that, whether you're building AI-powered TV apps, mobile experiences, or developer tools that lean on machine learning.
 
 *Originally published on [dev.to/giolaq](https://dev.to/giolaq/building-your-career-in-ai-real-talk-from-the-trenches-40p)*

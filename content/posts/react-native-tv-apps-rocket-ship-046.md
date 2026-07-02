@@ -1,7 +1,7 @@
 ---
 title: "React Native TV Apps with Giovanni Laquidara - Rocket Ship 046"
 date: "2024-07-30"
-description: "Podcast interview on Rocket Ship about building TV apps with React Native — covering 10-foot UI challenges, focus management, and cross-platform development."
+description: "Podcast interview on Rocket Ship about building TV apps with React Native, covering 10-foot UI challenges, focus management, and cross-platform development."
 tags: ["React Native", "TV Development", "Podcast"]
 coverImage: ""
 ---
@@ -14,7 +14,7 @@ I had a great time chatting with **Simon Grimm** on the **Rocket Ship Podcast** 
 
 ## About the Episode
 
-In this episode, we explored the world of TV app development with React Native, diving into the unique challenges and opportunities that come with building for the big screen.
+In this episode, we talked through TV app development with React Native, and the challenges and opportunities that come with building for the big screen.
 
 ## Key Topics Discussed
 
@@ -29,11 +29,11 @@ One of the biggest differences between mobile and TV development is the viewing 
 
 ### Seamless Navigation
 
-Remote control interaction differs significantly from mobile or web apps. We discussed:
+Remote control interaction differs a lot from mobile or web apps. We discussed:
 
-- **Focus management** — How to handle focus states and navigation flow
-- **D-pad navigation** — Mapping touch interactions to directional controls
-- **Platform differences** — How Apple TV, Android TV, and Fire TV handle input differently
+- Focus management, and how to handle focus states and navigation flow
+- D-pad navigation, and mapping touch interactions to directional controls
+- Platform differences in how Apple TV, Android TV, and Fire TV handle input
 
 ### Cross-Platform Development
 

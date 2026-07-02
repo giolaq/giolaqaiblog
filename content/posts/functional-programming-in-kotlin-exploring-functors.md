@@ -1,19 +1,19 @@
 ---
 title: "Functional Programming in Kotlin: Exploring Functors"
 date: "2023-05-22"
-description: "Understanding functors in Kotlin — a pattern for applying functions to values inside containers, with practical examples using List, Optional, and custom types."
+description: "Understanding functors in Kotlin: a pattern for applying functions to values inside containers, with practical examples using List, Optional, and custom types."
 tags: ["Kotlin", "Functional Programming", "Software Development"]
 coverImage: ""
 ---
 
-Functional programming is all about writing concise, modular, and maintainable code. One of the key concepts that enables this is the **Functor** — a design pattern that provides a mechanism to apply a function to values inside a container.
+Functional programming is all about writing concise, modular, and maintainable code. One of the concepts that enables this is the **Functor**, a pattern for applying a function to values that live inside a container.
 
 ## What is a Functor?
 
 At its core, a functor is a data type that:
 
-1. **Encapsulates a value** (or values)
-2. **Provides a `map` function** that applies a transformation to the encapsulated value(s) while preserving the container structure
+1. Encapsulates a value (or values)
+2. Provides a `map` function that applies a transformation to the encapsulated value(s) while preserving the container structure
 
 In Kotlin, we can define a functor using an interface:
 
@@ -137,8 +137,8 @@ val users = listOf(
 val dtos = users.map(::transformUser)
 ```
 
-## Conclusion
+## Wrapping Up
 
-Functors provide a consistent way to apply transformations to values inside containers. By understanding functors, you gain a powerful tool for writing clean, composable, and reusable code.
+Functors give you a consistent way to apply transformations to values inside containers, which keeps transformation code composable and easy to reuse.
 
-This concludes our series on functional programming in Kotlin! We've covered higher-order functions, common collection operations, recursion, lazy evaluation, pure functions, and functors. With these concepts in your toolkit, you're well-equipped to write elegant functional code in Kotlin.
+That wraps up this series on functional programming in Kotlin. Across the posts we looked at higher-order functions, common collection operations, recursion, lazy evaluation, pure functions, and functors. Together they cover most of what you need to write functional code in Kotlin day to day.
