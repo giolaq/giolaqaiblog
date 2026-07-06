@@ -33,7 +33,7 @@ export default function AboutPage() {
       />
       <div className="font-mono-xs">§ About</div>
       <h1 className="mt-2 font-display text-5xl md:text-7xl tracking-tight leading-[0.95] max-w-[14ch]">
-        I never picked <span className="italic">a lane.</span>
+        Serial <span className="italic">early adopter.</span>
       </h1>
       <div className="mt-7 inline-flex items-center gap-3 rounded-full liquid-glass px-4 py-1.5 font-mono-xs">
         <span
