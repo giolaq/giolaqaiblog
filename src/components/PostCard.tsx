@@ -13,11 +13,11 @@ export default function PostCard({ post }: { post: PostMeta }) {
         <time dateTime={post.date}>
           {format(new Date(post.date), "MMM d, yyyy")}
         </time>
-        <span className="text-[--border-strong]">·</span>
+        <span className="text-[var(--border-strong)]">·</span>
         <span>{post.readingTime}</span>
       </div>
 
-      <h3 className="mt-3 font-display text-[26px] leading-[1.15] tracking-tight text-foreground transition-colors duration-300 group-hover:text-[--accent]">
+      <h3 className="mt-3 font-display text-[26px] leading-[1.15] tracking-tight text-foreground transition-colors duration-300 group-hover:text-[var(--accent)]">
         {post.title}
       </h3>
 
@@ -30,7 +30,7 @@ export default function PostCard({ post }: { post: PostMeta }) {
           {post.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-[--border] px-2.5 py-0.5 text-[10.5px] uppercase tracking-widest text-muted"
+              className="rounded-full border border-[var(--border)] px-2.5 py-0.5 text-[11px] uppercase tracking-widest text-muted"
             >
               {tag}
             </span>

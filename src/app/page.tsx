@@ -132,10 +132,10 @@ export default function Home() {
               >
                 <div className="font-mono-xs flex items-center gap-3">
                   <span>{project.language}</span>
-                  <span className="text-[--border-strong]">·</span>
+                  <span className="text-[var(--border-strong)]">·</span>
                   <span className="truncate">github.com/giolaq</span>
                 </div>
-                <h3 className="mt-3 font-display text-[26px] leading-tight tracking-tight text-foreground transition-colors duration-300 group-hover:text-[--accent]">
+                <h3 className="mt-3 font-display text-[26px] leading-tight tracking-tight text-foreground transition-colors duration-300 group-hover:text-[var(--accent)]">
                   {project.name}
                 </h3>
                 <p className="mt-3 text-[13.5px] leading-relaxed text-muted">

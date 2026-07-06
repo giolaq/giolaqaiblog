@@ -4,7 +4,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `About ${SITE_CONFIG.author.name} — Developer Advocate, Builder, and Generalist.`,
+  description: `About ${SITE_CONFIG.author.name}, developer advocate and builder focused on agentic AI and harness engineering.`,
 };
 
 export default function AboutPage() {
@@ -33,9 +33,19 @@ export default function AboutPage() {
       />
       <div className="font-mono-xs">§ About</div>
       <h1 className="mt-2 font-display text-5xl md:text-7xl tracking-tight leading-[0.95] max-w-[14ch]">
-        A <em className="not-italic text-muted italic">builder</em> who refuses
-        to pick one lane.
+        I never picked <span className="italic">a lane.</span>
       </h1>
+      <div className="mt-7 inline-flex items-center gap-3 rounded-full liquid-glass px-4 py-1.5 font-mono-xs">
+        <span
+          className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] pulse-dot"
+          style={{ boxShadow: "0 0 8px 1px var(--accent)" }}
+        />
+        <span>Current focus · AI · Agents · Harnesses</span>
+      </div>
+      <p className="mt-5 max-w-[56ch] text-[15px] text-muted">
+        Mobile, VR, defence systems, TV, and now the tooling that lets AI
+        agents ship real software.
+      </p>
 
       <div className="mt-14 grid gap-10 md:grid-cols-[180px_1fr]">
         <div>
@@ -44,25 +54,27 @@ export default function AboutPage() {
             alt={SITE_CONFIG.author.name}
             width={160}
             height={160}
-            className="rounded-2xl object-cover border border-[--border]"
+            className="rounded-2xl object-cover border border-[var(--border)]"
             priority
           />
         </div>
 
         <div className="space-y-6 text-[15px] leading-relaxed text-muted max-w-[62ch]">
           <p>
-            Hi — I&apos;m{" "}
+            Hi, I&apos;m{" "}
             <strong className="text-foreground">Giovanni Laquidara</strong>, a
-            Senior Developer Advocate at Amazon based in London. I work across
-            mobile, TV, agentic AI, and developer communities, and I&apos;m
-            happiest when the work sits at the seam between two disciplines.
+            developer advocate and builder at Amazon in London. My focus these
+            days is agentic AI and harness engineering: the scaffolding of
+            tools, context, and feedback loops that lets agents do real work.
+            I&apos;m happiest when the work sits at the seam between two
+            disciplines.
           </p>
           <p>
             I think the title &quot;software engineer&quot; is giving way to
-            &quot;builder.&quot; With agentic AI as a force multiplier,
-            everyone codes now — the PM, the designer, the data scientist. The
-            strongest people are generalists who overlap across traditional
-            roles and connect ideas from unrelated domains.
+            &quot;builder.&quot; Agents have lowered the cost of trying things
+            enough that PMs, designers, and data scientists ship working code,
+            and the people who get the most out of that are generalists who can
+            carry an idea across role boundaries.
           </p>
           <p>
             I studied at Università di Roma Tor Vergata and have been building
@@ -75,26 +87,41 @@ export default function AboutPage() {
       <section className="mt-24">
         <div className="font-mono-xs">§ 01 — What I do</div>
         <h2 className="mt-2 font-display text-4xl tracking-tight">
-          Three modes of work.
+          The work.
         </h2>
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {[
             {
+              n: "01",
+              title: "Agentic AI & Harness Engineering",
+              body: "Building the harnesses around AI agents: tools, context, and feedback loops that turn a model into something that ships software.",
+              featured: true,
+            },
+            {
+              n: "02",
               title: "Developer Advocacy",
               body: "Content, talks, and tools that help developers succeed on mobile, TV, and cross-platform stacks.",
             },
             {
-              title: "Building with Agentic AI",
-              body: "Using AI agents as a force multiplier to ship faster across React Native, Kotlin, TS — mobile, TV, XR, real-time.",
-            },
-            {
+              n: "03",
               title: "Technical Writing",
-              body: "Articles and tutorials across functional programming, hardware hacking, and whatever catches my eye.",
+              body: "Articles and tutorials on functional programming, hardware hacking, and whatever new tech catches my eye.",
             },
           ].map((item) => (
-            <div key={item.title} className="glass-card p-6">
-              <h3 className="font-display text-2xl tracking-tight text-foreground">
+            <div
+              key={item.title}
+              className={`glass-card p-6 ${
+                item.featured ? "border-[var(--accent-dim)]" : ""
+              }`}
+            >
+              <div className="font-mono-xs flex items-center justify-between">
+                <span>{item.n}</span>
+                {item.featured && (
+                  <span className="text-[var(--accent)]">Now</span>
+                )}
+              </div>
+              <h3 className="mt-3 font-display text-2xl tracking-tight text-foreground">
                 {item.title}
               </h3>
               <p className="mt-3 text-[14px] leading-relaxed text-muted">
@@ -111,8 +138,8 @@ export default function AboutPage() {
           Say hi.
         </h2>
         <p className="mt-4 max-w-[50ch] text-[15px] text-muted">
-          Happy to connect with fellow developers and tech enthusiasts — for
-          talks, collabs, or just a chat about TV apps and agents.
+          For talks, collaborations, or a chat about TV apps and agents, any of
+          these works.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           {[

@@ -62,7 +62,7 @@ export default function BlogList({ posts, tags }: { posts: PostMeta[]; tags: str
           {selectedTags.size > 0 && (
             <button
               onClick={() => { setSelectedTags(new Set()); setPage(1); }}
-              className="rounded-full border border-[--border] px-3 py-1 text-[11px] uppercase tracking-widest text-muted transition-colors hover:text-foreground"
+              className="rounded-full border border-[var(--border)] px-3 py-1 text-[11px] uppercase tracking-widest text-muted transition-colors hover:text-foreground"
             >
               Clear
             </button>
@@ -73,8 +73,8 @@ export default function BlogList({ posts, tags }: { posts: PostMeta[]; tags: str
               onClick={() => toggleTag(tag)}
               className={`rounded-full px-3 py-1 text-[11px] uppercase tracking-widest transition-colors ${
                 selectedTags.has(tag)
-                  ? "bg-[--accent] text-background"
-                  : "border border-[--border] text-muted hover:text-foreground"
+                  ? "bg-[var(--accent)] text-background"
+                  : "border border-[var(--border)] text-muted hover:text-foreground"
               }`}
             >
               {tag}
@@ -104,7 +104,7 @@ export default function BlogList({ posts, tags }: { posts: PostMeta[]; tags: str
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={currentPage === 1}
-            className="rounded-full border border-[--border] px-4 py-1.5 transition-colors hover:text-foreground disabled:opacity-30"
+            className="rounded-full border border-[var(--border)] px-4 py-1.5 transition-colors hover:text-foreground disabled:opacity-30"
           >
             ← prev
           </button>
@@ -112,7 +112,7 @@ export default function BlogList({ posts, tags }: { posts: PostMeta[]; tags: str
           <button
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
-            className="rounded-full border border-[--border] px-4 py-1.5 transition-colors hover:text-foreground disabled:opacity-30"
+            className="rounded-full border border-[var(--border)] px-4 py-1.5 transition-colors hover:text-foreground disabled:opacity-30"
           >
             next →
           </button>

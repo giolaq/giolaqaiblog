@@ -64,7 +64,7 @@ export default function PrivacyPage() {
                 href="https://vercel.com/legal/privacy-policy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[--accent] hover:underline"
+                className="text-[var(--accent)] hover:underline"
               >
                 Vercel&apos;s privacy policy
               </a>
@@ -77,7 +77,7 @@ export default function PrivacyPage() {
                 href="https://policies.google.com/privacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[--accent] hover:underline"
+                className="text-[var(--accent)] hover:underline"
               >
                 Google&apos;s privacy policy
               </a>
@@ -120,7 +120,7 @@ export default function PrivacyPage() {
               href={SITE_CONFIG.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[--accent] hover:underline"
+              className="text-[var(--accent)] hover:underline"
             >
               LinkedIn
             </a>{" "}
@@ -129,7 +129,7 @@ export default function PrivacyPage() {
               href={SITE_CONFIG.social.twitter}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[--accent] hover:underline"
+              className="text-[var(--accent)] hover:underline"
             >
               X/Twitter
             </a>

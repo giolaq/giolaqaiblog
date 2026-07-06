@@ -81,11 +81,11 @@ export default function ResumePage() {
     <div className="mx-auto max-w-4xl px-6 md:px-8 py-20">
       <div className="font-mono-xs">§ Resume</div>
       <h1 className="mt-2 font-display text-5xl md:text-7xl tracking-tight leading-[0.95] max-w-[16ch]">
-        23 years, <em className="not-italic text-muted italic">one through-line.</em>
+        Twenty-three years <span className="italic">of shipping.</span>
       </h1>
       <p className="mt-6 max-w-[56ch] text-[15px] text-muted">
-        Senior Developer Advocate based in London — building bridges between
-        developers and technology across mobile, TV, and XR platforms.
+        Senior Developer Advocate at Amazon. Before that: Android, VR/AR,
+        real-time defence systems, and IoT.
       </p>
 
       <section className="mt-20">
@@ -96,7 +96,7 @@ export default function ResumePage() {
               <h3 className="text-[11px] uppercase tracking-[0.16em] text-muted">{category}</h3>
               <div className="mt-3 flex flex-wrap gap-2">
                 {items.map((skill) => (
-                  <span key={skill} className="rounded-full border border-[--border] bg-white/[0.02] px-3 py-1 text-[12.5px] text-foreground">
+                  <span key={skill} className="rounded-full border border-[var(--border)] bg-white/[0.02] px-3 py-1 text-[12.5px] text-foreground">
                     {skill}
                   </span>
                 ))}
@@ -108,10 +108,10 @@ export default function ResumePage() {
 
       <section className="mt-20">
         <div className="font-mono-xs">§ 02 — Experience</div>
-        <div className="mt-8 relative border-l border-[--border] pl-8">
+        <div className="mt-8 relative border-l border-[var(--border)] pl-8">
           {experience.map((job, i) => (
             <div key={i} className="relative mb-12">
-              <span className="absolute -left-[34px] top-2 h-2 w-2 rounded-full bg-[--accent]" style={{ boxShadow: "0 0 8px 1px var(--accent)" }} />
+              <span className="absolute -left-[34px] top-2 h-2 w-2 rounded-full bg-[var(--accent)]" style={{ boxShadow: "0 0 8px 1px var(--accent)" }} />
               <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
                 <h3 className="font-display text-2xl tracking-tight text-foreground">{job.role}</h3>
                 <span className="font-mono-xs">{job.period}</span>
@@ -123,7 +123,7 @@ export default function ResumePage() {
               <ul className="mt-4 space-y-2">
                 {job.highlights.map((h, j) => (
                   <li key={j} className="flex items-start gap-3 text-[14px] leading-relaxed text-muted">
-                    <span className="mt-2 h-1 w-3 shrink-0 bg-[--border-strong]" />
+                    <span className="mt-2 h-1 w-3 shrink-0 bg-[var(--border-strong)]" />
                     <span>{h}</span>
                   </li>
                 ))}

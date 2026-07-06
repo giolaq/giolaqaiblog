@@ -28,7 +28,7 @@ export default function DevelopersPage() {
           <p>
             <a
               href="/openapi.json"
-              className="text-[--accent] hover:underline"
+              className="text-[var(--accent)] hover:underline"
             >
               View OpenAPI spec →
             </a>
@@ -78,7 +78,7 @@ export default function DevelopersPage() {
           </p>
           <ul className="space-y-2 list-disc pl-5">
             <li>
-              <a href="/llms.txt" className="text-[--accent] hover:underline">
+              <a href="/llms.txt" className="text-[var(--accent)] hover:underline">
                 /llms.txt
               </a>{" "}
               — LLM-friendly site overview
@@ -86,7 +86,7 @@ export default function DevelopersPage() {
             <li>
               <a
                 href="/.well-known/agent-card.json"
-                className="text-[--accent] hover:underline"
+                className="text-[var(--accent)] hover:underline"
               >
                 /.well-known/agent-card.json
               </a>{" "}
@@ -95,7 +95,7 @@ export default function DevelopersPage() {
             <li>
               <a
                 href="/.well-known/agent-skills/index.json"
-                className="text-[--accent] hover:underline"
+                className="text-[var(--accent)] hover:underline"
               >
                 /.well-known/agent-skills/index.json
               </a>{" "}
@@ -104,20 +104,20 @@ export default function DevelopersPage() {
             <li>
               <a
                 href="/.well-known/mcp/server-card.json"
-                className="text-[--accent] hover:underline"
+                className="text-[var(--accent)] hover:underline"
               >
                 /.well-known/mcp/server-card.json
               </a>{" "}
               — MCP server card
             </li>
             <li>
-              <a href="/index.md" className="text-[--accent] hover:underline">
+              <a href="/index.md" className="text-[var(--accent)] hover:underline">
                 /index.md
               </a>{" "}
               — Markdown homepage
             </li>
             <li>
-              <code className="text-[--accent]">?mode=agent</code> — Machine-readable homepage view
+              <code className="text-[var(--accent)]">?mode=agent</code> — Machine-readable homepage view
             </li>
           </ul>
         </section>
@@ -159,7 +159,7 @@ export default function DevelopersPage() {
               href={`${SITE_CONFIG.social.github}/giolaqaiblog`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[--accent] hover:underline"
+              className="text-[var(--accent)] hover:underline"
             >
               GitHub
             </a>

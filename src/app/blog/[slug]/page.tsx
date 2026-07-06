@@ -63,7 +63,7 @@ export default async function PostPage({ params }: PageProps) {
           {post.tags.length > 0 && (
             <div className="mt-6 flex flex-wrap gap-2">
               {post.tags.map((tag) => (
-                <span key={tag} className="rounded-full border border-[--border] px-3 py-1 text-[10.5px] uppercase tracking-widest text-muted">
+                <span key={tag} className="rounded-full border border-[var(--border)] px-3 py-1 text-[10.5px] uppercase tracking-widest text-muted">
                   {tag}
                 </span>
               ))}
@@ -72,7 +72,7 @@ export default async function PostPage({ params }: PageProps) {
         </header>
 
         {post.coverImage && (
-          <div className="mb-12 overflow-hidden rounded-2xl border border-[--border]">
+          <div className="mb-12 overflow-hidden rounded-2xl border border-[var(--border)]">
             <Image src={post.coverImage} alt={post.title} width={900} height={500} className="w-full object-cover" priority />
           </div>
         )}

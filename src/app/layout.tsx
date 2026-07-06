@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import VideoBackdrop from "@/components/VideoBackdrop";
+import Backdrop from "@/components/Backdrop";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE_CONFIG } from "@/lib/constants";
 import "./globals.css";
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
     locale: "en_US",
     type: "website",
-    images: [{ url: `${SITE_CONFIG.url}/avatar.png`, width: 400, height: 400 }],
+    images: [{ url: `${SITE_CONFIG.url}/avatar.jpg`, width: 800, height: 800 }],
   },
   twitter: {
     card: "summary_large_image",
@@ -32,6 +32,11 @@ export const metadata: Metadata = {
     creator: "@giolaq",
   },
   robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#031826",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -75,7 +80,7 @@ export default function RootLayout({
                 "@type": "Organization",
                 name: "giolaq.dev",
                 url: SITE_CONFIG.url,
-                logo: `${SITE_CONFIG.url}/avatar.png`,
+                logo: `${SITE_CONFIG.url}/avatar.jpg`,
                 contactPoint: {
                   "@type": "ContactPoint",
                   contactType: "professional",
@@ -152,12 +157,15 @@ export default function RootLayout({
           }}
         />
 
-        {/* Cinematic background — sits behind everything on every page */}
-        <VideoBackdrop />
+        {/* Cinematic background, sits behind everything on every page */}
+        <Backdrop />
 
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <div className="relative z-10 flex min-h-screen flex-col">
           <Header />
-          <main className="flex-1">{children}</main>
+          <main id="main" className="flex-1">{children}</main>
           <Footer />
         </div>
       </body>

@@ -18,7 +18,7 @@ export default function Footer() {
   return (
     <footer className="mt-24">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
-        <div className="border-t border-[--border]" />
+        <div className="border-t border-[var(--border)]" />
         <div className="flex flex-col items-center justify-between gap-6 py-10 sm:flex-row">
           <div className="font-mono-xs">
             © MMXXVI · <span className="text-foreground">GIOLAQ.DEV</span> · London

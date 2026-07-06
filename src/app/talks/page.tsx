@@ -76,14 +76,15 @@ export default function TalksPage() {
     <div className="mx-auto max-w-4xl px-6 md:px-8 py-20">
       <div className="font-mono-xs">§ Talks</div>
       <h1 className="mt-2 font-display text-5xl md:text-7xl tracking-tight leading-[0.95] max-w-[16ch]">
-        On stages, <em className="not-italic text-muted italic">in podcasts, and workshop rooms.</em>
+        Twenty talks and workshops{" "}
+        <span className="italic">since 2015.</span>
       </h1>
       <p className="mt-6 max-w-[56ch] text-[15px] text-muted">
-        Conference talks, podcasts, and workshops — mostly about TV apps,
-        React Native, and agentic AI.
+        Conferences, podcasts, and workshops, mostly about TV apps, React
+        Native, and agentic AI.
       </p>
 
-      <div className="mt-14 relative border-l border-[--border] pl-8">
+      <div className="mt-14 relative border-l border-[var(--border)] pl-8">
         {talks.map((talk, i) => (
           <div key={i} className="relative mb-10">
             <span className="absolute -left-[34px] top-3 h-2 w-2 rounded-full" style={{ background: typeDot[talk.type] || "#ffffff66", boxShadow: `0 0 8px 1px ${typeDot[talk.type] || "#fff"}` }} />
@@ -94,14 +95,14 @@ export default function TalksPage() {
               </div>
               <h2 className="mt-3 font-display text-[26px] leading-tight tracking-tight text-foreground">
                 {talk.link ? (
-                  <a href={talk.link} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[--accent]">
+                  <a href={talk.link} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[var(--accent)]">
                     {talk.title}
                   </a>
                 ) : (
                   talk.title
                 )}
               </h2>
-              <p className="mt-1 text-[13px] text-[--accent]">{talk.event}</p>
+              <p className="mt-1 text-[13px] text-[var(--accent)]">{talk.event}</p>
               <p className="mt-3 text-[14px] leading-relaxed text-muted">{talk.description}</p>
             </div>
           </div>
