@@ -107,6 +107,19 @@ export default function Header() {
                 </Link>
               </li>
             ))}
+            <li className="mt-2 border-t border-[var(--border)] pt-2">
+              <Link
+                href="/speaker"
+                className="flex items-center gap-2.5 rounded-md px-3 py-2.5 text-sm text-foreground"
+                onClick={() => setMobileOpen(false)}
+              >
+                <span
+                  className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] pulse-dot"
+                  style={{ boxShadow: "0 0 8px 1px var(--accent)" }}
+                />
+                Available for talks
+              </Link>
+            </li>
           </ul>
         </div>
       )}
