@@ -33,27 +33,23 @@ export default function SpeakerPage() {
   return (
     <div className="mx-auto max-w-4xl px-6 md:px-8 py-20">
       <div className="font-mono-xs">§ Speaker kit</div>
-      <h1 className="mt-2 font-display text-5xl md:text-7xl tracking-tight leading-[0.95] max-w-[16ch]">
-        Everything an organizer <span className="italic">needs.</span>
+      <h1 className="mt-2 font-display text-5xl md:text-7xl tracking-tight leading-[0.95]">
+        Speaker <span className="italic">kit.</span>
       </h1>
-      <p className="mt-6 max-w-[56ch] text-[15px] text-muted">
-        Bio, headshot, title line, and topics, ready to paste into your program
-        page or intro slide. Copy what you need; no permission required.
-      </p>
 
       {/* Headshot + facts */}
       <div className="mt-14 grid gap-5 md:grid-cols-[220px_1fr]">
         <div className="glass-card p-6 flex flex-col items-center gap-5">
           <Image
-            src={SITE_CONFIG.author.avatar}
+            src="/headshot.jpg"
             alt="Giovanni Laquidara headshot"
-            width={160}
-            height={160}
-            className="rounded-full object-cover border border-[var(--border-strong)]"
+            width={172}
+            height={224}
+            className="rounded-xl object-cover border border-[var(--border)]"
             priority
           />
           <a
-            href={SITE_CONFIG.author.avatar}
+            href="/headshot.jpg"
             download="giovanni-laquidara-headshot.jpg"
             className="liquid-glass rounded-full px-4 py-1.5 text-[12px] uppercase tracking-[0.14em] text-muted hover:text-foreground transition-colors"
           >
@@ -115,7 +111,7 @@ export default function SpeakerPage() {
       <section className="mt-14 space-y-5">
         <div className="glass-card p-6">
           <div className="flex items-center justify-between gap-4">
-            <span className="font-mono-xs">One-liner · for the intro slide</span>
+            <span className="font-mono-xs">One-liner</span>
             <CopyButton text={ONE_LINER} />
           </div>
           <p className="mt-3 text-[15px] leading-relaxed text-foreground">
