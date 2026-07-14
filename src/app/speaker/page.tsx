@@ -22,6 +22,13 @@ const LONG_BIO =
 const TITLE_LINE =
   "Giovanni Laquidara · Developer Advocate & Builder, Amazon (London)";
 
+const LINKS_TEXT = [
+  `Site: ${SITE_CONFIG.url}`,
+  `LinkedIn: ${SITE_CONFIG.social.linkedin}`,
+  `X: ${SITE_CONFIG.social.twitter}`,
+  "Email: glaquidara@gmail.com",
+].join("\n");
+
 const TOPICS = [
   "Agentic AI & harness engineering",
   "React Native for TV and big-screen apps",
@@ -64,7 +71,10 @@ export default function SpeakerPage() {
           </div>
           <p className="mt-3 text-[15px] text-foreground">{TITLE_LINE}</p>
 
-          <div className="mt-6 font-mono-xs">Links</div>
+          <div className="mt-6 flex items-center justify-between gap-4">
+            <span className="font-mono-xs">Links</span>
+            <CopyButton text={LINKS_TEXT} />
+          </div>
           <ul className="mt-2 space-y-1 text-[14px]">
             <li>
               Site:{" "}
