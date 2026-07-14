@@ -5,7 +5,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 const WORKSHOP_TITLE =
   "Past the Vibes: Build an Agent Harness for Your React Native App";
 const WORKSHOP_DESCRIPTION =
-  "A hands-on workshop at Chain React 2026 in Portland, July 29. Go from vibe coding to a real agent harness: tools, context, and feedback loops that let AI agents ship features in your React Native app.";
+  "Hands-on workshop at Chain React 2026, July 29 in Portland, led by Giovanni Laquidara and Kourtney Meiss. Build a harness of focused agents that plan, implement, and verify each other's work, backed by reusable tools, project memory, and checkpoints.";
 const REGISTER_URL = "https://chainreactconf.com/workshops";
 
 export const metadata: Metadata = {
@@ -23,11 +23,11 @@ export const metadata: Metadata = {
   },
 };
 
-const TAKEAWAYS = [
-  "Set up an agent harness around a real React Native codebase, not a toy repo.",
-  "Give agents the context they need: project docs, conventions, and the right tools.",
-  "Build feedback loops so agents verify their own work before you review it.",
-  "Ship an actual feature with an agent and know when to trust the result.",
+const BUILD_STEPS = [
+  "A harness of focused agents that plan, implement, and verify each other's work.",
+  "The backbone behind them: reusable tools, project memory, and checkpoints.",
+  "One piece at a time, starting from a single agent and ending with a working pipeline you run against your own app.",
+  "A final layer: a context-aware agent powered by Bee that records the conversations you have about the app you want to build and feeds them back into the harness when it runs.",
 ];
 
 export default function ChainReactWorkshopPage() {
@@ -43,7 +43,10 @@ export default function ChainReactWorkshopPage() {
       address: { "@type": "PostalAddress", addressLocality: "Portland", addressRegion: "OR", addressCountry: "US" },
     },
     superEvent: { "@type": "Event", name: "Chain React 2026", url: "https://chainreactconf.com" },
-    performer: [{ "@type": "Person", name: SITE_CONFIG.author.name, url: SITE_CONFIG.url }],
+    performer: [
+      { "@type": "Person", name: SITE_CONFIG.author.name, url: SITE_CONFIG.url },
+      { "@type": "Person", name: "Kourtney Meiss" },
+    ],
     url: `${SITE_CONFIG.url}/workshops/chain-react-2026`,
   };
 
@@ -71,16 +74,18 @@ export default function ChainReactWorkshopPage() {
       </div>
 
       <div className="mt-10 space-y-6 text-[15px] leading-relaxed text-muted max-w-[62ch]">
-        <p>
-          Vibe coding gets you a demo. A harness gets you software you can
-          ship. In this workshop we take a React Native app and build the
-          scaffolding that lets AI agents do dependable work in it: the tools
-          they can call, the context they read, and the feedback loops that
-          catch their mistakes before you do.
+        <p className="font-display text-2xl leading-snug text-foreground italic">
+          &quot;Stop writing prompts. Start building the loop that writes them
+          for you.&quot;
         </p>
         <p>
-          You leave with a working harness for your own project and a clear
-          sense of which parts of your workflow to hand to an agent first.
+          You&apos;ve probably heard some version of that line by now. In this
+          workshop we&apos;ll actually explain what it means, and build one
+          with you, for your React Native app and your use case.
+        </p>
+        <p>
+          You&apos;ll leave with a forkable repo and a clear mental model for
+          building development systems instead of babysitting prompts.
         </p>
       </div>
 
@@ -100,7 +105,7 @@ export default function ChainReactWorkshopPage() {
       <section className="mt-20">
         <div className="font-mono-xs">§ 01 — What you&apos;ll build</div>
         <ul className="mt-6 space-y-3 max-w-[62ch]">
-          {TAKEAWAYS.map((t) => (
+          {BUILD_STEPS.map((t) => (
             <li
               key={t}
               className="flex items-start gap-3 text-[15px] leading-relaxed text-muted"
@@ -113,7 +118,17 @@ export default function ChainReactWorkshopPage() {
       </section>
 
       <section className="mt-20">
-        <div className="font-mono-xs">§ 02 — Who&apos;s teaching</div>
+        <div className="font-mono-xs">§ 02 — Why TV is the live target</div>
+        <p className="mt-6 max-w-[62ch] text-[15px] leading-relaxed text-muted">
+          We use TV as the live target because it&apos;s a genuinely
+          non-trivial adaptation: focus navigation, 10-foot layouts, remote
+          input, and many different operating systems. But the target is just
+          the example; the harness you build works for your use case.
+        </p>
+      </section>
+
+      <section className="mt-20">
+        <div className="font-mono-xs">§ 03 — Who&apos;s teaching</div>
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           <div className="glass-card p-6 flex items-start gap-5">
             <Image
@@ -136,17 +151,24 @@ export default function ChainReactWorkshopPage() {
               </p>
             </div>
           </div>
-          {/* Co-presenter card goes here once name and photo are confirmed. */}
+          <div className="glass-card p-6 flex items-start gap-5">
+            <Image
+              src="/kourtney.jpg"
+              alt="Kourtney Meiss"
+              width={72}
+              height={72}
+              className="rounded-full object-cover border border-[var(--border-strong)]"
+            />
+            <div>
+              <h2 className="font-display text-2xl tracking-tight text-foreground">
+                Kourtney Meiss
+              </h2>
+              <p className="mt-1 text-[13px] text-muted">
+                Workshop co-instructor
+              </p>
+            </div>
+          </div>
         </div>
-      </section>
-
-      <section className="mt-20">
-        <div className="font-mono-xs">§ 03 — Who it&apos;s for</div>
-        <p className="mt-6 max-w-[62ch] text-[15px] leading-relaxed text-muted">
-          React Native developers who have tried AI coding tools and want more
-          than autocomplete. You should be comfortable with a React Native
-          codebase; no prior agent experience needed.
-        </p>
       </section>
     </div>
   );

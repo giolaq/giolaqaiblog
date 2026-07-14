@@ -13,6 +13,8 @@ export default async function OGImage() {
   );
   const avatar = await readFile(join(process.cwd(), "public/avatar.jpg"));
   const avatarSrc = `data:image/jpeg;base64,${avatar.toString("base64")}`;
+  const kourtney = await readFile(join(process.cwd(), "public/kourtney.jpg"));
+  const kourtneySrc = `data:image/jpeg;base64,${kourtney.toString("base64")}`;
 
   return new ImageResponse(
     (
@@ -117,23 +119,50 @@ export default async function OGImage() {
             alignItems: "center",
             justifyContent: "center",
             flexGrow: 1,
-            gap: 24,
+            gap: 26,
           }}
         >
-          <img
-            src={avatarSrc}
-            width={264}
-            height={264}
-            style={{
-              borderRadius: 264,
-              border: "6px solid #e8a765",
-              objectFit: "cover",
-            }}
-          />
-          <div style={{ color: "#ffffff", fontSize: 24, fontWeight: 700 }}>
-            Giovanni Laquidara
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <img
+              src={avatarSrc}
+              width={210}
+              height={210}
+              style={{
+                borderRadius: 210,
+                border: "6px solid #e8a765",
+                objectFit: "cover",
+              }}
+            />
+            <img
+              src={kourtneySrc}
+              width={210}
+              height={210}
+              style={{
+                borderRadius: 210,
+                border: "6px solid #e8a765",
+                objectFit: "cover",
+                marginLeft: -42,
+              }}
+            />
           </div>
-          <div style={{ color: "#9ea5b4", fontSize: 18 }}>giolaq.dev</div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 8,
+            }}
+          >
+            <div style={{ color: "#ffffff", fontSize: 23, fontWeight: 700 }}>
+              Giovanni Laquidara
+            </div>
+            <div style={{ color: "#ffffff", fontSize: 23, fontWeight: 700 }}>
+              &amp; Kourtney Meiss
+            </div>
+            <div style={{ color: "#9ea5b4", fontSize: 17, marginTop: 4 }}>
+              giolaq.dev
+            </div>
+          </div>
         </div>
       </div>
     ),
