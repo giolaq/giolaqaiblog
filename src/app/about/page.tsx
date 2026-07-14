@@ -54,7 +54,7 @@ export default function AboutPage() {
             alt={SITE_CONFIG.author.name}
             width={160}
             height={160}
-            className="rounded-2xl object-cover border border-[var(--border)]"
+            className="rounded-full object-cover border border-[var(--border-strong)]"
             priority
           />
         </div>
