@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { SITE_CONFIG } from "@/lib/constants";
 
 const WORKSHOP_TITLE =
@@ -127,49 +126,6 @@ export default function ChainReactWorkshopPage() {
         </p>
       </section>
 
-      <section className="mt-20">
-        <div className="font-mono-xs">§ 03 — Who&apos;s teaching</div>
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          <div className="glass-card p-6 flex items-start gap-5">
-            <Image
-              src="/avatar.jpg"
-              alt={SITE_CONFIG.author.name}
-              width={72}
-              height={72}
-              className="rounded-full object-cover border border-[var(--border-strong)]"
-            />
-            <div>
-              <h2 className="font-display text-2xl tracking-tight text-foreground">
-                {SITE_CONFIG.author.name}
-              </h2>
-              <p className="mt-1 text-[13px] text-muted">
-                Developer Advocate &amp; Builder, Amazon
-              </p>
-              <p className="mt-3 text-[14px] leading-relaxed text-muted">
-                Author of Mastering the Big Screen: React Native for TV.
-                Focused on agentic AI and harness engineering.
-              </p>
-            </div>
-          </div>
-          <div className="glass-card p-6 flex items-start gap-5">
-            <Image
-              src="/kourtney.jpg"
-              alt="Kourtney Meiss"
-              width={72}
-              height={72}
-              className="rounded-full object-cover border border-[var(--border-strong)]"
-            />
-            <div>
-              <h2 className="font-display text-2xl tracking-tight text-foreground">
-                Kourtney Meiss
-              </h2>
-              <p className="mt-1 text-[13px] text-muted">
-                Workshop co-instructor
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
