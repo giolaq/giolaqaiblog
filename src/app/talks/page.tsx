@@ -81,7 +81,11 @@ export default function TalksPage() {
       </h1>
       <p className="mt-6 max-w-[56ch] text-[15px] text-muted">
         Conferences, podcasts, and workshops, mostly about TV apps, React
-        Native, and agentic AI.
+        Native, and agentic AI. Organizing an event? The{" "}
+        <a href="/speaker" className="text-[var(--accent)] hover:underline">
+          speaker kit
+        </a>{" "}
+        has a ready-made bio and headshot.
       </p>
 
       <div className="mt-14 relative border-l border-[var(--border)] pl-8">

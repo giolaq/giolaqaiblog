@@ -62,9 +62,9 @@ export default function Header() {
           })}
         </ul>
 
-        {/* CTA pill */}
-        <a
-          href="mailto:glaquidara@gmail.com"
+        {/* CTA pill — speaker kit for conference organizers */}
+        <Link
+          href="/speaker"
           className="hidden md:inline-flex liquid-glass hover-lift rounded-full px-5 py-2 text-[13px] items-center gap-2"
         >
           <span
@@ -72,7 +72,7 @@ export default function Header() {
             style={{ boxShadow: "0 0 10px 1px var(--accent)" }}
           />
           <span>Available for talks</span>
-        </a>
+        </Link>
 
         {/* Mobile toggle */}
         <button
