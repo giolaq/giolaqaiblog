@@ -50,11 +50,11 @@ export default function AboutPage() {
       <div className="mt-14 grid gap-10 md:grid-cols-[180px_1fr]">
         <div>
           <Image
-            src={SITE_CONFIG.author.avatar}
+            src="/headshot.jpg"
             alt={SITE_CONFIG.author.name}
-            width={160}
-            height={160}
-            className="rounded-full object-cover border border-[var(--border-strong)]"
+            width={180}
+            height={235}
+            className="rounded-2xl object-cover border border-[var(--border)]"
             priority
           />
         </div>
