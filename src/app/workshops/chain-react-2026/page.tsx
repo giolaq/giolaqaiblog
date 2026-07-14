@@ -7,6 +7,8 @@ const WORKSHOP_DESCRIPTION =
   "Hands-on workshop at Chain React 2026, July 29 in Portland, led by Giovanni Laquidara and Kourtney Meiss. Build a harness of focused agents that plan, implement, and verify each other's work, backed by reusable tools, project memory, and checkpoints.";
 const REGISTER_URL = "https://chainreactconf.com/workshops";
 
+const OG_IMAGE = `${SITE_CONFIG.url}/og/chain-react-2026.png`;
+
 export const metadata: Metadata = {
   title: "Past the Vibes — Chain React 2026 Workshop",
   description: WORKSHOP_DESCRIPTION,
@@ -14,11 +16,21 @@ export const metadata: Metadata = {
     title: WORKSHOP_TITLE,
     description: WORKSHOP_DESCRIPTION,
     type: "website",
+    url: `${SITE_CONFIG.url}/workshops/chain-react-2026`,
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: WORKSHOP_TITLE,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: WORKSHOP_TITLE,
     description: WORKSHOP_DESCRIPTION,
+    images: [OG_IMAGE],
   },
 };
 
