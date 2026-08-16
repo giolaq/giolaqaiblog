@@ -20,6 +20,7 @@ export default function Header() {
     { href: "/", label: "Home" },
     { href: "/blog", label: "Writing" },
     { href: "/talks", label: "Talks" },
+    { href: "/whats-next", label: "What's Next" },
     { href: "/about", label: "About" },
     { href: "/resume", label: "Resume" },
   ];

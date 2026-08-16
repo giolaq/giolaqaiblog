@@ -10,6 +10,7 @@ export default function Footer() {
   ];
 
   const siteLinks = [
+    { href: "/whats-next", label: "What's Next" },
     { href: "/speaker", label: "Speaker kit" },
     { href: "/developers", label: "Developers" },
     { href: "/contact", label: "Contact" },
