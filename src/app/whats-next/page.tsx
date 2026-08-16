@@ -14,7 +14,7 @@ type UpcomingEvent = {
   name: string;
   status: EventStatus;
   date: string; // display string
-  isoDate: string; // for datetime / sorting
+  isoDate?: string; // for datetime, when a firm date is known
   location: string;
   blurb: string;
   href?: string; // internal or external details
@@ -24,14 +24,72 @@ type UpcomingEvent = {
 // Add new appearances here, soonest first.
 const EVENTS: UpcomingEvent[] = [
   {
-    name: "Chain React 2026",
-    status: "Workshop",
-    date: "July 29–31, 2026",
-    isoDate: "2026-07-29",
-    location: "The Armory · Portland, OR",
+    name: "Londroid — The London Android Community",
+    status: "Speaking",
+    date: "August 27, 2026",
+    isoDate: "2026-08-27",
+    location: "Trainline · London",
+    blurb: "Speaking at Europe's longest-running Android meetup.",
+    href: "https://www.meetup.com/android/events/315804087/",
+    external: true,
+  },
+  {
+    name: "MCP Dev Summit Shanghai",
+    status: "Speaking",
+    date: "September 6–7, 2026",
+    isoDate: "2026-09-06",
+    location: "Shanghai, China",
     blurb:
-      "Co-leading the workshop “Past the Vibes: Build an Agent Harness for Your React Native App” with Kourtney Meiss on July 29.",
-    href: "/workshops/chain-react-2026",
+      "The Linux Foundation's MCP Dev Summit, co-located with KubeCon + CloudNativeCon China.",
+    href: "https://www.lfopensource.cn/mcp-dev-summit-shanghai/",
+    external: true,
+  },
+  {
+    name: "BBC Tech Meetup",
+    status: "Speaking",
+    date: "September 2026",
+    location: "London",
+    blurb: "A tech meetup with the BBC engineering community.",
+  },
+  {
+    name: "Agent Conf 2026",
+    status: "Workshop",
+    date: "September 17–18, 2026",
+    isoDate: "2026-09-17",
+    location: "Warsaw, Poland",
+    blurb:
+      "Running a workshop at Agent Conf, Callstack's conference on agentic development.",
+    href: "https://www.agent.sh/workshop",
+    external: true,
+  },
+  {
+    name: "reactCon · next.app devcon",
+    status: "Speaking",
+    date: "October 7–9, 2026",
+    isoDate: "2026-10-07",
+    location: "Berlin, Germany",
+    blurb: "reactCon, the React Native track of next.app devcon.",
+    href: "https://www.nextappcon.com/reactcon",
+    external: true,
+  },
+  {
+    name: "Napoli DevFest 2026",
+    status: "Speaking",
+    date: "October 17, 2026",
+    isoDate: "2026-10-17",
+    location: "Naples, Italy",
+    blurb: "GDG Napoli's DevFest, the developers & startup fair.",
+    href: "https://www.napolidevfest.it/",
+    external: true,
+  },
+  {
+    name: "AGNTCon + MCPCon North America",
+    status: "Speaking",
+    date: "October 22–23, 2026",
+    isoDate: "2026-10-22",
+    location: "San Jose, CA",
+    blurb:
+      "The Agentic AI Foundation's flagship North America event, under the Linux Foundation.",
   },
 ];
 
@@ -64,7 +122,11 @@ export default function WhatsNextPage() {
                   <span style={{ color: statusColor[event.status] }}>
                     [{event.status}]
                   </span>
-                  <time dateTime={event.isoDate}>{event.date}</time>
+                  {event.isoDate ? (
+                    <time dateTime={event.isoDate}>{event.date}</time>
+                  ) : (
+                    <span>{event.date}</span>
+                  )}
                   <span className="text-[var(--border-strong)]">·</span>
                   <span>{event.location}</span>
                 </div>
