@@ -1,0 +1,216 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "giolaq.dev API",
+    "description": "Public read-only API for Giovanni Laquidara's blog posts and author information. No authentication required.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Giovanni Laquidara",
+      "url": "https://giolaq.dev"
+    },
+    "x-api-versioning": {
+      "strategy": "url-path",
+      "current": "v1",
+      "deprecation-policy": "Deprecated versions are announced 6 months before removal. Check /llms.txt for updates."
+    }
+  },
+  "servers": [
+    {
+      "url": "https://giolaq.dev",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/api/posts": {
+      "get": {
+        "operationId": "listPosts",
+        "summary": "List all blog posts",
+        "description": "Returns all published blog posts sorted by date (newest first). Returns the full list since post count is bounded.",
+        "responses": {
+          "200": {
+            "description": "Array of blog posts",
+            "headers": {
+              "X-RateLimit-Limit": {
+                "schema": { "type": "integer" },
+                "description": "Maximum requests per hour"
+              },
+              "X-RateLimit-Remaining": {
+                "schema": { "type": "integer" },
+                "description": "Remaining requests in the current window"
+              },
+              "X-RateLimit-Reset": {
+                "schema": { "type": "integer" },
+                "description": "Unix timestamp when the rate limit resets"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PostSummary"
+                  }
+                },
+                "example": [
+                  {
+                    "title": "Building Your Career in AI",
+                    "slug": "building-your-career-in-ai-real-talk-from-the-trenches",
+                    "date": "2025-06-15",
+                    "description": "Real talk about building an AI career.",
+                    "tags": ["AI", "career"],
+                    "readingTime": "8 min read",
+                    "url": "https://giolaq.dev/blog/building-your-career-in-ai-real-talk-from-the-trenches"
+                  }
+                ]
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded",
+            "headers": {
+              "Retry-After": {
+                "schema": { "type": "integer" },
+                "description": "Seconds until the rate limit resets"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/posts/{slug}": {
+      "get": {
+        "operationId": "getPost",
+        "summary": "Get a single blog post",
+        "description": "Returns a specific blog post by its URL slug, including full HTML content.",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "building-your-career-in-ai-real-talk-from-the-trenches"
+            },
+            "description": "The URL slug of the blog post"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Blog post with full content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Post not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "not_found",
+                  "message": "Post \"nonexistent\" not found.",
+                  "status": 404
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/author": {
+      "get": {
+        "operationId": "getAuthor",
+        "summary": "Get author information",
+        "description": "Returns bio, role, expertise areas, and social links for Giovanni Laquidara.",
+        "responses": {
+          "200": {
+            "description": "Author information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Author"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PostSummary": {
+        "type": "object",
+        "required": ["title", "slug", "date", "url"],
+        "properties": {
+          "title": { "type": "string", "description": "Post title" },
+          "slug": { "type": "string", "description": "URL-safe identifier" },
+          "date": { "type": "string", "format": "date", "description": "Publication date (ISO 8601)" },
+          "description": { "type": "string", "description": "Short post summary" },
+          "tags": { "type": "array", "items": { "type": "string" }, "description": "Topic tags" },
+          "readingTime": { "type": "string", "description": "Estimated reading time (e.g. '5 min read')" },
+          "url": { "type": "string", "format": "uri", "description": "Full URL to the post" }
+        }
+      },
+      "Post": {
+        "type": "object",
+        "required": ["title", "slug", "date", "content", "url"],
+        "properties": {
+          "title": { "type": "string", "description": "Post title" },
+          "slug": { "type": "string", "description": "URL-safe identifier" },
+          "date": { "type": "string", "format": "date", "description": "Publication date" },
+          "description": { "type": "string", "description": "Short post summary" },
+          "tags": { "type": "array", "items": { "type": "string" }, "description": "Topic tags" },
+          "readingTime": { "type": "string", "description": "Estimated reading time" },
+          "content": { "type": "string", "description": "Full post body as rendered HTML" },
+          "url": { "type": "string", "format": "uri", "description": "Full URL to the post" }
+        }
+      },
+      "Author": {
+        "type": "object",
+        "required": ["name", "role", "bio", "url"],
+        "properties": {
+          "name": { "type": "string", "description": "Full name" },
+          "role": { "type": "string", "description": "Professional title" },
+          "bio": { "type": "string", "description": "Author biography" },
+          "url": { "type": "string", "format": "uri", "description": "Personal website URL" },
+          "avatar": { "type": "string", "format": "uri", "description": "Profile image URL" },
+          "expertise": { "type": "array", "items": { "type": "string" }, "description": "Areas of expertise" },
+          "social": {
+            "type": "object",
+            "description": "Social media profile URLs",
+            "properties": {
+              "github": { "type": "string", "format": "uri" },
+              "twitter": { "type": "string", "format": "uri" },
+              "linkedin": { "type": "string", "format": "uri" },
+              "medium": { "type": "string", "format": "uri" },
+              "hashnode": { "type": "string", "format": "uri" }
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": ["error", "message"],
+        "properties": {
+          "error": { "type": "string", "description": "Machine-readable error code" },
+          "message": { "type": "string", "description": "Human-readable error description" },
+          "status": { "type": "integer", "description": "HTTP status code" }
+        }
+      }
+    },
+    "securitySchemes": {}
+  },
+  "security": []
+}

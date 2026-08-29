@@ -1,65 +1,52 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import Link from "next/link";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export default function Footer() {
-  const [uptime, setUptime] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setUptime((u) => u + 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const formatUptime = (seconds: number) => {
-    const h = Math.floor(seconds / 3600);
-    const m = Math.floor((seconds % 3600) / 60);
-    const s = seconds % 60;
-    return `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
-  };
-
-  const links = [
+  const socialLinks = [
     { href: SITE_CONFIG.social.github, label: "GitHub" },
     { href: SITE_CONFIG.social.twitter, label: "Twitter" },
     { href: SITE_CONFIG.social.linkedin, label: "LinkedIn" },
     { href: SITE_CONFIG.social.medium, label: "Medium" },
   ];
 
+  const siteLinks = [
+    { href: "/whats-next", label: "What's Next" },
+    { href: "/speaker", label: "Speaker kit" },
+    { href: "/developers", label: "Developers" },
+    { href: "/contact", label: "Contact" },
+    { href: "/privacy", label: "Privacy" },
+  ];
+
   return (
-    <footer className="mt-8" role="contentinfo">
-      <div className="mx-auto max-w-5xl px-6">
-        <div className="border-t border-dashed border-border" aria-hidden="true" />
-        <div className="flex flex-col items-center justify-between gap-4 py-8 sm:flex-row">
-          <div className="flex items-center gap-4 text-xs text-muted">
-            <span>
-              <span className="text-accent" aria-hidden="true">&copy;</span>
-              <span className="sr-only">Copyright</span>{" "}
-              {new Date().getFullYear()} {SITE_CONFIG.name}
-            </span>
-            <span className="text-border" aria-hidden="true">|</span>
-            <span aria-label={`Session uptime: ${formatUptime(uptime)}`}>
-              uptime: <span className="text-term-green" aria-hidden="true">{formatUptime(uptime)}</span>
-            </span>
+    <footer className="mt-24">
+      <div className="mx-auto max-w-6xl px-6 md:px-8">
+        <div className="border-t border-[var(--border)]" />
+        <div className="flex flex-col items-center justify-between gap-6 py-10 sm:flex-row">
+          <div className="font-mono-xs">
+            © MMXXVI · <span className="text-foreground">GIOLAQ.DEV</span> · London
           </div>
-          <nav aria-label="Social media links">
-            <ul className="flex items-center gap-4" role="list">
-              {links.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-muted transition-all duration-200 hover:text-accent hover:drop-shadow-[0_0_4px_var(--accent)]"
-                  >
-                    {link.label}
-                    <span className="sr-only"> (opens in new tab)</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className="flex items-center gap-6">
+            {siteLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-[12px] text-muted tracking-wide uppercase transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            ))}
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[12px] text-muted tracking-wide uppercase transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
