@@ -6,6 +6,9 @@ export const metadata: Metadata = {
 };
 
 const talks = [
+  { title: "Perception Agents — Tech Demo", event: "AI Engineer World's Fair 2026", date: "2026-06",
+    description: "Built the live tech demo for Antje Barth's keynote on Perception Agents from Amazon AGI Lab — AI agents that perceive rendered screens, complete a perceive-plan-act loop, and verify their own output against design specs.",
+    link: "https://www.youtube.com/watch?v=2JX6JYyQG4Y", type: "Demo" },
   { title: "Taught an Agent to Build TV Apps: Lessons from Building a Coding Harness", event: "droidcon USA 2026", date: "2026-07",
     description: "TV apps span 5+ platforms with different input models and endless focus bugs. This talk covers building an open-source AI coding harness on top of the Strands Agent SDK — structuring tools, training skills in plain Markdown, keeping the agent honest with SOPs and evals, and bridging it into Android Studio, Gradle, and platform CLIs.",
     link: "https://www.youtube.com/watch?v=X4nYqHUXUjs", type: "Talk" },
@@ -71,7 +74,7 @@ const talks = [
 ];
 
 const typeDot: Record<string, string> = {
-  Talk: "#9ece6a", Workshop: "#e0af68", Podcast: "#e8a765", Webinar: "#bb9af7",
+  Talk: "#9ece6a", Workshop: "#e0af68", Podcast: "#e8a765", Webinar: "#bb9af7", Demo: "#7dcfff",
 };
 
 export default function TalksPage() {
@@ -79,7 +82,7 @@ export default function TalksPage() {
     <div className="mx-auto max-w-4xl px-6 md:px-8 py-20">
       <div className="font-mono-xs">§ Talks</div>
       <h1 className="mt-2 font-display text-5xl md:text-7xl tracking-tight leading-[0.95] max-w-[16ch]">
-        Twenty-one talks and workshops{" "}
+        Twenty-two talks and workshops{" "}
         <span className="italic">since 2015.</span>
       </h1>
       <p className="mt-6 max-w-[56ch] text-[15px] text-muted">
