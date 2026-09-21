@@ -34,22 +34,15 @@ const EVENTS: UpcomingEvent[] = [
     external: true,
   },
   {
-    name: "MCP Dev Summit Shanghai",
+    name: "AGNTCon + MCPCon China 2026",
     status: "Speaking",
     date: "September 6–7, 2026",
     isoDate: "2026-09-06",
     location: "Shanghai, China",
     blurb:
-      "The Linux Foundation's MCP Dev Summit, co-located with KubeCon + CloudNativeCon China.",
+      "The Linux Foundation's AGNTCon + MCPCon China 2026, co-located with KubeCon + CloudNativeCon China.",
     href: "https://www.lfopensource.cn/mcp-dev-summit-shanghai/",
     external: true,
-  },
-  {
-    name: "BBC Tech Meetup",
-    status: "Speaking",
-    date: "September 2026",
-    location: "London",
-    blurb: "A tech meetup with the BBC engineering community.",
   },
   {
     name: "Agent Conf 2026",

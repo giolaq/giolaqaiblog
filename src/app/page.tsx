@@ -1,4 +1,5 @@
 import Link from "next/link";
+import TiltSurface from "@/components/TiltSurface";
 import HeroSection from "@/components/HeroSection";
 import PostCard from "@/components/PostCard";
 import FadeIn from "@/components/FadeIn";
@@ -28,37 +29,37 @@ export default function Home() {
 
   const projects = [
     {
-      name: "ad-genius-system",
+      name: "tv-build-harness",
       description:
-        "Multi-agent AI system for generating personalized video advertisements using AWS Bedrock and Strands.",
-      language: "Python",
-      url: "https://github.com/giolaq/ad-genius-system",
-    },
-    {
-      name: "tv-mcp-app",
-      description:
-        "AI-powered TV streaming assistant with interactive widget for browsing, filtering, recommending, and playing content.",
+        "An AI coding harness that turns a content manifest and brand kit into a TV app, with phased builds and automated checks.",
       language: "TypeScript",
-      url: "https://github.com/giolaq/tv-mcp-app",
+      url: "https://github.com/giolaq/tv-build-harness",
     },
     {
-      name: "devtoagent",
+      name: "porthole",
       description:
-        "A Dev.to article generator agent built with Strands — from idea to published post via AI.",
-      language: "Python",
-      url: "https://github.com/giolaq/devtoagent",
+        "A browser window into Android and TV emulators, with CLI and MCP tools for agents to navigate apps, capture screens, and inspect crashes.",
+      language: "TypeScript",
+      url: "https://github.com/giolaq/porthole",
+    },
+    {
+      name: "xingu",
+      description:
+        "An unofficial Amazon Appstore CLI for people and agents. Manage app uploads, store listings, and releases with structured JSON output.",
+      language: "Rust",
+      url: "https://github.com/giolaq/xingu",
     },
     {
       name: "react-native-multi-tv-app-sample",
       description:
-        "React Native TV app sample for Android TV, Fire TV, tvOS, and web — one codebase, every screen.",
+        "A sample React Native app for Android TV, Fire TV, tvOS, and the web.",
       language: "TypeScript",
       url: "https://github.com/giolaq/react-native-multi-tv-app-sample",
     },
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-6 md:px-8">
+    <div className="mx-auto max-w-5xl px-6 md:px-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
@@ -66,25 +67,25 @@ export default function Home() {
       <HeroSection />
 
       {/* Writing */}
-      <section className="pb-24">
+      <section className="home-section">
         <FadeIn>
-          <div className="flex items-end justify-between gap-4">
+          <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <div className="font-mono-xs">§ 01</div>
-              <h2 className="mt-2 font-display text-4xl md:text-5xl tracking-tight">
+
+              <h2 className="section-heading">
                 Latest writing
               </h2>
             </div>
             <Link
               href="/blog"
-              className="text-[12px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-foreground"
+              className="text-link shrink-0"
             >
               All posts →
             </Link>
           </div>
         </FadeIn>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2 min-w-0">
+        <div className="post-list">
           {recentPosts.map((post, i) => (
             <FadeIn key={post.slug} delay={i * 100} className="min-w-0">
               <PostCard post={post} />
@@ -98,55 +99,55 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-      <section className="pb-24">
+      <section id="projects" className="home-section">
         <FadeIn>
-          <div className="flex items-end justify-between gap-4">
+          <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <div className="font-mono-xs">§ 02</div>
-              <h2 className="mt-2 font-display text-4xl md:text-5xl tracking-tight">
-                Featured projects
+
+              <h2 className="section-heading">
+                Selected projects
               </h2>
-              <p className="mt-3 max-w-xl text-[14px] text-muted">
-                Open-source experiments across agentic AI, TV, and cross-platform mobile.
+              <p className="mt-3 max-w-xl text-base text-muted">
+                Tools for building, testing, and releasing apps with AI agents, plus a cross-platform TV starter.
               </p>
             </div>
             <a
               href="https://github.com/giolaq"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[12px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-foreground"
+              className="text-link shrink-0"
             >
-              All repos →
+              GitHub ↗
             </a>
           </div>
         </FadeIn>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2 min-w-0">
-          {projects.map((project, i) => (
-            <FadeIn key={project.name} delay={i * 80} className="min-w-0">
+        <div className="project-list">
+          {projects.map((project) => (
+            <TiltSurface key={project.name} className="project-depth" strength={2.5}>
               <a
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group glass-card block overflow-hidden p-6 min-w-0"
+                className="project-row group block min-w-0"
               >
-                <div className="font-mono-xs flex items-center gap-3">
+                <div className="font-mono-xs flex flex-wrap items-center gap-3">
                   <span>{project.language}</span>
                   <span className="text-[var(--border-strong)]">·</span>
                   <span className="truncate">github.com/giolaq</span>
                 </div>
-                <h3 className="mt-3 font-display text-[26px] leading-tight tracking-tight text-foreground transition-colors duration-300 group-hover:text-[var(--accent)]">
+                <h3 className="mt-3 font-display text-xl font-medium leading-snug break-words text-foreground group-hover:text-accent">
                   {project.name}
                 </h3>
-                <p className="mt-3 text-[13.5px] leading-relaxed text-muted">
+                <p className="mt-3 text-base leading-relaxed text-muted">
                   {project.description}
                 </p>
-                <div className="mt-6 inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.18em] text-muted transition-colors duration-300 group-hover:text-foreground">
+                <div className="mt-4 inline-flex items-center gap-2 text-sm text-accent">
                   <span>View repo</span>
                   <span aria-hidden>↗</span>
                 </div>
               </a>
-            </FadeIn>
+            </TiltSurface>
           ))}
         </div>
       </section>

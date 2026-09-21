@@ -6,12 +6,15 @@ export const metadata: Metadata = {
 };
 
 const talks = [
+  { title: "I Taught an Agent to Build TV Apps: Lessons from Building a Coding Harness", event: "Londroid — August 2026", date: "2026-08",
+    description: "The Londroid session on building an AI coding harness for TV apps, recorded at the London Android community meetup.",
+    link: "https://www.youtube.com/watch?v=HWlvmwHhlFo&t=175s", type: "Talk" },
   { title: "Perception Agents — Tech Demo", event: "AI Engineer World's Fair 2026", date: "2026-06",
     description: "Built the live tech demo for Antje Barth's keynote on Perception Agents from Amazon AGI Lab — AI agents that perceive rendered screens, complete a perceive-plan-act loop, and verify their own output against design specs.",
     link: "https://www.youtube.com/watch?v=2JX6JYyQG4Y", type: "Demo" },
-  { title: "Taught an Agent to Build TV Apps: Lessons from Building a Coding Harness", event: "droidcon USA 2026", date: "2026-07",
+  { title: "Taught an Agent to Build TV Apps: Lessons from Building a Coding Harness", event: "Droidcon Orlando 2026", date: "2026-07",
     description: "TV apps span 5+ platforms with different input models and endless focus bugs. This talk covers building an open-source AI coding harness on top of the Strands Agent SDK — structuring tools, training skills in plain Markdown, keeping the agent honest with SOPs and evals, and bridging it into Android Studio, Gradle, and platform CLIs.",
-    link: "https://www.youtube.com/watch?v=X4nYqHUXUjs", type: "Talk" },
+    link: "https://www.youtube.com/watch?v=X4nYqHUXUjs&t=1365s", type: "Talk" },
   { title: "React Native, Amplified", event: "React Conf 2025", date: "2025-10",
     description: "How to use React and React Native to build for Amazon's new Vega OS — a lightweight Linux-based OS with React Native built-in.",
     link: "https://youtu.be/NKLwWf2G1-8?si=BoxZDW3E-LFb9OjA", type: "Talk" },
@@ -82,7 +85,7 @@ export default function TalksPage() {
     <div className="mx-auto max-w-4xl px-6 md:px-8 py-20">
       <div className="font-mono-xs">§ Talks</div>
       <h1 className="mt-2 font-display text-5xl md:text-7xl tracking-tight leading-[0.95] max-w-[16ch]">
-        Twenty-two talks and workshops{" "}
+        Talks and workshops{" "}
         <span className="italic">since 2015.</span>
       </h1>
       <p className="mt-6 max-w-[56ch] text-[15px] text-muted">

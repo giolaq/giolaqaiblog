@@ -4,7 +4,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `About ${SITE_CONFIG.author.name}, developer advocate and builder focused on agentic AI and harness engineering.`,
+  description: `About ${SITE_CONFIG.author.name}, developer advocate at Amazon in London, writing about AI agents, mobile development, and TV apps.`,
 };
 
 export default function AboutPage() {
@@ -31,20 +31,9 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
-      <div className="font-mono-xs">§ About</div>
-      <h1 className="mt-2 font-display text-5xl md:text-7xl tracking-tight leading-[0.95] max-w-[14ch]">
-        Serial <span className="italic">early adopter.</span>
-      </h1>
-      <div className="mt-7 inline-flex items-center gap-3 rounded-full liquid-glass px-4 py-1.5 font-mono-xs">
-        <span
-          className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] pulse-dot"
-          style={{ boxShadow: "0 0 8px 1px var(--accent)" }}
-        />
-        <span>Current focus · AI · Agents · Harnesses</span>
-      </div>
-      <p className="mt-5 max-w-[56ch] text-[15px] text-muted">
-        Mobile, VR, defence systems, TV, and now the tooling that lets AI
-        agents ship real software.
+      <h1 className="page-title">About me</h1>
+      <p className="mt-5 max-w-[56ch] text-lg leading-relaxed text-muted">
+        I’m Giovanni, a developer advocate at Amazon in London.
       </p>
 
       <div className="mt-14 grid gap-10 md:grid-cols-[180px_1fr]">
@@ -59,22 +48,16 @@ export default function AboutPage() {
           />
         </div>
 
-        <div className="space-y-6 text-[15px] leading-relaxed text-muted max-w-[62ch]">
+        <div className="space-y-6 text-base leading-relaxed text-muted max-w-[62ch]">
           <p>
-            Hi, I&apos;m{" "}
-            <strong className="text-foreground">Giovanni Laquidara</strong>, a
-            developer advocate and builder at Amazon in London. My focus these
-            days is agentic AI and harness engineering: the scaffolding of
-            tools, context, and feedback loops that lets agents do real work.
-            I&apos;m happiest when the work sits at the seam between two
-            disciplines.
+            These days I work on AI agents: connecting models to tools, giving
+            them useful context, and checking what they produce. I also write
+            tutorials and run workshops on TV apps and cross-platform development.
           </p>
           <p>
-            I think the title &quot;software engineer&quot; is giving way to
-            &quot;builder.&quot; Agents have lowered the cost of trying things
-            enough that PMs, designers, and data scientists ship working code,
-            and the people who get the most out of that are generalists who can
-            carry an idea across role boundaries.
+            My work has taken me through Android, VR/AR, real-time defence systems,
+            and TV. That mix is part of why I like trying unfamiliar tools and
+            figuring out how they fit together.
           </p>
           <p>
             I studied at Università di Roma Tor Vergata and have been building
@@ -85,23 +68,23 @@ export default function AboutPage() {
       </div>
 
       <section className="mt-24">
-        <div className="font-mono-xs">§ 01 — What I do</div>
+        <div className="font-mono-xs">What I do</div>
         <h2 className="mt-2 font-display text-4xl tracking-tight">
-          The work.
+          Work, talks, and writing
         </h2>
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {[
             {
               n: "01",
-              title: "Agentic AI & Harness Engineering",
-              body: "Building the harnesses around AI agents: tools, context, and feedback loops that turn a model into something that ships software.",
+              title: "AI agents",
+              body: "Tools, context, and feedback for agents, with working examples built on AWS Bedrock and Strands.",
               featured: true,
             },
             {
               n: "02",
               title: "Developer Advocacy",
-              body: "Content, talks, and tools that help developers succeed on mobile, TV, and cross-platform stacks.",
+              body: "Talks, workshops, and sample apps for developers working on mobile and TV.",
             },
             {
               n: "03",
@@ -124,7 +107,7 @@ export default function AboutPage() {
               <h3 className="mt-3 font-display text-2xl tracking-tight text-foreground">
                 {item.title}
               </h3>
-              <p className="mt-3 text-[14px] leading-relaxed text-muted">
+              <p className="mt-3 text-base leading-relaxed text-muted">
                 {item.body}
               </p>
             </div>
@@ -133,11 +116,11 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-24">
-        <div className="font-mono-xs">§ 02 — Get in touch</div>
+        <div className="font-mono-xs">Get in touch</div>
         <h2 className="mt-2 font-display text-4xl tracking-tight">
           Say hi.
         </h2>
-        <p className="mt-4 max-w-[50ch] text-[15px] text-muted">
+        <p className="mt-4 max-w-[50ch] text-base text-muted">
           For talks, collaborations, or a chat about TV apps and agents, any of
           these works.
         </p>
@@ -153,7 +136,7 @@ export default function AboutPage() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="liquid-glass hover-lift rounded-full px-5 py-2.5 text-[13px]"
+              className="liquid-glass hover-lift rounded-full px-5 py-2.5 text-sm"
             >
               {link.label} →
             </a>

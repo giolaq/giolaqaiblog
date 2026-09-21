@@ -12,14 +12,11 @@ export default function BlogPage() {
   const tags = getAllTags();
 
   return (
-    <div className="mx-auto max-w-6xl px-6 md:px-8 py-20">
-      <div className="font-mono-xs">§ Writing</div>
-      <h1 className="mt-2 font-display text-5xl md:text-7xl tracking-tight leading-[0.95] max-w-[16ch]">
-        Notes on agentic AI, TV apps, React Native,{" "}
-        <span className="italic">and Kotlin.</span>
-      </h1>
-      <p className="mt-6 max-w-[56ch] text-[15px] text-muted">
-        Mostly TV and cross-platform work, with the occasional hardware detour.
+    <div className="mx-auto max-w-5xl px-6 md:px-8 py-12 md:py-16">
+      <h1 className="page-title">Writing</h1>
+      <p className="mt-5 max-w-[60ch] text-lg leading-relaxed text-muted">
+        Tutorials, conference notes, and things I’ve been trying.
+        Mostly TV apps, React Native, Kotlin, and AI agents.
       </p>
 
       <div className="mt-12">

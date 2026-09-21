@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Backdrop from "@/components/Backdrop";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE_CONFIG } from "@/lib/constants";
 import "./globals.css";
@@ -35,7 +34,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#031826",
+  themeColor: "#101f19",
   colorScheme: "dark",
 };
 
@@ -45,11 +44,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        {/* Google Fonts: Instrument Serif (display) + Inter (body) + JetBrains Mono */}
+        {/* Google Fonts: Cinzel (headings), IBM Plex Sans (body), JetBrains Mono (code) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
       </head>
@@ -157,8 +156,6 @@ export default function RootLayout({
           }}
         />
 
-        {/* Cinematic background, sits behind everything on every page */}
-        <Backdrop />
 
         <a href="#main" className="skip-link">
           Skip to content

@@ -2,128 +2,46 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/blog", label: "Writing" },
+  { href: "/talks", label: "Talks" },
+  { href: "/whats-next", label: "What’s next" },
+  { href: "/about", label: "About" },
+  { href: "/resume", label: "Resume" },
+];
 
 export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [openPath, setOpenPath] = useState<string | null>(null);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/blog", label: "Writing" },
-    { href: "/talks", label: "Talks" },
-    { href: "/whats-next", label: "What's Next" },
-    { href: "/about", label: "About" },
-    { href: "/resume", label: "Resume" },
-  ];
+  const mobileOpen = openPath === pathname;
+  const menuButton = useRef<HTMLButtonElement>(null);
 
   return (
-    <header
-      className={`sticky top-0 z-40 transition-colors duration-300 border-b ${
-        scrolled
-          ? "bg-[#031826]/70 backdrop-blur-md border-[var(--border)]"
-          : "border-transparent"
-      }`}
-    >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 md:px-8 py-6">
-        {/* Brand — Instrument Serif wordmark */}
-        <Link href="/" className="flex items-baseline gap-1 text-foreground">
-          <span className="font-display text-2xl md:text-[28px] tracking-tight">
-            Giovanni Laquidara
-          </span>
-        </Link>
-
-        {/* Desktop nav */}
-        <ul className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => {
-            const active = pathname === link.href || (link.href !== "/" && pathname?.startsWith(link.href));
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`relative text-[13.5px] tracking-wide transition-colors ${
-                    active ? "text-foreground" : "text-muted hover:text-foreground"
-                  }`}
-                >
-                  {link.label}
-                  {active && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-px bg-foreground/60" />
-                  )}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* CTA pill — speaker kit for conference organizers */}
-        <Link
-          href="/speaker"
-          className="hidden md:inline-flex liquid-glass hover-lift rounded-full px-5 py-2 text-[13px] items-center gap-2"
-        >
-          <span
-            className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] pulse-dot"
-            style={{ boxShadow: "0 0 10px 1px var(--accent)" }}
-          />
-          <span>Available for talks</span>
-        </Link>
-
-        {/* Mobile toggle */}
-        <button
-          className="text-muted transition-colors hover:text-foreground md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            {mobileOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7h16M4 12h16M4 17h16" />
-            )}
-          </svg>
+    <header className="site-header" onKeyDown={(event) => {
+      if (event.key === "Escape" && mobileOpen) {
+        setOpenPath(null);
+        menuButton.current?.focus();
+      }
+    }}>
+      <nav className="site-nav" aria-label="Main navigation">
+        <Link href="/" className="wordmark" onClick={() => setOpenPath(null)}>Giovanni Laquidara<span aria-hidden="true">.</span></Link>
+        <button ref={menuButton} className="menu-toggle" aria-expanded={mobileOpen} aria-controls="main-navigation"
+          onClick={() => setOpenPath(mobileOpen ? null : pathname)}>
+          {mobileOpen ? "Close" : "Menu"}
         </button>
+        <ul id="main-navigation" className={`nav-links ${mobileOpen ? "is-open" : ""}`}>
+          {navLinks.map((link) => {
+            const active = pathname === link.href || (link.href !== "/" && pathname.startsWith(`${link.href}/`));
+            return <li key={link.href}><Link href={link.href} aria-current={active ? "page" : undefined}
+              onClick={() => setOpenPath(null)}>{link.label}</Link></li>;
+          })}
+          <li><Link href="/speaker" aria-current={pathname === "/speaker" ? "page" : undefined}
+            onClick={() => setOpenPath(null)}>Speaker kit <span aria-hidden="true">↗</span></Link></li>
+        </ul>
       </nav>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden glass-card mx-6 mb-4 rounded-2xl p-4">
-          <ul className="flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`block rounded-md px-3 py-2.5 text-sm transition-colors ${
-                    pathname === link.href ? "text-foreground" : "text-muted hover:text-foreground"
-                  }`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-            <li className="mt-2 border-t border-[var(--border)] pt-2">
-              <Link
-                href="/speaker"
-                className="flex items-center gap-2.5 rounded-md px-3 py-2.5 text-sm text-foreground"
-                onClick={() => setMobileOpen(false)}
-              >
-                <span
-                  className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] pulse-dot"
-                  style={{ boxShadow: "0 0 8px 1px var(--accent)" }}
-                />
-                Available for talks
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
     </header>
   );
 }
