@@ -38,18 +38,41 @@ export default function Ocarina({ onClose }: { onClose: () => void }) {
     element?.showModal();
     const overflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    return () => {
+    function releaseAudio() {
       audioGeneration.current += 1;
       sessionRestore.current?.();
       sessionRestore.current = null;
-      element?.close();
-      document.body.style.overflow = overflow;
+      const context = audio.current;
+      audio.current = null;
+      if (context) void context.close().catch(() => {});
+    }
+    function leavePage() {
+      releaseAudio();
       if (highlightTimer.current) clearTimeout(highlightTimer.current);
       if (travelTimer.current) clearTimeout(travelTimer.current);
-      if (audio.current) {
-        void audio.current.close().catch(() => {});
-        audio.current = null;
-      }
+      highlightTimer.current = null;
+      travelTimer.current = null;
+    }
+    function restorePage(event: PageTransitionEvent) {
+      if (!event.persisted) return;
+      // Back/forward cache restores React state without remounting this dialog.
+      leavePage();
+      travelling.current = false;
+      sequence.current = "";
+      lastNote.current = 0;
+      setMatched(null);
+      setPlayed("");
+      setActive("");
+      setAudioUnavailable(false);
+    }
+    window.addEventListener("pagehide", leavePage);
+    window.addEventListener("pageshow", restorePage);
+    return () => {
+      window.removeEventListener("pagehide", leavePage);
+      window.removeEventListener("pageshow", restorePage);
+      leavePage();
+      element?.close();
+      document.body.style.overflow = overflow;
     };
   }, []);
 
