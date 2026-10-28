@@ -15,10 +15,13 @@ const SONGS = [
   { name: "The meeting song", keys: "sgfsgf", destination: "LinkedIn", url: SITE_CONFIG.social.linkedin },
 ];
 type Song = typeof SONGS[number];
+type PlaybackSession = { type: string };
 
 export default function Ocarina({ onClose }: { onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const audio = useRef<AudioContext | null>(null);
+  const audioGeneration = useRef(0);
+  const sessionRestore = useRef<(() => void) | null>(null);
   const sequence = useRef("");
   const lastNote = useRef(0);
   const highlightTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -36,6 +39,9 @@ export default function Ocarina({ onClose }: { onClose: () => void }) {
     const overflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
+      audioGeneration.current += 1;
+      sessionRestore.current?.();
+      sessionRestore.current = null;
       element?.close();
       document.body.style.overflow = overflow;
       if (highlightTimer.current) clearTimeout(highlightTimer.current);
@@ -47,12 +53,31 @@ export default function Ocarina({ onClose }: { onClose: () => void }) {
     };
   }, []);
 
-  function sound(frequency: number) {
+  async function sound(frequency: number) {
     if (muted) return;
+    const generation = audioGeneration.current;
     try {
-      const context = audio.current ?? new AudioContext();
+      // Set playback intent inside the tap/keypress, before starting Web Audio.
+      // This API is optional; other browsers use their normal audio policy.
+      const session = (navigator as Navigator & { audioSession?: PlaybackSession }).audioSession;
+      if (session && !sessionRestore.current) {
+        const previousType = session.type;
+        try {
+          session.type = "playback";
+          sessionRestore.current = () => {
+            try { session.type = previousType; } catch { /* Optional browser API. */ }
+          };
+        } catch { /* Web Audio can still work without Audio Session support. */ }
+      }
+      const context = audio.current?.state === "closed" || !audio.current
+        ? new AudioContext()
+        : audio.current;
       audio.current = context;
-      if (context.state === "suspended") void context.resume().catch(() => setAudioUnavailable(true));
+      // Safari can also report "interrupted" after a call or switching apps.
+      if (context.state !== "running") await context.resume();
+      if (audio.current !== context || generation !== audioGeneration.current) return;
+      if (context.state !== "running") throw new Error("Audio has not resumed");
+      setAudioUnavailable(false);
       const now = context.currentTime;
       // A soft fundamental and quiet overtone; no sample downloads or idle oscillator.
       [1, 2].forEach((harmonic) => {
@@ -69,13 +94,15 @@ export default function Ocarina({ onClose }: { onClose: () => void }) {
         oscillator.start(now);
         oscillator.stop(now + .38);
       });
-    } catch { setAudioUnavailable(true); }
+    } catch {
+      if (generation === audioGeneration.current) setAudioUnavailable(true);
+    }
   }
 
   function play(key: string, timestamp: number) {
     const note = NOTES.find((item) => item.key === key);
     if (!note || travelling.current) return;
-    sound(note.frequency);
+    void sound(note.frequency);
     setActive(key);
     if (highlightTimer.current) clearTimeout(highlightTimer.current);
     highlightTimer.current = setTimeout(() => setActive(""), 180);
@@ -136,7 +163,11 @@ export default function Ocarina({ onClose }: { onClose: () => void }) {
         </div>
         <div className="ocarina-status" role="status">{matched ? `Song complete. Travelling to ${matched.destination}…` : audioUnavailable ? "Sound is unavailable here. The note sequences still work." : "Two original melodies. Two places to find me."}</div>
         <div className="ocarina-actions">
-          <button type="button" aria-pressed={muted} onClick={() => { setMuted(!muted); if (audio.current) void audio.current.suspend().catch(() => {}); }}>{muted ? "Unmute" : "Mute"}</button>
+          <button type="button" aria-pressed={muted} onClick={() => {
+            audioGeneration.current += 1;
+            setMuted(!muted);
+            if (!muted && audio.current) void audio.current.suspend().catch(() => {});
+          }}>{muted ? "Unmute" : "Mute"}</button>
           <button type="button" onClick={reset}>{matched ? "Stay here" : "Clear notes"}</button>
         </div>
       </div>
