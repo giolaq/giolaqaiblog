@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
 import { SITE_CONFIG } from "@/lib/constants";
 
 const NOTES = [
@@ -21,6 +21,7 @@ export default function Ocarina({ onClose }: { onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const audio = useRef<AudioContext | null>(null);
   const audioGeneration = useRef(0);
+  const voices = useRef(new Set<OscillatorNode>());
   const sessionRestore = useRef<(() => void) | null>(null);
   const sequence = useRef("");
   const lastNote = useRef(0);
@@ -40,6 +41,8 @@ export default function Ocarina({ onClose }: { onClose: () => void }) {
     document.body.style.overflow = "hidden";
     function releaseAudio() {
       audioGeneration.current += 1;
+      voices.current.forEach((voice) => voice.stop());
+      voices.current.clear();
       sessionRestore.current?.();
       sessionRestore.current = null;
       const context = audio.current;
@@ -76,7 +79,7 @@ export default function Ocarina({ onClose }: { onClose: () => void }) {
     };
   }, []);
 
-  async function sound(frequency: number) {
+  async function sound(frequency: number, celebration = false) {
     if (muted) return;
     const generation = audioGeneration.current;
     try {
@@ -102,20 +105,28 @@ export default function Ocarina({ onClose }: { onClose: () => void }) {
       if (context.state !== "running") throw new Error("Audio has not resumed");
       setAudioUnavailable(false);
       const now = context.currentTime;
-      // A soft fundamental and quiet overtone; no sample downloads or idle oscillator.
-      [1, 2].forEach((harmonic) => {
-        const oscillator = context.createOscillator();
-        const gain = context.createGain();
-        oscillator.type = "sine";
-        oscillator.frequency.value = frequency * harmonic;
-        gain.gain.setValueAtTime(0, now);
-        gain.gain.linearRampToValueAtTime(harmonic === 1 ? .12 : .012, now + .025);
-        gain.gain.exponentialRampToValueAtTime(.001, now + .36);
-        oscillator.connect(gain);
-        gain.connect(context.destination);
-        oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); };
-        oscillator.start(now);
-        oscillator.stop(now + .38);
+      // An original ascending treasure chime, synthesized without audio downloads.
+      const score = celebration
+        ? [[659.25, .15], [783.99, .33], [987.77, .51], [1174.66, .74], [1567.98, 1.02]]
+        : [[frequency, 0]];
+      score.forEach(([pitch, delay], index) => {
+        const start = now + delay;
+        const duration = celebration && index === score.length - 1 ? 1.1 : .38;
+        [1, 2].forEach((harmonic) => {
+          const oscillator = context.createOscillator();
+          const gain = context.createGain();
+          oscillator.type = "sine";
+          oscillator.frequency.value = pitch * harmonic;
+          gain.gain.setValueAtTime(0, start);
+          gain.gain.linearRampToValueAtTime(harmonic === 1 ? .12 : .012, start + .025);
+          gain.gain.exponentialRampToValueAtTime(.001, start + duration - .02);
+          oscillator.connect(gain);
+          gain.connect(context.destination);
+          voices.current.add(oscillator);
+          oscillator.onended = () => { voices.current.delete(oscillator); oscillator.disconnect(); gain.disconnect(); };
+          oscillator.start(start);
+          oscillator.stop(start + duration);
+        });
       });
     } catch {
       if (generation === audioGeneration.current) setAudioUnavailable(true);
@@ -137,17 +148,32 @@ export default function Ocarina({ onClose }: { onClose: () => void }) {
     if (song) {
       travelling.current = true;
       setMatched(song);
-      travelTimer.current = setTimeout(() => window.location.assign(song.url), 1800);
+      void sound(note.frequency, true);
+      travelTimer.current = setTimeout(() => window.location.assign(song.url), 3200);
     }
   }
 
+  function stopNotes() {
+    audioGeneration.current += 1;
+    voices.current.forEach((voice) => voice.stop());
+    voices.current.clear();
+  }
+
+  function toggleMute() {
+    stopNotes();
+    setMuted(!muted);
+    if (!muted && audio.current) void audio.current.suspend().catch(() => {});
+  }
+
   function reset() {
+    stopNotes();
     if (travelTimer.current) clearTimeout(travelTimer.current);
     travelTimer.current = null;
     travelling.current = false;
     sequence.current = "";
     setPlayed("");
     setMatched(null);
+    requestAnimationFrame(() => dialog.current?.querySelector<HTMLButtonElement>(".ocarina-notes button")?.focus());
   }
 
   function keyDown(event: KeyboardEvent<HTMLDialogElement>) {
@@ -163,10 +189,33 @@ export default function Ocarina({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <dialog ref={dialog} className="ocarina-dialog" aria-labelledby="ocarina-title" aria-describedby="ocarina-instructions"
+    <dialog ref={dialog} className={`ocarina-dialog${matched ? " is-celebrating" : ""}`} aria-labelledby="ocarina-title" aria-describedby="ocarina-instructions"
       onKeyDown={keyDown} onCancel={(event) => { event.preventDefault(); onClose(); }}
       onClick={(event) => { if (event.target === event.currentTarget) onClose(); }}>
-      <div className="ocarina-panel">
+      {matched && <div className="ocarina-celebration">
+        <div className="ocarina-confetti" aria-hidden="true">
+          {Array.from({ length: 36 }, (_, index) => <i key={index} style={{
+            "--x": `${Math.cos(index * 2.4) * (120 + index * 5)}px`,
+            "--y": `${Math.sin(index * 2.4) * (100 + index * 4)}px`,
+            "--spin": `${index * 67}deg`,
+            "--delay": `${(index % 6) * .035}s`,
+            background: ["#d8bc73", "#91b88a", "#f6edcf", "#7bbfc0"][index % 4],
+          } as CSSProperties} />)}
+        </div>
+        <div className="ocarina-reward">
+          <span className="ocarina-reward-symbol" aria-hidden="true">✦</span>
+          <div role="status" aria-live="polite" aria-atomic="true">
+            <h2>Song complete.</h2>
+            <p>Travelling to {matched.destination}…</p>
+          </div>
+          <div className="ocarina-actions">
+            <button type="button" autoFocus onClick={reset}>Stay here</button>
+            <button type="button" aria-pressed={muted} onClick={toggleMute}>{muted ? "Unmute" : "Mute"}</button>
+          </div>
+          <button type="button" className="ocarina-reward-close" onClick={onClose}>Close <kbd>Esc</kbd></button>
+        </div>
+      </div>}
+      <div className="ocarina-panel" hidden={!!matched}>
         <div className="ocarina-top"><span>A secret, well kept.</span><button type="button" onClick={onClose} aria-label="Close ocarina">Close <kbd>Esc</kbd></button></div>
         <h2 id="ocarina-title">The pocket ocarina</h2>
         <p id="ocarina-instructions">Play with <strong>A S D F G</strong>, or tap the notes. Complete a song to travel to its destination.</p>
@@ -186,11 +235,7 @@ export default function Ocarina({ onClose }: { onClose: () => void }) {
         </div>
         <div className="ocarina-status" role="status">{matched ? `Song complete. Travelling to ${matched.destination}…` : audioUnavailable ? "Sound is unavailable here. The note sequences still work." : "Two original melodies. Two places to find me."}</div>
         <div className="ocarina-actions">
-          <button type="button" aria-pressed={muted} onClick={() => {
-            audioGeneration.current += 1;
-            setMuted(!muted);
-            if (!muted && audio.current) void audio.current.suspend().catch(() => {});
-          }}>{muted ? "Unmute" : "Mute"}</button>
+          <button type="button" aria-pressed={muted} onClick={toggleMute}>{muted ? "Unmute" : "Mute"}</button>
           <button type="button" onClick={reset}>{matched ? "Stay here" : "Clear notes"}</button>
         </div>
       </div>

@@ -349,3 +349,25 @@ button:not(:disabled), summary { cursor: pointer; }
 @media (max-width: 400px) { .ocarina-panel { padding: 1.25rem; } .ocarina-notes { gap: .4rem; } }
 @media (prefers-reduced-motion: no-preference) { .ocarina-dialog[open] { animation: intro-settle .25s ease-out; } }
 @media print { .ocarina-dialog { display: none; } }
+
+/* A brief, dependency-free celebration, centered in the browser viewport. */
+.ocarina-dialog.is-celebrating { width: 100%; max-width: none; height: 100dvh; max-height: none; border: 0; border-radius: 0; background: transparent; box-shadow: none; overflow: hidden; animation: none; }
+.ocarina-celebration { position: absolute; inset: 0; display: grid; place-items: center; padding: 1rem; overflow: auto; }
+.ocarina-reward { position: relative; width: min(100%, 27rem); padding: 2rem; text-align: center; background: var(--background); border: 1px solid var(--accent); border-radius: 12px; box-shadow: 0 0 70px #d8bc7325; }
+.ocarina-reward h2 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+.ocarina-reward-symbol { display: block; font-size: 3rem; color: var(--accent); }
+.ocarina-reward .ocarina-actions { justify-content: center; margin-top: 1.75rem; }
+.ocarina-reward-close { min-height: 44px; margin-top: .5rem; color: var(--muted); font-size: .8125rem; }
+.ocarina-confetti { z-index: 2; position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.ocarina-confetti i { position: absolute; left: 50%; top: 50%; width: 7px; height: 12px; border-radius: 2px; opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .ocarina-confetti i { animation: ocarina-confetti 2.3s var(--delay) cubic-bezier(.15,.65,.3,1) both; }
+  .ocarina-reward { animation: ocarina-reward .3s ease-out; }
+}
+@keyframes ocarina-confetti {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.4); }
+  12% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y) + 140px)) rotate(var(--spin)); }
+}
+@keyframes ocarina-reward { from { opacity: 0; transform: translateY(8px) scale(.96); } to { opacity: 1; transform: none; } }
