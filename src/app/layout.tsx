@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import DemoTapIndicator from "@/components/DemoTapIndicator";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE_CONFIG } from "@/lib/constants";
 import "./globals.css";
@@ -54,6 +55,7 @@ export default function RootLayout({
       </head>
       <GoogleAnalytics gaId="G-SGTFTP5C6W" />
       <body className="antialiased bg-background text-foreground">
+        <DemoTapIndicator />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
