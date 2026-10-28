@@ -21,8 +21,12 @@ export default function HeroSection() {
         </div>
       </div>
       <TiltSurface className="portrait-depth" strength={5}>
+      <button type="button" data-ocarina-trigger
+        className="relative block touch-manipulation select-none"
+        aria-label="Giovanni Laquidara — tap five times quickly to open the secret ocarina">
       <Image src="/headshot.jpg" alt="Giovanni Laquidara" width={240} height={313}
-        sizes="(max-width: 640px) 96px, 200px" className="intro-portrait" priority />
+        sizes="(max-width: 640px) 96px, 200px" className="intro-portrait" draggable={false} priority />
+      </button>
       </TiltSurface>
     </section>
   );

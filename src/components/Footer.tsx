@@ -20,11 +20,12 @@ export default function Footer() {
 
   return (
     <footer className="mt-24">
+      <OcarinaEgg />
       <div className="mx-auto max-w-5xl px-6 md:px-8">
         <div className="border-t border-[var(--border)]" />
         <div className="flex flex-col items-start justify-between gap-6 py-10">
           <div className="font-mono-xs">
-            © {new Date().getFullYear()} · <OcarinaEgg /> · London
+            © {new Date().getFullYear()} · <span className="text-foreground">GIOLAQ.DEV</span> · London
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
             {siteLinks.map((link) => (

@@ -45,23 +45,26 @@ export default function OcarinaEgg() {
     return () => document.removeEventListener("keydown", unlock);
   }, [open]);
 
-  return <>
-    <button
-      type="button"
-      className="min-h-11 touch-manipulation select-none text-foreground"
-      aria-label="GIOLAQ.DEV — activate five times quickly to open the secret ocarina"
-      onClick={() => {
-        const now = Date.now();
-        if (taps.current.count === 0 || now - taps.current.startedAt > 3000) {
-          taps.current = { count: 1, startedAt: now };
-        } else {
-          taps.current.count += 1;
-        }
-        if (taps.current.count === 5) reveal();
-      }}
-    >GIOLAQ.DEV</button>
-    {open && <Ocarina onClose={() => {
-      setOpen(false);
-    }} />}
-  </>;
+  useEffect(() => {
+    function tapPhoto(event: MouseEvent) {
+      if (open || !(event.target instanceof Element)) return;
+      const photo = event.target.closest("button[data-ocarina-trigger]");
+      if (!(photo instanceof HTMLButtonElement)) return;
+      const now = Date.now();
+      if (taps.current.count === 0 || now - taps.current.startedAt > 3000) {
+        taps.current = { count: 1, startedAt: now };
+      } else {
+        taps.current.count += 1;
+      }
+      if (taps.current.count === 5) {
+        // Touch browsers do not always focus buttons on tap.
+        photo.focus({ preventScroll: true });
+        reveal();
+      }
+    }
+    document.addEventListener("click", tapPhoto);
+    return () => document.removeEventListener("click", tapPhoto);
+  }, [open]);
+
+  return open ? <Ocarina onClose={() => setOpen(false)} /> : null;
 }

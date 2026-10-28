@@ -63,7 +63,7 @@ Applied a forest-green, parchment, and antique-gold palette with Cinzel display 
 
 ## Hidden Ocarina
 
-Removed the anniversary banner and its styles. Type OCARINA outside an editable field (up to two seconds between letters) to reveal a lazy-loaded native dialog. Discovery works by typing OCARINA or activating the GIOLAQ.DEV footer name five times within three seconds. The name keeps its existing appearance, with no separate music icon. Song destination labels are hidden until a melody is completed. A/S/D/F/G play five synthesized notes; audio is created only after the first note and closed on dismissal.
+Removed the anniversary banner and its styles. Type OCARINA outside an editable field (up to two seconds between letters) to reveal a lazy-loaded native dialog. Discovery works by typing OCARINA or tapping the homepage portrait five times within three seconds. The portrait keeps its existing appearance, with no separate music icon. The footer is plain text. Song destination labels are hidden until a melody is completed. A/S/D/F/G play five synthesized notes; audio is created only after the first note and closed on dismissal.
 
 - A D F A D F: GitHub (https://github.com/giolaq).
 - S G F S G F: LinkedIn (https://www.linkedin.com/in/glaquidara/).
