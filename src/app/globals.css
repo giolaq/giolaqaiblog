@@ -39,6 +39,7 @@ button:not(:disabled), a { -webkit-tap-highlight-color: transparent; }
 button:not(:disabled) { cursor: pointer; }
 a, button, input { touch-action: manipulation; }
 a { text-underline-offset: .22em; }
+main p a, main li > a { text-decoration-line: underline; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 2px; }
 #main:focus { outline: none; }
 ::selection { background: var(--accent); color: var(--background); }
@@ -56,7 +57,7 @@ a { text-underline-offset: .22em; }
 .site-header { position: sticky; top: 0; z-index: 40; background: var(--background); border-bottom: 1px solid var(--border); }
 .nav-bar { display: flex; align-items: center; justify-content: space-between; min-height: 88px; gap: 2rem; position: relative; }
 .wordmark { display: inline-flex; align-items: center; font-size: 1.375rem; font-weight: 700; letter-spacing: -.06em; white-space: nowrap; }
-.brand-symbol { display: grid; place-items: center; width: 34px; height: 34px; margin-right: 12px; background: var(--accent); color: var(--background); font-family: var(--font-mono); font-size: 1.15rem; letter-spacing: -.15em; padding-right: 4px; }
+.brand-symbol { display: grid; place-items: center; width: 34px; height: 34px; margin-right: 12px; background: var(--accent); color: var(--background); }
 .desktop-nav { display: flex; gap: 1.7rem; align-items: center; }
 .desktop-nav a { display: flex; align-items: center; min-height: 44px; font-size: .8125rem; color: var(--muted); border-bottom: 2px solid transparent; }
 .desktop-nav a:hover { color: var(--foreground); }

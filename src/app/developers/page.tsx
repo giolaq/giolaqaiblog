@@ -44,7 +44,7 @@ export default function DevelopersPage() {
             <h3 className="font-display text-xl text-foreground">
               List all posts
             </h3>
-            <pre className="glass-card p-4 text-[13px] font-mono overflow-x-auto">
+            <pre tabIndex={0} role="region" aria-label="List all posts with curl" className="glass-card p-4 text-[13px] font-mono overflow-x-auto">
               <code>{`curl https://giolaq.dev/api/posts`}</code>
             </pre>
           </div>
@@ -53,7 +53,7 @@ export default function DevelopersPage() {
             <h3 className="font-display text-xl text-foreground">
               Get a specific post
             </h3>
-            <pre className="glass-card p-4 text-[13px] font-mono overflow-x-auto">
+            <pre tabIndex={0} role="region" aria-label="Get a specific post with curl" className="glass-card p-4 text-[13px] font-mono overflow-x-auto">
               <code>{`curl https://giolaq.dev/api/posts/{slug}`}</code>
             </pre>
           </div>
@@ -62,7 +62,7 @@ export default function DevelopersPage() {
             <h3 className="font-display text-xl text-foreground">
               Get author info
             </h3>
-            <pre className="glass-card p-4 text-[13px] font-mono overflow-x-auto">
+            <pre tabIndex={0} role="region" aria-label="Get author info with curl" className="glass-card p-4 text-[13px] font-mono overflow-x-auto">
               <code>{`curl https://giolaq.dev/api/author`}</code>
             </pre>
           </div>
@@ -141,7 +141,7 @@ export default function DevelopersPage() {
             <code className="text-foreground">error</code> and{" "}
             <code className="text-foreground">message</code> fields:
           </p>
-          <pre className="glass-card p-4 text-[13px] font-mono overflow-x-auto">
+          <pre tabIndex={0} role="region" aria-label="JSON error response" className="glass-card p-4 text-[13px] font-mono overflow-x-auto">
             <code>{`{
   "error": "not_found",
   "message": "Post \\"nonexistent\\" not found."

@@ -9,6 +9,22 @@ import rehypeSlug from "rehype-slug";
 import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
 import readingTime from "reading-time";
+import type { Root, RootContent } from "hast";
+
+// Code blocks can overflow on narrow screens; keyboard users must be able to scroll them.
+function accessibleCodeBlocks() {
+  return (tree: Root) => {
+    function visit(node: Root | RootContent) {
+      if (node.type === "element" && node.tagName === "pre") {
+        node.properties.tabIndex = 0;
+        node.properties.role = "region";
+        node.properties.ariaLabel = "Code example";
+      }
+      if ("children" in node) node.children.forEach(visit);
+    }
+    visit(tree);
+  };
+}
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
 
@@ -68,6 +84,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeSlug)
     .use(rehypeHighlight)
+    .use(accessibleCodeBlocks)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(content);
 

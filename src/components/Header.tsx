@@ -41,7 +41,11 @@ export default function Header() {
     <header className="site-header">
       <nav aria-label="Main navigation" className="site-container nav-bar">
         <Link href="/" className="wordmark" onClick={() => setMobileOpen(false)} aria-label="giolaq.dev home">
-          <span className="brand-symbol" aria-hidden="true">g/</span>
+          <span className="brand-symbol" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16" />
+            </svg>
+          </span>
           giolaq<span className="text-muted">.dev</span>
         </Link>
         <ul className="desktop-nav">
