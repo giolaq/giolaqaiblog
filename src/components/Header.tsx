@@ -49,7 +49,7 @@ export default function Header() {
             <li key={href}><Link href={href} aria-current={isActive(href) ? "page" : undefined}>{label}</Link></li>
           ))}
         </ul>
-        <Link href="/speaker" className="header-cta">Let's talk <span aria-hidden="true">↗</span></Link>
+        <Link href="/speaker" className="header-cta">Let&apos;s talk <span aria-hidden="true">↗</span></Link>
         <button ref={toggleRef} className="menu-toggle" type="button"
           aria-expanded={mobileOpen} aria-controls="mobile-navigation"
           aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
