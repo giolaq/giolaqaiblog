@@ -13,9 +13,6 @@ export const metadata: Metadata = {
   },
   description: SITE_CONFIG.description,
   metadataBase: new URL(SITE_CONFIG.url),
-  alternates: {
-    canonical: SITE_CONFIG.url,
-  },
   openGraph: {
     title: SITE_CONFIG.title,
     description: SITE_CONFIG.description,
@@ -35,7 +32,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#101f19",
+  themeColor: "#101210",
   colorScheme: "dark",
 };
 
@@ -44,15 +41,6 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="dark">
-      <head>
-        {/* Google Fonts: Cinzel (headings), IBM Plex Sans (body), JetBrains Mono (code) */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <GoogleAnalytics gaId="G-SGTFTP5C6W" />
       <body className="antialiased bg-background text-foreground">
         <DemoTapIndicator />
@@ -158,13 +146,12 @@ export default function RootLayout({
           }}
         />
 
-
         <a href="#main" className="skip-link">
           Skip to content
         </a>
         <div className="relative z-10 flex min-h-screen flex-col">
           <Header />
-          <main id="main" className="flex-1">{children}</main>
+          <main id="main" tabIndex={-1} className="flex-1">{children}</main>
           <Footer />
         </div>
       </body>

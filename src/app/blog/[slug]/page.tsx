@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.title,
     description: post.description,
+    alternates: { canonical: `/blog/${slug}` },
     openGraph: {
       title: post.title, description: post.description, type: "article",
       publishedTime: post.date, authors: [SITE_CONFIG.author.name], tags: post.tags,
@@ -41,7 +42,7 @@ export default async function PostPage({ params }: PageProps) {
   };
 
   return (
-    <div className="article-shell">
+    <div className="mx-auto max-w-3xl px-6 md:px-8 py-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 
       <Link href="/blog" className="font-mono-xs inline-flex items-center gap-2 transition-colors hover:text-foreground">
@@ -49,21 +50,21 @@ export default async function PostPage({ params }: PageProps) {
       </Link>
 
       <article className="mt-10">
-        <header className="article-header mb-10">
+        <header className="mb-10">
           <div className="font-mono-xs flex flex-wrap items-center gap-3">
             <time dateTime={post.date}>{format(new Date(post.date), "MMMM d, yyyy")}</time>
             <span>·</span>
             <span>{post.readingTime}</span>
           </div>
 
-          <h1 className="article-title">
+          <h1 className="mt-5 font-display text-4xl md:text-6xl leading-[1.12] tracking-tight text-foreground max-w-[20ch]">
             {post.title}
           </h1>
 
           {post.tags.length > 0 && (
-            <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
+            <div className="mt-6 flex flex-wrap gap-2">
               {post.tags.map((tag) => (
-                <span key={tag} className="text-sm text-muted">
+                <span key={tag} className="rounded-full border border-[var(--border)] px-3 py-1 text-[10.5px] uppercase tracking-widest text-muted">
                   {tag}
                 </span>
               ))}
@@ -72,16 +73,13 @@ export default async function PostPage({ params }: PageProps) {
         </header>
 
         {post.coverImage && (
-          <div className="mb-12 overflow-hidden rounded border border-[var(--border)]">
-            <Image src={post.coverImage} alt={post.title} width={900} height={500} sizes="(max-width: 768px) 100vw, 720px" className="w-full object-cover" priority />
+          <div className="mb-12 overflow-hidden rounded-2xl border border-[var(--border)]">
+            <Image src={post.coverImage} alt={post.title} width={900} height={500} sizes="(max-width: 768px) 100vw, 704px" className="w-full object-cover" priority />
           </div>
         )}
 
         <div className="prose" dangerouslySetInnerHTML={{ __html: post.content }} />
       </article>
-      <nav aria-label="Article navigation" className="mt-16 border-t border-border pt-6">
-        <Link href="/blog" className="text-link">← More writing</Link>
-      </nav>
     </div>
   );
 }
