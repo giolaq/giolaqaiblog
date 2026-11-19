@@ -1,77 +1,57 @@
 import Link from "next/link";
-import { SITE_CONFIG } from "@/lib/constants";
 
-/**
- * Cinematic hero — full-bleed backdrop (inherited from layout), glass CTA,
- * Instrument Serif display headline.
- */
 export default function HeroSection() {
   return (
-    <section className="relative pt-12 pb-28 md:pt-20 md:pb-40">
-      <div className="mx-auto flex max-w-6xl flex-col items-center px-6 text-center md:px-8">
-        {/* Eyebrow */}
-        <div className="animate-fade-rise d1 mb-8 inline-flex items-center gap-3 rounded-full px-4 py-1.5 font-mono-xs">
-          <span
-            className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] pulse-dot"
-            style={{ boxShadow: "0 0 8px 1px var(--accent)" }}
-          />
-          <span>Amazon · London · Agentic AI</span>
-        </div>
-
-        {/* Headline */}
-        <h1 className="animate-fade-rise d2 font-display text-[44px] leading-[0.95] tracking-[-0.035em] sm:text-6xl md:text-7xl lg:text-[112px] max-w-[18ch] text-balance">
-          Developer advocate and builder,{" "}
-          <span className="italic text-[var(--accent)]">
-            teaching AI agents to ship.
-          </span>
-        </h1>
-
-        {/* Sub */}
-        <p className="animate-fade-rise d3 mt-8 max-w-[44ch] text-[15px] leading-relaxed text-muted sm:text-[17px]">
-          {SITE_CONFIG.author.bio}
+    <section className="hero" aria-labelledby="hero-title">
+      <div className="hero-copy">
+        <p className="eyebrow"><span className="status-dot" /> Developer advocate &amp; builder</p>
+        <h1 id="hero-title">Less hype.<br /><span>More building.</span></h1>
+        <p className="hero-subtitle">
+          I’m Giovanni Laquidara. I turn complex tech into things people can
+          actually build with — from AI agents to apps on every screen.
         </p>
-
-        {/* CTAs */}
-        <div className="animate-fade-rise d4 mt-12 flex flex-wrap items-center justify-center gap-4">
-          <Link
-            href="/blog"
-            className="liquid-glass hover-lift inline-flex items-center gap-3 rounded-full px-10 py-4 text-[15px]"
-          >
-            <span>Read the blog</span>
-            <span className="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-white/10">
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                <path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </span>
-          </Link>
-          <Link
-            href="/talks"
-            className="inline-flex items-center gap-2 rounded-full px-6 py-4 text-[14px] text-muted hover:text-foreground transition-colors"
-          >
-            <span>See talks</span>
-            <span aria-hidden>→</span>
-          </Link>
+        <div className="hero-actions">
+          <Link href="/blog" className="button-primary">Explore the writing <span aria-hidden="true">↗</span></Link>
+          <a href="https://github.com/giolaq" className="button-secondary" target="_blank" rel="noopener noreferrer">
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
         </div>
-
-        {/* Meta row */}
-        <div className="animate-fade-rise d5 mt-20 flex flex-wrap justify-center gap-x-14 gap-y-7 font-mono-xs">
-          <div className="flex flex-col items-center gap-1.5">
-            <span className="font-display text-2xl text-foreground tracking-tight normal-case">15+</span>
-            <span>Years shipping</span>
-          </div>
-          <div className="flex flex-col items-center gap-1.5">
-            <span className="font-display text-2xl text-foreground tracking-tight normal-case">20+</span>
-            <span>Talks &amp; workshops</span>
-          </div>
-          <div className="flex flex-col items-center gap-1.5">
-            <span className="font-display text-2xl text-foreground tracking-tight normal-case">Agents · Harnesses</span>
-            <span>Focus now</span>
-          </div>
-          <div className="flex flex-col items-center gap-1.5">
-            <span className="font-display text-2xl text-foreground tracking-tight normal-case">Amazon</span>
-            <span>Currently</span>
-          </div>
+        <div className="hero-meta">
+          <span>Currently at <strong>Amazon</strong></span><span>Based in <strong>London, UK</strong></span>
         </div>
+      </div>
+      <div className="hero-art" aria-hidden="true">
+        <div className="art-label"><span>EXPLORING THE POSSIBLE</span><span>FIG. 01</span></div>
+        <svg viewBox="0 0 460 380" fill="none" className="system-art">
+          <defs>
+            <linearGradient id="cube-face" x1="125" y1="100" x2="330" y2="300" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#c0f66b" stopOpacity=".22" /><stop offset="1" stopColor="#c0f66b" stopOpacity=".02" />
+            </linearGradient>
+          </defs>
+          <g stroke="#303b32" strokeWidth="1">
+            <path d="M230 10v350M25 190h410M65 95l330 190M65 285L395 95" strokeDasharray="3 7" />
+            <ellipse cx="230" cy="190" rx="192" ry="100" /><ellipse cx="230" cy="190" rx="124" ry="65" />
+            <path d="M230 47 373 129v123l-143 82-143-82V129Z" />
+          </g>
+          <g stroke="#c0f66b" strokeWidth="1.4" strokeLinejoin="round">
+            <path d="m230 83 94 54v108l-94 54-94-54V137Z" fill="url(#cube-face)" />
+            <path d="m136 137 94 54 94-54M230 191v108" />
+            <path d="m230 120 62 36v71l-62 36-62-36v-71Z" strokeOpacity=".4" />
+            <path d="m168 156 62 36 62-36M230 192v71" strokeOpacity=".4" />
+            <path d="m230 156 31 18v36l-31 18-31-18v-36Z" fill="#c0f66b" fillOpacity=".14" />
+            <path d="m199 174 31 18 31-18M230 192v36" />
+          </g>
+          <g fill="#c0f66b">
+            <circle cx="87" cy="129" r="4" /><circle cx="373" cy="252" r="4" />
+            <circle cx="230" cy="47" r="4" /><circle cx="230" cy="334" r="4" />
+          </g>
+          <g stroke="#5b6b59"><path d="M87 129H40v-27M373 252h47v28M230 47h92V29" /></g>
+          <g fill="#a6b3a3" fontSize="10" fontFamily="monospace" letterSpacing="1">
+            <text x="22" y="90">IDEAS</text><text x="327" y="32">SYSTEMS</text><text x="350" y="300">REAL THINGS</text>
+          </g>
+          <g stroke="#a6b3a3"><path d="M20 20h12m-6-6v12M428 350h12m-6-6v12" /></g>
+        </svg>
+        <div className="art-topics"><span><i>01</i> Agentic AI</span><span><i>02</i> Cross-platform</span><span><i>03</i> Open source</span></div>
       </div>
     </section>
   );

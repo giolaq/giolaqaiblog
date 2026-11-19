@@ -1,129 +1,79 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/blog", label: "Writing" },
+  { href: "/talks", label: "Talks" },
+  { href: "/whats-next", label: "What's next" },
+  { href: "/about", label: "About" },
+  { href: "/resume", label: "Resume" },
+];
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const isActive = (href: string) =>
+    pathname === href || (href !== "/" && pathname.startsWith(href));
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/blog", label: "Writing" },
-    { href: "/talks", label: "Talks" },
-    { href: "/whats-next", label: "What's Next" },
-    { href: "/about", label: "About" },
-    { href: "/resume", label: "Resume" },
-  ];
+    if (!mobileOpen) return;
+    const onEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMobileOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onEscape);
+    const desktop = window.matchMedia("(min-width: 64rem)");
+    const onResize = () => { if (desktop.matches) setMobileOpen(false); };
+    desktop.addEventListener("change", onResize);
+    return () => {
+      document.removeEventListener("keydown", onEscape);
+      desktop.removeEventListener("change", onResize);
+    };
+  }, [mobileOpen]);
 
   return (
-    <header
-      className={`sticky top-0 z-40 transition-colors duration-300 border-b ${
-        scrolled
-          ? "bg-[#031826]/70 backdrop-blur-md border-[var(--border)]"
-          : "border-transparent"
-      }`}
-    >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 md:px-8 py-6">
-        {/* Brand — Instrument Serif wordmark */}
-        <Link href="/" className="flex items-baseline gap-1 text-foreground">
-          <span className="font-display text-2xl md:text-[28px] tracking-tight">
-            Giovanni Laquidara
-          </span>
+    <header className="site-header">
+      <nav aria-label="Main navigation" className="site-container nav-bar">
+        <Link href="/" className="wordmark" onClick={() => setMobileOpen(false)} aria-label="giolaq.dev home">
+          <span className="brand-symbol" aria-hidden="true">g/</span>
+          giolaq<span className="text-muted">.dev</span>
         </Link>
-
-        {/* Desktop nav */}
-        <ul className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => {
-            const active = pathname === link.href || (link.href !== "/" && pathname?.startsWith(link.href));
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`relative text-[13.5px] tracking-wide transition-colors ${
-                    active ? "text-foreground" : "text-muted hover:text-foreground"
-                  }`}
-                >
-                  {link.label}
-                  {active && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-px bg-foreground/60" />
-                  )}
-                </Link>
-              </li>
-            );
-          })}
+        <ul className="desktop-nav">
+          {navLinks.map(({ href, label }) => (
+            <li key={href}><Link href={href} aria-current={isActive(href) ? "page" : undefined}>{label}</Link></li>
+          ))}
         </ul>
-
-        {/* CTA pill — speaker kit for conference organizers */}
-        <Link
-          href="/speaker"
-          className="hidden md:inline-flex liquid-glass hover-lift rounded-full px-5 py-2 text-[13px] items-center gap-2"
-        >
-          <span
-            className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] pulse-dot"
-            style={{ boxShadow: "0 0 10px 1px var(--accent)" }}
-          />
-          <span>Available for talks</span>
-        </Link>
-
-        {/* Mobile toggle */}
-        <button
-          className="text-muted transition-colors hover:text-foreground md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            {mobileOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7h16M4 12h16M4 17h16" />
-            )}
-          </svg>
+        <Link href="/speaker" className="header-cta">Let's talk <span aria-hidden="true">↗</span></Link>
+        <button ref={toggleRef} className="menu-toggle" type="button"
+          aria-expanded={mobileOpen} aria-controls="mobile-navigation"
+          aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+          onClick={() => setMobileOpen(!mobileOpen)}>
+          <span>{mobileOpen ? "Close" : "Menu"}</span><span aria-hidden="true">{mobileOpen ? "−" : "+"}</span>
         </button>
-      </nav>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden glass-card mx-6 mb-4 rounded-2xl p-4">
-          <ul className="flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`block rounded-md px-3 py-2.5 text-sm transition-colors ${
-                    pathname === link.href ? "text-foreground" : "text-muted hover:text-foreground"
-                  }`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              </li>
+        <div id="mobile-navigation" className="mobile-nav" hidden={!mobileOpen}
+          onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget) && event.relatedTarget !== toggleRef.current) setMobileOpen(false);
+          }}>
+          <ul>
+            {[...navLinks, { href: "/speaker", label: "Let's talk ↗" }].map(({ href, label }) => (
+              <li key={href}><Link href={href} aria-current={isActive(href) ? "page" : undefined}
+                onClick={() => setMobileOpen(false)}>{label}</Link></li>
             ))}
-            <li className="mt-2 border-t border-[var(--border)] pt-2">
-              <Link
-                href="/speaker"
-                className="flex items-center gap-2.5 rounded-md px-3 py-2.5 text-sm text-foreground"
-                onClick={() => setMobileOpen(false)}
-              >
-                <span
-                  className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] pulse-dot"
-                  style={{ boxShadow: "0 0 8px 1px var(--accent)" }}
-                />
-                Available for talks
-              </Link>
-            </li>
           </ul>
         </div>
-      )}
+        <noscript className="no-script-navigation">
+          <style>{`@media (max-width: 63.999rem) { .nav-bar { flex-wrap: wrap; padding-block: 1rem; } .menu-toggle { display: none; } .no-script-navigation { width: 100%; } .no-script-navigation ul { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; } .no-script-navigation a { display: block; min-height: 44px; padding-block: .75rem; font-size: .875rem; } } @media (min-width: 64rem) { .no-script-navigation { display: none; } }`}</style>
+          <ul>{[...navLinks, { href: "/speaker", label: "Let's talk" }].map(({ href, label }) => (
+            <li key={href}><Link href={href}>{label}</Link></li>
+          ))}</ul>
+        </noscript>
+      </nav>
     </header>
   );
 }
