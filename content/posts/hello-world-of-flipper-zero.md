@@ -1,7 +1,7 @@
 ---
 title: "Hello World App for Flipper Zero"
 date: "2022-11-23"
-description: "A step-by-step guide to building your first Flipper Zero app — a Hello World application that displays a movable airplane on the screen."
+description: "A step-by-step guide to building your first Flipper Zero app: a Hello World application that displays a movable airplane on the screen."
 tags: ["Flipper Zero", "Hardware", "C", "Tutorial"]
 coverImage: ""
 ---

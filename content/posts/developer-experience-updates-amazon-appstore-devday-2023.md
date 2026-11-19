@@ -8,16 +8,16 @@ coverImage: ""
 
 At **devDay 2023**, I presented an overview of the latest developer experience updates for the Amazon Appstore. This talk covered the new tools and features designed to simplify the process of testing, submitting apps, and engaging with millions of Appstore customers.
 
-## The Amazon Appstore Ecosystem
+## Where the Amazon Appstore Runs
 
-The Amazon Appstore reaches millions of customers worldwide across multiple device categories:
+The Amazon Appstore reaches millions of customers worldwide across several device categories:
 
-- **Fire TV** — Streaming sticks, cubes, and smart TVs
-- **Fire Tablets** — A range of tablet devices
-- **Mobile platforms** — Android devices
-- **Windows 11** — The Amazon Appstore is available on Windows
+- Fire TV: streaming sticks, cubes, and smart TVs
+- Fire Tablets: a range of tablet devices
+- Mobile: Android devices
+- Windows 11, where the Amazon Appstore is now available
 
-This diverse ecosystem presents both an incredible opportunity and unique challenges for developers.
+Covering that many devices is a real opportunity, and it comes with its own set of challenges for developers.
 
 ## Developer Experience Improvements
 
@@ -37,9 +37,9 @@ Enhanced analytics dashboards give developers better insight into how their apps
 
 ## Key Takeaways
 
-- The Amazon Appstore continues to grow its reach across devices
-- Developer tools are becoming more streamlined and powerful
-- The multi-device nature of the ecosystem offers unique opportunities for developers who can build adaptive experiences
+- The Amazon Appstore keeps growing its reach across devices
+- The developer tools are getting simpler and more capable
+- Supporting many devices at once rewards developers who can build adaptive experiences
 
 If you're interested in publishing your apps on the Amazon Appstore, check out the [developer portal](https://developer.amazon.com/apps-and-games) for the latest documentation and tools.
 

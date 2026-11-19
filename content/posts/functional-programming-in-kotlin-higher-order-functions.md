@@ -1,14 +1,14 @@
 ---
 title: "Functional Programming in Kotlin: Higher-Order Functions"
 date: "2023-03-29"
-description: "Understanding higher-order functions in Kotlin — lambda expressions, anonymous functions, function references, and how they differ in behavior."
+description: "Understanding higher-order functions in Kotlin: lambda expressions, anonymous functions, function references, and how they differ in behavior."
 tags: ["Kotlin", "Functional Programming", "Software Development"]
 coverImage: ""
 ---
 
 In Kotlin, functions are **first-class citizens**, which means we can use them just like any other value. We can pass functions as arguments to other functions, return functions from functions, and even store functions in variables.
 
-The functions that can receive a function as an argument are called **higher-order functions**. They are one of the most powerful features in functional programming.
+The functions that can receive a function as an argument are called **higher-order functions**, and they show up everywhere once you start writing in a functional style.
 
 ## Defining Higher-Order Functions
 
@@ -88,7 +88,7 @@ fun findFirstNegativeAnon(numbers: List<Int>): Int? {
 
 ## Composing Functions
 
-One of the most powerful aspects of higher-order functions is **function composition** — combining simple functions to create more complex ones:
+A big part of what makes higher-order functions useful is **function composition**, combining simple functions to build more complex ones:
 
 ```kotlin
 fun <A, B, C> compose(f: (B) -> C, g: (A) -> B): (A) -> C {
@@ -102,8 +102,8 @@ val addOneThenDouble = compose(double, addOne)
 println(addOneThenDouble(3)) // 8
 ```
 
-## Conclusion
+## Wrapping Up
 
-Higher-order functions are fundamental to functional programming in Kotlin. They enable code reuse, abstraction, and composition, making your code more expressive and maintainable.
+Higher-order functions are the foundation of functional programming in Kotlin. They let you reuse and abstract logic, and composing them keeps your code expressive and maintainable.
 
-In the next article, we'll explore the most commonly used higher-order functions in Kotlin's standard library, including `map`, `filter`, `fold`, and more.
+The next article covers the most commonly used higher-order functions in Kotlin's standard library, including `map`, `filter`, and `fold`.

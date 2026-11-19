@@ -1,65 +1,31 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import Link from "next/link";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export default function Footer() {
-  const [uptime, setUptime] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setUptime((u) => u + 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const formatUptime = (seconds: number) => {
-    const h = Math.floor(seconds / 3600);
-    const m = Math.floor((seconds % 3600) / 60);
-    const s = seconds % 60;
-    return `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
-  };
-
-  const links = [
-    { href: SITE_CONFIG.social.github, label: "GitHub" },
-    { href: SITE_CONFIG.social.twitter, label: "Twitter" },
-    { href: SITE_CONFIG.social.linkedin, label: "LinkedIn" },
-    { href: SITE_CONFIG.social.medium, label: "Medium" },
-  ];
-
   return (
-    <footer className="mt-8" role="contentinfo">
-      <div className="mx-auto max-w-5xl px-6">
-        <div className="border-t border-dashed border-border" aria-hidden="true" />
-        <div className="flex flex-col items-center justify-between gap-4 py-8 sm:flex-row">
-          <div className="flex items-center gap-4 text-xs text-muted">
-            <span>
-              <span className="text-accent" aria-hidden="true">&copy;</span>
-              <span className="sr-only">Copyright</span>{" "}
-              {new Date().getFullYear()} {SITE_CONFIG.name}
-            </span>
-            <span className="text-border" aria-hidden="true">|</span>
-            <span aria-label={`Session uptime: ${formatUptime(uptime)}`}>
-              uptime: <span className="text-term-green" aria-hidden="true">{formatUptime(uptime)}</span>
-            </span>
+    <footer className="site-footer">
+      <div className="site-container">
+        <div className="footer-top">
+          <div><p className="eyebrow">Keep the conversation going</p>
+            <h2>Good things start<br />with <Link href="/contact">a hello <span aria-hidden="true">↗</span></Link></h2>
           </div>
-          <nav aria-label="Social media links">
-            <ul className="flex items-center gap-4" role="list">
-              {links.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-muted transition-all duration-200 hover:text-accent hover:drop-shadow-[0_0_4px_var(--accent)]"
-                  >
-                    {link.label}
-                    <span className="sr-only"> (opens in new tab)</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className="footer-links">
+            <nav aria-label="More pages">
+              <p className="font-mono-xs">Explore</p>
+              <Link href="/speaker">Speaker kit</Link><Link href="/developers">Developers &amp; API</Link><Link href="/contact">Contact</Link>
+            </nav>
+            <nav aria-label="Social profiles">
+              <p className="font-mono-xs">Elsewhere</p>
+              <a href={SITE_CONFIG.social.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              <a href={SITE_CONFIG.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+              <a href={SITE_CONFIG.social.twitter} target="_blank" rel="noopener noreferrer">X / Twitter ↗</a>
+              <a href={SITE_CONFIG.social.medium} target="_blank" rel="noopener noreferrer">Medium ↗</a>
+            </nav>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} Giovanni Laquidara</span>
+          <span>Built with curiosity. Shared with you.</span><Link href="/privacy">Privacy</Link>
         </div>
       </div>
     </footer>

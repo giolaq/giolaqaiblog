@@ -1,7 +1,7 @@
 ---
 title: "Functional Programming in Kotlin: Recursion"
 date: "2023-04-01"
-description: "Understanding recursion in functional programming with Kotlin — from basic recursion to tail recursion optimization using the tailrec keyword."
+description: "Understanding recursion in functional programming with Kotlin, from basic recursion to tail recursion optimization using the tailrec keyword."
 tags: ["Kotlin", "Functional Programming", "Software Development"]
 coverImage: ""
 ---
@@ -46,7 +46,7 @@ tailrec fun factorialTailRec(n: Long, accumulator: Long = 1): Long {
 println(factorialTailRec(20)) // 2432902008176640000
 ```
 
-The `tailrec` modifier tells the compiler to optimize the recursion. The recursive call must be in the **tail position** — meaning it must be the last thing the function does.
+The `tailrec` modifier tells the compiler to optimize the recursion. The recursive call must be in the **tail position**: it has to be the last thing the function does.
 
 ## Fibonacci with Tail Recursion
 
@@ -90,15 +90,15 @@ tailrec fun sumListTailRec(
 
 ## When to Use Recursion
 
-Recursion shines when:
+Recursion works well for:
 
-- **Processing tree-like structures** — File systems, DOM trees, JSON parsing
-- **Divide and conquer algorithms** — Merge sort, quicksort
-- **Mathematical computations** — Factorial, Fibonacci, power functions
-- **When the problem naturally decomposes** into smaller subproblems
+- Tree-like structures such as file systems, DOM trees, and JSON parsing
+- Divide and conquer algorithms like merge sort and quicksort
+- Mathematical computations such as factorial, Fibonacci, and power functions
+- Problems that naturally decompose into smaller subproblems
 
 ## Conclusion
 
-Recursion is a powerful tool in the functional programmer's toolkit. With Kotlin's `tailrec` keyword, you can write elegant recursive solutions without worrying about stack overflow errors.
+Recursion is a core part of the functional programmer's toolkit. With Kotlin's `tailrec` keyword, you can write clean recursive solutions without worrying about stack overflow errors.
 
-In the next article, we'll explore **lazy evaluation** — an optimization technique that defers computation until the result is actually needed.
+The next article covers **lazy evaluation**, a technique that defers computation until the result is actually needed.

@@ -1,138 +1,110 @@
 import Link from "next/link";
 import HeroSection from "@/components/HeroSection";
 import PostCard from "@/components/PostCard";
-import FadeIn from "@/components/FadeIn";
 import { getAllPosts } from "@/lib/posts";
+import { SITE_CONFIG } from "@/lib/constants";
+
+export const metadata = { alternates: { canonical: SITE_CONFIG.url } };
 
 export default function Home() {
   const posts = getAllPosts();
-  const recentPosts = posts.slice(0, 4);
+  const recentPosts = posts.slice(0, 3);
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: SITE_CONFIG.author.name,
+    url: SITE_CONFIG.url,
+    jobTitle: "Senior Developer Advocate",
+    worksFor: { "@type": "Organization", name: "Amazon" },
+    image: `${SITE_CONFIG.url}${SITE_CONFIG.author.avatar}`,
+    sameAs: [
+      SITE_CONFIG.social.github,
+      SITE_CONFIG.social.twitter,
+      SITE_CONFIG.social.linkedin,
+      SITE_CONFIG.social.medium,
+      SITE_CONFIG.social.hashnode,
+    ],
+  };
+
+  const projects = [
+    {
+      name: "ad-genius-system",
+      description:
+        "Multi-agent AI system for generating personalized video advertisements using AWS Bedrock and Strands.",
+      language: "Python",
+      url: "https://github.com/giolaq/ad-genius-system",
+    },
+    {
+      name: "tv-mcp-app",
+      description:
+        "AI-powered TV streaming assistant with interactive widget for browsing, filtering, recommending, and playing content.",
+      language: "TypeScript",
+      url: "https://github.com/giolaq/tv-mcp-app",
+    },
+    {
+      name: "devtoagent",
+      description:
+        "A Dev.to article generator agent built with Strands — from idea to published post via AI.",
+      language: "Python",
+      url: "https://github.com/giolaq/devtoagent",
+    },
+    {
+      name: "react-native-multi-tv-app-sample",
+      description:
+        "React Native TV app sample for Android TV, Fire TV, tvOS, and web — one codebase, every screen.",
+      language: "TypeScript",
+      url: "https://github.com/giolaq/react-native-multi-tv-app-sample",
+    },
+  ];
+
 
   return (
-    <div className="mx-auto max-w-5xl px-6 overflow-hidden">
+    <div className="site-container">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
       <HeroSection />
-
-      <section className="pb-20" aria-labelledby="latest-posts-heading">
-        <FadeIn>
-          <div className="flex items-center justify-between">
-            <h2 id="latest-posts-heading" className="text-lg font-bold text-accent">
-              Latest Posts
-            </h2>
-            <Link
-              href="/blog"
-              className="text-xs text-muted transition-colors hover:text-accent"
-              aria-label="View all blog posts"
-            >
-              View all &rarr;
-            </Link>
+      <div className="focus-strip">
+        <span className="font-mono-xs">The intersection of</span>
+        <span>AI &amp; agents</span><span aria-hidden="true">+</span>
+        <span>Developer experience</span><span aria-hidden="true">+</span><span>Apps everywhere</span>
+      </div>
+      <section className="home-section" aria-labelledby="writing-title">
+        <div className="section-heading">
+          <div><p className="eyebrow">01 / Field notes</p>
+            <h2 id="writing-title">From the workbench<span className="text-accent">.</span></h2>
+            <p>Experiments, practical guides, and things learned along the way.</p>
           </div>
-        </FadeIn>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-2 min-w-0">
-          {recentPosts.map((post, i) => (
-            <FadeIn key={post.slug} delay={i * 100} className="min-w-0">
-              <PostCard post={post} />
-            </FadeIn>
+          <Link href="/blog" className="text-link">All writing <span aria-hidden="true">↗</span></Link>
+        </div>
+        <div className="posts-grid home-posts">{recentPosts.map((post) => <PostCard key={post.slug} post={post} />)}</div>
+        {posts.length === 0 && <p className="text-muted">New writing is on its way.</p>}
+      </section>
+      <section className="home-section projects-section" aria-labelledby="projects-title">
+        <div className="section-heading">
+          <div><p className="eyebrow">02 / Build in the open</p>
+            <h2 id="projects-title">Less slide deck.<br />More source code.</h2>
+            <p>Small experiments. Real problems. Open for you to explore.</p>
+          </div>
+          <a href={SITE_CONFIG.social.github} target="_blank" rel="noopener noreferrer" className="text-link">All repositories <span aria-hidden="true">↗</span></a>
+        </div>
+        <div className="projects-grid">
+          {projects.map((project, index) => (
+            <a href={project.url} key={project.name} target="_blank" rel="noopener noreferrer" className="project-card">
+              <div className="project-index" aria-hidden="true">0{index + 1}</div>
+              <div className="min-w-0">
+                <span className="project-language"><span className={project.language === "Python" ? "language-dot python" : "language-dot"} />{project.language}</span>
+                <h3>{project.name}</h3><p>{project.description}</p>
+              </div>
+              <span className="project-arrow" aria-hidden="true">↗</span>
+            </a>
           ))}
         </div>
-
-        {posts.length === 0 && (
-          <p className="mt-8 text-sm text-muted">
-            No posts yet. Check back soon!
-          </p>
-        )}
       </section>
-
-      <section className="pb-20" aria-labelledby="featured-projects-heading">
-        <FadeIn>
-          <div className="flex items-center justify-between">
-            <h2 id="featured-projects-heading" className="text-lg font-bold text-accent">
-              Featured Projects
-            </h2>
-            <a
-              href="https://github.com/giolaq"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-muted transition-colors hover:text-accent"
-              aria-label="View all repositories on GitHub (opens in new tab)"
-            >
-              All repos &rarr;
-            </a>
-          </div>
-          <p className="mt-1 text-xs text-muted">
-            Open-source projects with a focus on agentic AI and cross-platform development.
-          </p>
-        </FadeIn>
-
-        <ul className="mt-6 grid gap-4 md:grid-cols-2 min-w-0" role="list">
-          {[
-            {
-              name: "ad-genius-system",
-              description: "Multi-agent AI system for generating personalized video advertisements using AWS Bedrock and Strands.",
-              language: "Python",
-              url: "https://github.com/giolaq/ad-genius-system",
-            },
-            {
-              name: "tv-mcp-app",
-              description: "AI-powered TV streaming assistant with interactive widget for browsing, filtering, recommending, and playing content.",
-              language: "TypeScript",
-              url: "https://github.com/giolaq/tv-mcp-app",
-            },
-            {
-              name: "devtoagent",
-              description: "A Dev.to article generator agent built with Strands — from idea to published post via AI.",
-              language: "Python",
-              url: "https://github.com/giolaq/devtoagent",
-            },
-            {
-              name: "vibepope",
-              description: "A vibe-coded experience — built entirely through creative prompting and agentic AI.",
-              language: "HTML",
-              url: "https://github.com/giolaq/vibepope",
-            },
-            {
-              name: "react-native-multi-tv-app-sample",
-              description: "React Native TV app sample for Android TV, Fire TV, tvOS, and web — one codebase, every screen.",
-              language: "TypeScript",
-              url: "https://github.com/giolaq/react-native-multi-tv-app-sample",
-            },
-            {
-              name: "gio-comic",
-              description: "An AI-powered comic generator — turn ideas into visual stories automatically.",
-              language: "Python",
-              url: "https://github.com/giolaq/gio-comic",
-            },
-          ].map((project, i) => (
-            <FadeIn key={project.name} delay={i * 80} className="min-w-0">
-              <li>
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block terminal-box p-5 overflow-hidden min-w-0 transition-all duration-300 hover:border-accent hover:shadow-[0_0_20px_-5px_var(--accent)]"
-                  aria-label={`${project.name} - ${project.description} (opens in new tab)`}
-                >
-                  <div className="flex items-center gap-2 text-xs text-muted" aria-hidden="true">
-                    <span className="text-accent">$</span>
-                    <span className="text-term-green">git clone</span>
-                    <span className="truncate">{project.name}</span>
-                  </div>
-                  <h3 className="mt-2 text-sm font-semibold text-foreground transition-colors duration-300 group-hover:text-accent">
-                    {project.name}
-                  </h3>
-                  <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-muted">
-                    {project.description}
-                  </p>
-                  <div className="mt-3">
-                    <span className="rounded-md bg-surface px-2 py-0.5 text-[10px] text-muted transition-colors duration-300 group-hover:text-accent">
-                      {project.language}
-                    </span>
-                  </div>
-                </a>
-              </li>
-            </FadeIn>
-          ))}
-        </ul>
+      <section className="speaking-banner" aria-labelledby="speaking-title">
+        <div><p className="eyebrow">03 / Beyond the keyboard</p>
+          <h2 id="speaking-title">Ideas are better in good company.</h2>
+          <p>Talks, workshops, and conversations with the developer community.</p>
+        </div>
+        <Link href="/talks" className="button-secondary">Explore the talks <span aria-hidden="true">↗</span></Link>
       </section>
     </div>
   );

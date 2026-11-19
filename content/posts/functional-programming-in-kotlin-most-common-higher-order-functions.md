@@ -1,12 +1,12 @@
 ---
 title: "Functional Programming in Kotlin: Most Common Higher-Order Functions"
 date: "2023-03-30"
-description: "Exploring the most commonly used higher-order functions in Kotlin — map, filter, fold, reduce, flatMap, and how to compose them together."
+description: "Exploring the most commonly used higher-order functions in Kotlin: map, filter, fold, reduce, flatMap, and how to compose them together."
 tags: ["Kotlin", "Functional Programming", "Software Development"]
 coverImage: ""
 ---
 
-In the [previous article](/blog/functional-programming-in-kotlin-higher-order-functions), we explored higher-order functions and how they work in Kotlin. Now let's dive deeper into the most commonly used higher-order functions available in Kotlin's standard library.
+In the [previous article](/blog/functional-programming-in-kotlin-higher-order-functions), we looked at higher-order functions and how they work in Kotlin. This time we'll go through the ones you'll reach for most often from Kotlin's standard library.
 
 These functions can be used to simplify code and create more expressive and readable programs. The ability to compose them together is one of the key benefits of functional programming.
 
@@ -92,10 +92,10 @@ val hobbies = people
 // ["coding", "cooking", "reading"]
 ```
 
-This approach allows us to create complex operations by combining simple building blocks. It reduces the complexity of code, makes it easier to reason about, and enables the creation of reusable code.
+This approach lets us build complex operations out of simple building blocks. The result is code that's less complex, easier to reason about, and simple to reuse.
 
-## Conclusion
+## Wrapping Up
 
-These higher-order functions — `map`, `filter`, `fold`, `reduce`, and `flatMap` — are the workhorses of functional programming in Kotlin. Mastering them will make your code more concise, readable, and maintainable.
+`map`, `filter`, `fold`, `reduce`, and `flatMap` are the workhorses of functional programming in Kotlin. Once you're comfortable with them, your code tends to get more concise, readable, and maintainable.
 
-In the next article, we'll explore **recursion** and how to use it effectively in Kotlin with tail recursion optimization.
+The next article covers recursion and how to use it effectively in Kotlin with tail recursion optimization.

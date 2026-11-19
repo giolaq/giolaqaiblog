@@ -8,7 +8,7 @@ coverImage: ""
 
 ## Talk at App.js 2024
 
-I had the pleasure of presenting at **App.js 2024** about extending React Native applications to the big screen — covering how to take your existing React Native mobile apps and bring them to Apple TV, Android TV, and Fire TV.
+I had the pleasure of presenting at **App.js 2024** about extending React Native applications to the big screen. The talk covers how to take your existing React Native mobile apps and bring them to Apple TV, Android TV, and Fire TV.
 
 Watch the full talk here:
 

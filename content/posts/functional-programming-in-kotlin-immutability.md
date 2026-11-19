@@ -1,7 +1,7 @@
 ---
 title: "Functional Programming in Kotlin: Immutability"
 date: "2023-04-04"
-description: "Understanding immutability in functional programming with Kotlin — immutable data structures, thread safety, and leveraging val properties and data classes."
+description: "Understanding immutability in functional programming with Kotlin: immutable data structures, thread safety, and using val properties and data classes."
 tags: ["Kotlin", "Functional Programming", "Software Development"]
 coverImage: ""
 ---
@@ -94,7 +94,7 @@ mutableNumbers.add(4) // OK
 
 ## Mutable vs Immutable: A Comparison
 
-Let's compare mutable and immutable approaches for a common task — updating items in a list:
+Here are the mutable and immutable approaches to a common task, updating items in a list:
 
 ### Mutable Approach
 
@@ -134,8 +134,8 @@ val newList = list.add(4)
 // Both lists share internal structure for efficiency
 ```
 
-## Conclusion
+## Wrapping Up
 
-Immutability is a powerful concept that leads to safer, more predictable code. Kotlin makes it easy to write immutable code with `val` properties, data classes, and read-only collections. By defaulting to immutability and only using mutability when truly necessary, you'll write code that's easier to understand, test, and maintain.
+Immutability leads to safer, more predictable code, and Kotlin makes it easy to work this way with `val` properties, data classes, and read-only collections. Default to immutability, reach for mutability only when you actually need it, and your code will be easier to understand, test, and maintain.
 
-In the next article, we'll explore **lazy evaluation** — an optimization technique that defers computation until the result is actually needed.
+The next article covers lazy evaluation, an optimization technique that defers computation until the result is actually needed.

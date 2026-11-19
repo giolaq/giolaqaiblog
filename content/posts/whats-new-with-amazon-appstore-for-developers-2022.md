@@ -8,14 +8,14 @@ coverImage: ""
 
 At **Droidcon London 2022**, I gave a lightning talk covering the latest updates to the Amazon Appstore for developers. Here's a summary of the key announcements and improvements.
 
-## The Amazon Appstore Ecosystem
+## Where the Amazon Appstore Runs
 
-The Amazon Appstore continues to expand its reach across:
+The Amazon Appstore keeps expanding its reach across:
 
-- **Fire TV** — Streaming sticks, cubes, and smart TVs
-- **Fire Tablets** — Multiple device tiers
-- **Mobile** — Android devices
-- **Windows 11** — Through the Windows Subsystem for Android
+- Fire TV streaming sticks, cubes, and smart TVs
+- Fire Tablets across multiple device tiers
+- Android mobile devices
+- Windows 11, through the Windows Subsystem for Android
 
 ## Key Updates for 2022
 
@@ -39,6 +39,6 @@ The Amazon Appstore continues to expand its reach across:
 
 ## Slides
 
-The presentation slides from the talk are available — check the original post for the full deck.
+The presentation slides from the talk are available. Check the original post for the full deck.
 
 *Originally published on [dev.to/amazonappdev](https://dev.to/amazonappdev/whats-new-with-amazon-appstore-for-developers-in-2022-slides-52me)*

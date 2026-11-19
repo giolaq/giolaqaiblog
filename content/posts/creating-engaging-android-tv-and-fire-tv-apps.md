@@ -8,15 +8,15 @@ coverImage: ""
 
 At **AppDevCon 2024**, I presented a deep dive into creating engaging apps for Android TV and Fire TV using both native and cross-device tools.
 
-## The TV App Landscape
+## The TV App Market
 
-Smart TVs and streaming devices have become a central hub for entertainment in homes around the world. For developers, this presents an enormous opportunity to reach users on the biggest screen in their home.
+Smart TVs and streaming devices have become the main way a lot of households watch things. For developers, that's a chance to reach users on the biggest screen in the house.
 
-Android TV and Fire TV together represent a massive market:
+Android TV and Fire TV together cover a lot of ground:
 
-- **Android TV** powers smart TVs from Sony, Philips, and many others
-- **Fire TV** is Amazon's platform present on Fire TV Sticks, Fire TV Cubes, and smart TVs
-- Both platforms share the Android foundation, making cross-platform development feasible
+- Android TV powers smart TVs from Sony, Philips, and many others
+- Fire TV is Amazon's platform, found on Fire TV Sticks, Fire TV Cubes, and smart TVs
+- Both share the Android foundation, which makes cross-platform development feasible
 
 ## Native Development
 
@@ -49,15 +49,15 @@ Flutter is also gaining TV support, offering another cross-platform option.
 
 Regardless of your development approach, these principles apply:
 
-1. **Design for the 10-foot experience** — Large text, clear contrast, spacious layouts
-2. **Optimize for D-pad navigation** — Logical focus order, visible focus indicators
-3. **Performance matters** — TV devices vary widely in processing power
-4. **Content-first design** — TV users want to find and consume content quickly
-5. **Voice interaction** — Support voice search and control where possible
+1. Design for the 10-foot experience: large text, clear contrast, spacious layouts
+2. Optimize for D-pad navigation with a logical focus order and visible focus indicators
+3. Keep an eye on performance, since TV devices vary widely in processing power
+4. Put content first, because TV users want to find and watch something quickly
+5. Support voice search and control where you can
 
-## Conclusion
+## Wrapping Up
 
-The TV app market continues to grow, and developers have more tools than ever to create engaging experiences. Whether you choose native development or cross-device tools, the key is understanding the unique requirements of the TV platform.
+The TV app market keeps growing, and developers have more tools than ever to build engaging experiences. Whether you go native or reach for cross-device tools, what matters most is understanding what the TV platform actually needs.
 
 ## Watch the Talk
 

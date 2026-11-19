@@ -6,7 +6,7 @@ tags: ["Android", "Android TV", "Fire TV", "Talks"]
 coverImage: ""
 ---
 
-Developing TV Apps is always a challenge due to fragmentation and the massive differences between the mobile and web platforms we're accustomed to developing for. In this talk, we had an introduction to guidelines and tools for **Fire TV** and **Android TV**.
+Developing TV apps is always a challenge, thanks to fragmentation and the big differences from the mobile and web platforms most of us are used to. This talk is an introduction to the guidelines and tools for **Fire TV** and **Android TV**.
 
 Watch the full talk:
 

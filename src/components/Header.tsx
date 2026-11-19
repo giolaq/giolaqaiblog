@@ -1,158 +1,83 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/blog", label: "Writing" },
+  { href: "/talks", label: "Talks" },
+  { href: "/whats-next", label: "What's next" },
+  { href: "/about", label: "About" },
+  { href: "/resume", label: "Resume" },
+];
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const isActive = (href: string) =>
+    pathname === href || (href !== "/" && pathname.startsWith(href));
 
-  const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/blog", label: "Blog" },
-    { href: "/about", label: "About" },
-    { href: "/resume", label: "Resume" },
-    { href: "/talks", label: "Talks" },
-  ];
-
-  // Close mobile menu on route change
   useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
-
-  // Trap focus within mobile menu when open
-  useEffect(() => {
-    if (mobileOpen && mobileMenuRef.current) {
-      const firstLink = mobileMenuRef.current.querySelector("a");
-      firstLink?.focus();
-    }
-  }, [mobileOpen]);
-
-  // Close on Escape key
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && mobileOpen) {
+    if (!mobileOpen) return;
+    const onEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
         setMobileOpen(false);
+        toggleRef.current?.focus();
       }
     };
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
+    document.addEventListener("keydown", onEscape);
+    const desktop = window.matchMedia("(min-width: 64rem)");
+    const onResize = () => { if (desktop.matches) setMobileOpen(false); };
+    desktop.addEventListener("change", onResize);
+    return () => {
+      document.removeEventListener("keydown", onEscape);
+      desktop.removeEventListener("change", onResize);
+    };
   }, [mobileOpen]);
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm">
-      <nav aria-label="Main navigation" className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        {/* Terminal dots (decorative) + brand */}
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1.5" aria-hidden="true">
-            <span className="h-3 w-3 rounded-full bg-term-red" />
-            <span className="h-3 w-3 rounded-full bg-term-yellow" />
-            <span className="h-3 w-3 rounded-full bg-term-green" />
-          </div>
-          <Link href="/" className="text-sm font-bold text-foreground" aria-label="giolaq.dev - Home">
-            giolaq
-            <span className="text-accent">.</span>
-            <span className="text-muted">dev</span>
-            <span className="cursor-blink text-accent ml-0.5 text-xs" aria-hidden="true">&#9608;</span>
-          </Link>
-        </div>
-
-        {/* Desktop nav */}
-        <ul className="hidden items-center gap-1 md:flex" role="list">
-          {navLinks.map((link) => {
-            const isCurrent = pathname === link.href;
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  aria-current={isCurrent ? "page" : undefined}
-                  className={`rounded-md px-3 py-1.5 text-xs transition-all duration-200 ${
-                    isCurrent
-                      ? "bg-surface text-accent shadow-[0_0_10px_-5px_var(--accent)]"
-                      : "text-muted hover:bg-surface hover:text-accent"
-                  }`}
-                >
-                  {isCurrent && <span className="text-term-green mr-1" aria-hidden="true">&gt;</span>}
-                  {link.label}
-                </Link>
-              </li>
-            );
-          })}
+    <header className="site-header">
+      <nav aria-label="Main navigation" className="site-container nav-bar">
+        <Link href="/" className="wordmark" onClick={() => setMobileOpen(false)} aria-label="giolaq.dev home">
+          <span className="brand-symbol" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16" />
+            </svg>
+          </span>
+          giolaq<span className="text-muted">.dev</span>
+        </Link>
+        <ul className="desktop-nav">
+          {navLinks.map(({ href, label }) => (
+            <li key={href}><Link href={href} aria-current={isActive(href) ? "page" : undefined}>{label}</Link></li>
+          ))}
         </ul>
-
-        {/* Mobile menu button */}
-        <button
-          className="text-muted transition-colors hover:text-accent md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
+        <Link href="/speaker" className="header-cta">Let&apos;s talk <span aria-hidden="true">↗</span></Link>
+        <button ref={toggleRef} className="menu-toggle" type="button"
+          aria-expanded={mobileOpen} aria-controls="mobile-navigation"
           aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-nav-menu"
-        >
-          <svg
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            {mobileOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
+          onClick={() => setMobileOpen(!mobileOpen)}>
+          <span>{mobileOpen ? "Close" : "Menu"}</span><span aria-hidden="true">{mobileOpen ? "−" : "+"}</span>
         </button>
-      </nav>
-
-      {/* Dashed separator (decorative) */}
-      <div className="mx-auto max-w-5xl px-6" aria-hidden="true">
-        <div className="border-t border-dashed border-border" />
-      </div>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div
-          id="mobile-nav-menu"
-          ref={mobileMenuRef}
-          className="border-t border-dashed border-border bg-background px-6 py-4 md:hidden"
-          role="navigation"
-          aria-label="Mobile navigation"
-        >
-          <ul className="flex flex-col gap-1" role="list">
-            {navLinks.map((link) => {
-              const isCurrent = pathname === link.href;
-              return (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    aria-current={isCurrent ? "page" : undefined}
-                    className={`block rounded-md px-3 py-2 text-xs transition-all duration-200 ${
-                      isCurrent
-                        ? "bg-surface text-accent"
-                        : "text-muted hover:bg-surface hover:text-accent"
-                    }`}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    <span className="text-accent" aria-hidden="true">$</span> cd /{link.label.toLowerCase()}
-                  </Link>
-                </li>
-              );
-            })}
+        <div id="mobile-navigation" className="mobile-nav" hidden={!mobileOpen}
+          onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget) && event.relatedTarget !== toggleRef.current) setMobileOpen(false);
+          }}>
+          <ul>
+            {[...navLinks, { href: "/speaker", label: "Let's talk ↗" }].map(({ href, label }) => (
+              <li key={href}><Link href={href} aria-current={isActive(href) ? "page" : undefined}
+                onClick={() => setMobileOpen(false)}>{label}</Link></li>
+            ))}
           </ul>
         </div>
-      )}
+        <noscript className="no-script-navigation">
+          <style>{`@media (max-width: 63.999rem) { .nav-bar { flex-wrap: wrap; padding-block: 1rem; } .menu-toggle { display: none; } .no-script-navigation { width: 100%; } .no-script-navigation ul { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; } .no-script-navigation a { display: block; min-height: 44px; padding-block: .75rem; font-size: .875rem; } } @media (min-width: 64rem) { .no-script-navigation { display: none; } }`}</style>
+          <ul>{[...navLinks, { href: "/speaker", label: "Let's talk" }].map(({ href, label }) => (
+            <li key={href}><Link href={href}>{label}</Link></li>
+          ))}</ul>
+        </noscript>
+      </nav>
     </header>
   );
 }

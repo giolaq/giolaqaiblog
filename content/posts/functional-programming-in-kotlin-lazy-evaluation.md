@@ -1,7 +1,7 @@
 ---
 title: "Functional Programming in Kotlin: Lazy Evaluation"
 date: "2023-04-03"
-description: "Understanding lazy evaluation in Kotlin — deferring computation until needed, using the lazy delegate, sequences, and memoization."
+description: "Understanding lazy evaluation in Kotlin: deferring computation until needed, using the lazy delegate, sequences, and memoization."
 tags: ["Kotlin", "Functional Programming", "Software Development"]
 coverImage: ""
 ---
@@ -95,13 +95,13 @@ With lazy evaluation, we can create a Sequence object that only generates the ne
 
 Lazy evaluation is beneficial when:
 
-- **Expensive computations** may not always be needed
-- Working with **large or infinite data sets**
-- You want to **avoid unnecessary work** in conditional logic
-- Building **data pipelines** where elements should be processed one at a time
+- Expensive computations may not always be needed
+- You're working with large or infinite data sets
+- You want to avoid unnecessary work in conditional logic
+- You're building data pipelines where elements should be processed one at a time
 
-## Conclusion
+## Wrapping Up
 
-Lazy evaluation is a powerful optimization technique that helps you write more efficient code. Kotlin provides built-in support through the `lazy` delegate, sequences, and the ability to create custom lazy evaluation patterns.
+Lazy evaluation is an optimization technique that helps you write more efficient code. Kotlin supports it out of the box through the `lazy` delegate and sequences, and you can build your own lazy patterns on top of those.
 
-In the next article, we'll explore **pure and total functions** — functions without side effects that are guaranteed to return a result for every input.
+The next article covers pure and total functions, functions without side effects that are guaranteed to return a result for every input.
