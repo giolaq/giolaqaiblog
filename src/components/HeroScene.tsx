@@ -113,9 +113,12 @@ export default function HeroScene({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div ref={hostRef} className="hero-visual" data-webgl={ready ? "ready" : undefined}>
-      {children}
-      <canvas ref={canvasRef} className="hero-canvas" aria-hidden="true" />
+    <div className="hero-scene">
+      <div ref={hostRef} className="hero-visual" data-webgl={ready ? "ready" : undefined}>
+        {children}
+        <canvas ref={canvasRef} className="hero-canvas" aria-hidden="true" />
+      </div>
+      <div className="hero-motion-slot">
       {ready && (
         <button type="button" className="hero-motion-control" onClick={toggleMotion}>
           <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="currentColor">
@@ -124,6 +127,7 @@ export default function HeroScene({ children }: { children: ReactNode }) {
           {paused ? "Resume motion" : "Pause motion"}
         </button>
       )}
+      </div>
     </div>
   );
 }

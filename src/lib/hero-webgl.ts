@@ -112,7 +112,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, host: HTMLElement, on
   }
 
   const layers = [
-    { data: rings, mode: gl.LINES, size: 1, spin: -.35, opacity: .22 },
+    { data: rings, mode: gl.LINES, size: 1, spin: -.35, opacity: .45 },
     { data: edges, mode: gl.LINES, size: 1, spin: 1, opacity: .9 },
     { data: stars, mode: gl.POINTS, size: 14, spin: -.35, opacity: .6 },
     { data: nodes, mode: gl.POINTS, size: 10, spin: 1, opacity: .8 },
