@@ -89,7 +89,7 @@ export default function ResumePage() {
       </p>
 
       <section className="mt-20">
-        <div className="font-mono-xs">§ 01 — Skills</div>
+        <h2 className="font-mono-xs">§ 01 — Skills</h2>
         <div className="mt-6 space-y-6">
           {Object.entries(skills).map(([category, items]) => (
             <div key={category}>
@@ -107,7 +107,7 @@ export default function ResumePage() {
       </section>
 
       <section className="mt-20">
-        <div className="font-mono-xs">§ 02 — Experience</div>
+        <h2 className="font-mono-xs">§ 02 — Experience</h2>
         <div className="mt-8 relative border-l border-[var(--border)] pl-8">
           {experience.map((job, i) => (
             <div key={i} className="relative mb-12">
@@ -134,7 +134,7 @@ export default function ResumePage() {
       </section>
 
       <section className="mt-20">
-        <div className="font-mono-xs">§ 03 — Education</div>
+        <h2 className="font-mono-xs">§ 03 — Education</h2>
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           {education.map((edu, i) => (
             <div key={i} className="glass-card p-5">

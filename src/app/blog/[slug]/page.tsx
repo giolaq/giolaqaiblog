@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.title,
     description: post.description,
+    alternates: { canonical: `/blog/${slug}` },
     openGraph: {
       title: post.title, description: post.description, type: "article",
       publishedTime: post.date, authors: [SITE_CONFIG.author.name], tags: post.tags,
@@ -50,13 +51,13 @@ export default async function PostPage({ params }: PageProps) {
 
       <article className="mt-10">
         <header className="mb-10">
-          <div className="font-mono-xs flex items-center gap-3">
+          <div className="font-mono-xs flex flex-wrap items-center gap-3">
             <time dateTime={post.date}>{format(new Date(post.date), "MMMM d, yyyy")}</time>
             <span>·</span>
             <span>{post.readingTime}</span>
           </div>
 
-          <h1 className="mt-5 font-display text-4xl md:text-6xl leading-[1.02] tracking-tight text-foreground max-w-[20ch]">
+          <h1 className="mt-5 font-display text-4xl md:text-6xl leading-[1.12] tracking-tight text-foreground max-w-[20ch]">
             {post.title}
           </h1>
 
@@ -73,7 +74,7 @@ export default async function PostPage({ params }: PageProps) {
 
         {post.coverImage && (
           <div className="mb-12 overflow-hidden rounded-2xl border border-[var(--border)]">
-            <Image src={post.coverImage} alt={post.title} width={900} height={500} className="w-full object-cover" priority />
+            <Image src={post.coverImage} alt={post.title} width={900} height={500} sizes="(max-width: 768px) 100vw, 704px" className="w-full object-cover" priority />
           </div>
         )}
 
