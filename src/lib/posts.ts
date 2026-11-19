@@ -14,11 +14,12 @@ import type { Root, RootContent } from "hast";
 // Code blocks can overflow on narrow screens; keyboard users must be able to scroll them.
 function accessibleCodeBlocks() {
   return (tree: Root) => {
+    let exampleNumber = 0;
     function visit(node: Root | RootContent) {
       if (node.type === "element" && node.tagName === "pre") {
         node.properties.tabIndex = 0;
         node.properties.role = "region";
-        node.properties.ariaLabel = "Code example";
+        node.properties.ariaLabel = `Code example ${++exampleNumber}`;
       }
       if ("children" in node) node.children.forEach(visit);
     }

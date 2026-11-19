@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import PostCard from "@/components/PostCard";
 import type { PostMeta } from "@/lib/posts";
 
 export default function BlogList({ posts, tags }: { posts: PostMeta[]; tags: string[] }) {
   const [search, setSearch] = useState("");
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
+  const searchRef = useRef<HTMLInputElement>(null);
   const filtered = useMemo(() => {
     const query = search.trim().toLowerCase();
     return posts.filter((post) => {
@@ -21,6 +22,7 @@ export default function BlogList({ posts, tags }: { posts: PostMeta[]; tags: str
   function clearFilters() {
     setSearch("");
     setSelectedTags(new Set());
+    searchRef.current?.focus();
   }
   function toggleTag(tag: string) {
     setSelectedTags((previous) => {
@@ -32,12 +34,13 @@ export default function BlogList({ posts, tags }: { posts: PostMeta[]; tags: str
 
   return (
     <div>
+      <div className="blog-controls">
       <label htmlFor="post-search" className="mb-3 block text-sm">Find something worth building</label>
       <div className="search-box">
         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="shrink-0 text-muted">
           <circle cx="11" cy="11" r="7" /><path d="m21 21-4.35-4.35" />
         </svg>
-        <input id="post-search" type="search" value={search}
+        <input ref={searchRef} id="post-search" type="search" value={search}
           onChange={(event) => setSearch(event.target.value)}
           placeholder="Search articles, topics, ideas…" aria-controls="post-results" />
       </div>
@@ -52,6 +55,11 @@ export default function BlogList({ posts, tags }: { posts: PostMeta[]; tags: str
           </div>
         </details>
       )}
+      </div>
+      <noscript>
+        <style>{`.blog-controls { display: none; }`}</style>
+        <p className="mt-6 text-muted">All articles are shown below. Enable JavaScript to use search and topic filters.</p>
+      </noscript>
       <div className="blog-toolbar">
         <p role="status" aria-live="polite" aria-atomic="true" className="font-mono-xs">
           {filtered.length} {filtered.length === 1 ? "article" : "articles"}{hasFilters ? ` of ${posts.length}` : " in the notebook"}
@@ -70,7 +78,6 @@ export default function BlogList({ posts, tags }: { posts: PostMeta[]; tags: str
           </div>
         )}
       </section>
-      <noscript><p className="mt-6 text-muted">All articles are shown. Enable JavaScript to use search and topic filters.</p></noscript>
     </div>
   );
 }
