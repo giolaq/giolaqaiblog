@@ -65,7 +65,7 @@ main p a, main li > a { text-decoration-line: underline; }
 .header-cta { display: flex; align-items: center; gap: 1.6rem; border: 1px solid var(--border-strong); padding: .65rem 1rem; font-size: .8125rem; min-height: 44px; }
 .header-cta:hover { border-color: var(--accent); color: var(--accent); }
 .menu-toggle { display: none; align-items: center; justify-content: space-between; gap: 1rem; min-height: 44px; padding: .5rem .75rem; border: 1px solid var(--border-strong); font-size: .875rem; }
-.mobile-nav { position: absolute; top: 100%; left: 0; right: 0; padding: 1rem; background: var(--background-elev); border: 1px solid var(--border-strong); box-shadow: 0 18px 35px #0006; }
+.mobile-nav { position: absolute; top: 100%; left: 0; right: 0; max-height: calc(100dvh - 100% - 1px); overflow-y: auto; overscroll-behavior: contain; padding: 1rem; background: var(--background-elev); border: 1px solid var(--border-strong); box-shadow: 0 18px 35px #0006; }
 .mobile-nav a { display: block; padding: .75rem; min-height: 44px; color: var(--muted); }
 .mobile-nav a[aria-current] { color: var(--accent); border-left: 2px solid var(--accent); }
 .mobile-nav a:hover { color: var(--foreground); background: var(--background); }
