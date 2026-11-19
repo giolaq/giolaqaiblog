@@ -4,24 +4,24 @@ import { getAllPosts, getAllTags } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Writing",
-  description: "Articles on TV apps, React Native, Kotlin, mobile development, and AI agents.",
+  description: "Practical field notes on AI agents, TV apps, React Native, Kotlin, and building things that work.",
+  alternates: { canonical: "/blog" },
 };
 
 export default function BlogPage() {
   const posts = getAllPosts();
   const tags = getAllTags();
-
   return (
-    <div className="mx-auto max-w-5xl px-6 md:px-8 py-12 md:py-16">
-      <h1 className="page-title">Writing</h1>
-      <p className="mt-5 max-w-[60ch] text-lg leading-relaxed text-muted">
-        Tutorials, conference notes, and things I’ve been trying.
-        Mostly TV apps, React Native, Kotlin, and AI agents.
+    <div className="site-container py-14 md:py-20">
+      <p className="eyebrow">The notebook / Writing</p>
+      <h1 className="mt-5 font-display text-5xl md:text-7xl leading-[1.08]">
+        Notes from<br /><span className="text-accent">the build.</span>
+      </h1>
+      <p className="mt-6 max-w-[52ch] text-base leading-relaxed text-muted">
+        AI agents, apps on the big screen, and everything in between.
+        Practical guides and honest lessons from getting things to work.
       </p>
-
-      <div className="mt-12">
-        <BlogList posts={posts} tags={tags} />
-      </div>
+      <div className="mt-12 md:mt-16"><BlogList posts={posts} tags={tags} /></div>
     </div>
   );
 }

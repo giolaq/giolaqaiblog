@@ -4,62 +4,80 @@ import { useState, useMemo, useRef } from "react";
 import PostCard from "@/components/PostCard";
 import type { PostMeta } from "@/lib/posts";
 
-const POSTS_PER_PAGE = 10;
-
 export default function BlogList({ posts, tags }: { posts: PostMeta[]; tags: string[] }) {
   const [search, setSearch] = useState("");
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
-  const [page, setPage] = useState(1);
-  const resultsHeading = useRef<HTMLParagraphElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
   const filtered = useMemo(() => {
     const query = search.trim().toLowerCase();
-    return posts.filter((post) =>
-      (!query || [post.title, post.description, ...post.tags].some((text) => text.toLowerCase().includes(query))) &&
-      (selectedTags.size === 0 || post.tags.some((tag) => selectedTags.has(tag)))
-    );
+    return posts.filter((post) => {
+      const matchesQuery = !query || [post.title, post.description, ...post.tags]
+        .some((text) => text.toLowerCase().includes(query));
+      const matchesTags = selectedTags.size === 0 || post.tags.some((tag) => selectedTags.has(tag));
+      return matchesQuery && matchesTags;
+    });
   }, [posts, search, selectedTags]);
-  const totalPages = Math.max(1, Math.ceil(filtered.length / POSTS_PER_PAGE));
-  const currentPage = Math.min(page, totalPages);
-  const start = (currentPage - 1) * POSTS_PER_PAGE;
-  const paginated = filtered.slice(start, start + POSTS_PER_PAGE);
+  const hasFilters = search.length > 0 || selectedTags.size > 0;
 
-  function clearFilters() { setSearch(""); setSelectedTags(new Set()); setPage(1); }
-  function changePage(next: number) {
-    setPage(next);
-    resultsHeading.current?.focus({ preventScroll: true });
-    resultsHeading.current?.scrollIntoView({ block: "start" });
+  function clearFilters() {
+    setSearch("");
+    setSelectedTags(new Set());
+    searchRef.current?.focus();
+  }
+  function toggleTag(tag: string) {
+    setSelectedTags((previous) => {
+      const next = new Set(previous);
+      if (next.has(tag)) next.delete(tag); else next.add(tag);
+      return next;
+    });
   }
 
   return (
     <div>
-      <label htmlFor="post-search" className="mb-2 block text-sm">Search writing</label>
-      <input id="post-search" type="search" value={search} className="search-field"
-        onChange={(event) => { setSearch(event.target.value); setPage(1); }} placeholder="Try React Native, Kotlin, or TV…" />
+      <div className="blog-controls">
+      <label htmlFor="post-search" className="mb-3 block text-sm">Find something worth building</label>
+      <div className="search-box">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="shrink-0 text-muted">
+          <circle cx="11" cy="11" r="7" /><path d="m21 21-4.35-4.35" />
+        </svg>
+        <input ref={searchRef} id="post-search" type="search" value={search}
+          onChange={(event) => setSearch(event.target.value)}
+          placeholder="Search articles, topics, ideas…" aria-controls="post-results" />
+      </div>
       {tags.length > 0 && (
-        <details className="topic-filters">
-          <summary>Filter by topic{selectedTags.size > 0 ? ` (${selectedTags.size} selected)` : ""}</summary>
-          <p className="mt-2 text-sm text-muted">Show posts matching any selected topic.</p>
-          <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Topics">
-            {tags.map((tag) => <button key={tag} className="filter-button" aria-pressed={selectedTags.has(tag)} onClick={() => {
-              setSelectedTags((previous) => { const next = new Set(previous); if (next.has(tag)) next.delete(tag); else next.add(tag); return next; });
-              setPage(1);
-            }}>{tag}</button>)}
+        <details className="tag-filters mt-4">
+          <summary>Filter by topic{selectedTags.size > 0 ? ` · ${selectedTags.size} selected` : ""}</summary>
+          <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Filter articles by topic; multiple topics match any selected topic">
+            {tags.map((tag) => (
+              <button type="button" key={tag} className="filter-tag"
+                aria-pressed={selectedTags.has(tag)} aria-controls="post-results" onClick={() => toggleTag(tag)}>{tag}</button>
+            ))}
           </div>
         </details>
       )}
-      <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4">
-        <p ref={resultsHeading} tabIndex={-1} role="status" className="text-sm text-muted">
-          {filtered.length > 0 ? `${start + 1}–${Math.min(start + POSTS_PER_PAGE, filtered.length)} of ${filtered.length} posts` : "No posts found"}
-        </p>
-        {(search || selectedTags.size > 0) && <button onClick={clearFilters} className="text-link py-2">Clear filters</button>}
       </div>
-      <div>{paginated.map((post) => <PostCard key={post.slug} post={post} headingLevel={2} />)}</div>
-      {filtered.length === 0 && <p className="py-10 text-base text-muted">Try a different search or clear the filters to see all posts.</p>}
-      {totalPages > 1 && <nav className="pagination" aria-label="Writing pages">
-        <button onClick={() => changePage(currentPage - 1)} disabled={currentPage === 1}>← Previous</button>
-        <span className="text-muted">Page {currentPage} of {totalPages}</span>
-        <button onClick={() => changePage(currentPage + 1)} disabled={currentPage === totalPages}>Next →</button>
-      </nav>}
+      <noscript>
+        <style>{`.blog-controls { display: none; }`}</style>
+        <p className="mt-6 text-muted">All articles are shown below. Enable JavaScript to use search and topic filters.</p>
+      </noscript>
+      <div className="blog-toolbar">
+        <p role="status" aria-live="polite" aria-atomic="true" className="font-mono-xs">
+          {filtered.length} {filtered.length === 1 ? "article" : "articles"}{hasFilters ? ` of ${posts.length}` : " in the notebook"}
+        </p>
+        {hasFilters && <button type="button" className="blog-clear" onClick={clearFilters}>Clear filters</button>}
+      </div>
+      <section id="post-results" aria-label="Articles">
+        <h2 className="sr-only">Articles</h2>
+        <div className="posts-grid">
+          {filtered.map((post) => <PostCard key={post.slug} post={post} />)}
+        </div>
+        {filtered.length === 0 && (
+          <div className="glass-card p-8">
+            <p className="text-lg">No articles found.</p>
+            <p className="mt-2 text-sm text-muted">Try a different search, or clear the filters to explore all the writing.</p>
+          </div>
+        )}
+      </section>
     </div>
   );
 }
